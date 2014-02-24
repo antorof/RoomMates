@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/scrollView1"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical" 
+		android:padding="7dp">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal" >
+
+			<LinearLayout
+				android:id="@+id/homeCardNameBackground"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:background="#009B95"
+				android:orientation="vertical"
+				android:gravity="center"
+				android:padding="7dp" >
+
+				<TextView
+					android:id="@+id/homeCardName"
+					android:gravity="right"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="70sp"
+					android:textColor="@android:color/white"
+					android:onClick="fragmentHome_onClick"
+					android:text="-"
+					android:clickable="true">
+				</TextView>
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/homeCard"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/shape"
+				android:gravity="left"
+				android:orientation="vertical"
+				android:layout_marginLeft="7dp"
+				android:paddingLeft="7dp"
+				android:paddingBottom="7dp" >
+
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:clickable="true"
+					android:gravity="left"
+					android:onClick="fragmentHome_onClick"
+					android:text="NAME"
+					android:textSize="20sp"
+					android:textStyle="italic" />
+
+				<TextView
+					android:id="@+id/cardHomeCurrentUser"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:clickable="true"
+					android:gravity="left"
+					android:onClick="fragmentHome_onClick"
+					android:text="nombre apellidos" />
+
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="10sp"
+					android:clickable="true"
+					android:gravity="left"
+					android:onClick="fragmentHome_onClick"
+					android:text="ROOM"
+					android:textSize="20sp"
+					android:textStyle="italic" />
+
+				<TextView
+					android:id="@+id/cardHomeCurrentHome"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:clickable="true"
+					android:gravity="left"
+					android:onClick="fragmentHome_onClick"
+					android:text="" />
+			</LinearLayout>
+		</LinearLayout>    
+
+		<LinearLayout
+			android:id="@+id/billsCard"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/shape"
+			android:orientation="vertical"
+			android:padding="7dp"
+			android:layout_marginTop="7dp">
+
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/billsCardTitle"
+					android:gravity="center|left"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_alignParentTop="true"
+					android:layout_marginLeft="7dp"
+					android:text="BILLS"
+					android:onClick="fragmentHome_onClick"
+					android:clickable="true"
+					android:textSize="20sp"
+					android:textStyle="italic"  >
+				</TextView>
+				
+				<ImageButton
+					android:id="@+id/buttonCollapseBills"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentRight="true"
+					android:background="@android:color/transparent"
+					android:clickable="true"
+					android:gravity="right"
+					android:minHeight="0dp"
+					android:onClick="collapseBills"
+					android:src="@drawable/arrow_down">
+				</ImageButton> 
+			</RelativeLayout>
+
+			<LinearLayout
+				android:id="@+id/cardListBills"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:onClick="fragmentHome_onClick"
+				android:layout_weight="1"
+				android:orientation="vertical">
+			</LinearLayout> 	        
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/shoppingCard"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/shape"
+			android:orientation="vertical"
+			android:padding="7dp"
+			android:layout_marginTop="7dp">
+
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/shoppingCardTitle"
+					android:gravity="center|left"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_alignParentTop="true"
+					android:layout_marginLeft="7dp"
+					android:text="SHOPPING"
+					android:onClick="fragmentHome_onClick"
+					android:clickable="true"
+					android:textSize="20sp"
+					android:textStyle="italic"  >
+				</TextView>
+				<ImageButton
+					android:id="@+id/buttonCollapseShopping"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentRight="true"
+					android:background="@android:color/transparent"
+					android:clickable="true"
+					android:gravity="right"
+					android:minHeight="0dp"
+					android:onClick="collapseShopping"
+					android:src="@drawable/arrow_down">
+				</ImageButton> 
+			</RelativeLayout>
+
+			<LinearLayout
+				android:id="@+id/cardListShopping"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:orientation="vertical"
+				android:onClick="fragmentHome_onClick">
+			</LinearLayout>
+		</LinearLayout>
+
+
+		<LinearLayout
+			android:id="@+id/tasksCard"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/shape"
+			android:orientation="vertical"
+			android:padding="7dp"
+			android:layout_marginTop="7dp">
+
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/tasksCardTitle"
+					android:gravity="center|left"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_alignParentTop="true"
+					android:layout_marginLeft="7dp"
+					android:text="TASKS"
+					android:onClick="fragmentHome_onClick"
+					android:clickable="true"
+					android:textSize="20sp"
+					android:textStyle="italic"  >
+				</TextView>
+				<ImageButton
+					android:id="@+id/buttonCollapseTasks"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentRight="true"
+					android:background="@android:color/transparent"
+					android:clickable="true"
+					android:gravity="right"
+					android:minHeight="0dp"
+					android:onClick="collapseTasks"
+					android:src="@drawable/arrow_down">
+				</ImageButton> 
+			</RelativeLayout>
+
+			<LinearLayout
+				android:id="@+id/cardListTasks"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:orientation="vertical"
+				android:onClick="fragmentHome_onClick">
+			</LinearLayout>      
+		</LinearLayout>
+	</LinearLayout> 
+</ScrollView> 
+

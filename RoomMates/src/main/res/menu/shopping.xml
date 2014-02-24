@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" 
+      xmlns:roommate="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/action_add_product"
+        android:orderInCategory="10"
+        roommate:showAsAction="ifRoom"
+        android:icon="@drawable/ic_add_product"
+        android:title="@string/action_shopping"/>
+    
+    <item
+        android:id="@+id/action_sync_shopping"
+        android:orderInCategory="20"
+        roommate:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_refresh"
+        android:title="@string/action_sync"/>
+    
+</menu>

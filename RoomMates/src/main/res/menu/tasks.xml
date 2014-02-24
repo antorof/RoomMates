@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" 
+      xmlns:roommate="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/action_add_task"
+        android:orderInCategory="10"
+        roommate:showAsAction="ifRoom"
+        android:icon="@drawable/ic_add_task"
+        android:title="@string/action_tasks"/>
+    
+    <item
+        android:id="@+id/action_sync_tasks"
+        android:orderInCategory="20"
+        roommate:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_refresh"
+        android:title="@string/action_sync"/>
+    
+</menu>

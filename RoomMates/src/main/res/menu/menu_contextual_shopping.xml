@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+	<item 
+	    android:id="@+id/opcion_eliminar_producto"
+    	android:title="Delete">
+	    
+	</item>
+	
+	<item 
+	    android:id="@+id/opcion_comprado_producto"
+    	android:title="Mark as bought">
+	    
+	</item>
+    
+	<item 
+	    android:id="@+id/opcion_urgente_producto"
+    	android:title="Mark as urgent">
+	    
+	</item>
+</menu>

@@ -1,0 +1,22 @@
+<resources>
+
+    <string name="title_activity_login">RoomMates</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Correo</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in_register"><b>Sign in</b></string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_forgot_password">Recuperar contraseña</string>
+    <string name="login_progress_signing_in">Iniciando sesión&#8230;</string>
+    <string name="error_invalid_email">El email no es válido</string>
+    <string name="error_invalid_password">La contraseña es muy corta</string>
+    <string name="error_incorrect_password">La contraseña puede ser incorrecta</string>
+    <string name="error_incorrect_username">El email puede ser incorrecto</string>
+    <string name="error_incorrect_username_or_password">Datos incorrectos</string>
+    <string name="error_field_required">Campo requerido</string>
+    <string name="error_unable_to_connect">Imposible conectar</string>
+    <string name="button_login_text">Log In</string>
+    <string name="button_register_text">Registrarse</string>
+
+</resources>

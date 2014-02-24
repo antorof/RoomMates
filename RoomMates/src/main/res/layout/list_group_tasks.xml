@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listItem1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_item_lista"
+    android:padding="6dip" >
+
+<!--     android:layout_height="?android:attr/listPreferredItemHeight" -->
+    
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:singleLine="true"
+        android:text="date"
+        android:textSize="12sp"
+   		android:gravity="right" 
+        android:layout_marginRight="6dip"/>
+    
+    <TextView
+        android:id="@+id/firstLine"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date"
+        android:layout_alignParentLeft="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        android:text="Example application"
+        android:textSize="14sp" />
+
+    
+    <ImageView
+        android:id="@+id/listIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="6dip"
+        android:layout_marginLeft="6dip"
+        android:contentDescription="Icono del Item"
+        android:src="@drawable/ic_tasks_dark" />
+
+    <TextView
+        android:id="@+id/secondLine"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/firstLine"
+        android:layout_alignParentLeft="true"
+        android:layout_alignBottom="@id/listIcon"
+        android:singleLine="true"
+        android:text="Description"
+        android:textSize="12sp" 
+        android:gravity="center_vertical"/>
+
+</RelativeLayout> 

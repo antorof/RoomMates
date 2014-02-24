@@ -1,0 +1,47 @@
+<ScrollView
+        android:id="@+id/scrollViewBills"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent" 
+		android:padding="16dip">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical" >
+		
+	    <EditText
+	        android:id="@+id/editTextNombreFactura"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:inputType="text"
+	        android:hint="Bill name" >
+	        <requestFocus />
+	    </EditText>
+	
+	    <EditText
+		android:layout_marginTop="16dip"
+	        android:id="@+id/editTextDescripcion"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:inputType="textMultiLine" 
+	        android:hint="Bill description" />
+
+	    <EditText
+		android:layout_marginTop="16dip"
+	        android:id="@+id/editTextTotal"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:inputType="numberDecimal"  
+	        android:hint="Total money" />
+
+	    <Button
+		android:layout_marginTop="32dip"
+	        android:id="@+id/buttonAddBill"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="Add Bill" 
+		    android:onClick="add_bill_button_onClick"/>
+	        
+	</LinearLayout>
+</ScrollView>

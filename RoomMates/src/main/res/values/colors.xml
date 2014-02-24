@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	Colores que podemos usar.
+-->
+
+<resources>
+    <color name="azul_android">#0099CC</color>
+    <color name="azul_claro_android">#33B5E5</color>
+    <color name="violeta_android">#9933CC</color>
+    <color name="violeta_claro_android">#AA66CC</color>
+    <color name="verde_android">#669900</color>
+    <color name="verde_claro_android">#99CC00</color>
+    <color name="naranja_android">#FF8800</color>
+    <color name="naranja_claro_android">#FFBB33</color>
+    <color name="rojo_android">#CC0000</color>
+    <color name="rojo_claro_android">#FF4444</color>
+</resources>

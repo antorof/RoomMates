@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listHome"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical" >
+	
+	<View
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:background="@android:color/darker_gray"/>
+	
+<!-- 	<LinearLayout  -->
+<!-- 		android:layout_width="match_parent" -->
+<!-- 		android:layout_height="match_parent" -->
+<!-- 		android:orientation="horizontal" -->
+<!-- 		android:layout_marginBottom="7dp" > -->
+		
+<!-- 	     <ImageView -->
+<!-- 	        android:id="@+id/iconoListaSimple" -->
+<!-- 	        android:layout_width="wrap_content" -->
+<!-- 	        android:layout_height="fill_parent" -->
+<!-- 	        android:layout_marginLeft="6dip" -->
+<!-- 	        android:layout_marginRight="6dip" -->
+<!-- 	        android:contentDescription="Icono de la lista" /> -->
+	
+<!-- 		<TextView -->
+<!-- 			android:id="@+id/textoCentral" -->
+<!-- 			android:layout_width="wrap_content" -->
+<!-- 			android:layout_height="fill_parent" -->
+<!-- 			android:gravity="left" -->
+<!-- 			android:maxWidth="150dp" -->
+<!-- 			android:textSize="18sp" -->
+<!-- 		 /> -->
+		
+<!-- 		<TextView -->
+<!-- 			android:id="@+id/textoDerecha" -->
+<!-- 			android:layout_width="fill_parent" -->
+<!-- 			android:layout_height="wrap_content" -->
+<!-- 			android:layout_marginRight="10dp" -->
+<!-- 			android:gravity="right" -->
+<!-- 			android:textSize="15sp" -->
+<!-- 			android:textStyle="italic" -->
+<!-- 		 /> -->
+	<RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_marginBottom="7dp" >
+		
+	    <ImageView
+	        android:id="@+id/iconoListaSimple"
+	        android:layout_width="wrap_content"
+	        android:layout_height="fill_parent"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentTop="true"
+	        android:layout_marginLeft="0dip"
+	        android:layout_marginRight="3dip"
+	        android:contentDescription="Icono de la lista" />
+	
+	    <TextView
+	        android:id="@+id/textoCentral"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignTop="@id/iconoListaSimple"
+	        android:layout_alignBottom="@id/iconoListaSimple"
+	        android:layout_toRightOf="@id/iconoListaSimple"
+	        android:gravity="center_vertical"
+	        android:textSize="16sp" />
+	
+	    <TextView
+	        android:id="@+id/textoDerecha"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@+id/textoCentral"
+	        android:layout_alignBottom="@+id/textoCentral"
+	        android:layout_alignParentRight="true"
+	        android:textSize="12sp"
+	        android:textStyle="italic"/>
+	</RelativeLayout> 
+		
+<!-- 	</LinearLayout> -->
+</LinearLayout>
+
