@@ -41,5 +41,9 @@
     <string name="expandablelist_markpurchased_text">Mark as purchased</string>
     <string name="expandablelist_markurgent_text">Mark as urgent</string>
     <string name="expandablelist_deleteproduct_text">Delete the product</string>
+    <string name="expandablelist_markpaid_text">Mark as paid</string>
+    <string name="expandablelist_deletebill_text">Delete the bill</string>
+    <string name="expandablelist_markdone_text">Mark as done</string>
+    <string name="expandablelist_deletetask_text">Delete the task</string>
 
 </resources>
