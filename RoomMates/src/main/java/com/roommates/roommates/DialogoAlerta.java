@@ -23,27 +23,6 @@ public class DialogoAlerta {
 	 *     
 	 * @param ma Referencia a MainActivity
 	 * @param context Contexto en el que se mostrar el AlertDialog
-	 * @param tittle T&iacute;tulo de la alerta
-	 * @param message Mensaje de la alerta
-	 * @param onOKAction <tt>String</tt> del nombre del m&eacute;todo a llamar
-	 *        cuando se pinche en <b>OK</b>
-	 * @param params Par&aacute;metros de la funci&oacute;n <tt>MainActivity.<i>onOKAction</i></tt>
-	 */
-	public DialogoAlerta(
-			MainActivity ma, Context context, 
-			String tittle, String message, 
-			String onOKAction, Object[] params) {
-		this(ma,context, message, onOKAction, params);
-		
-		ad_b.setTitle(tittle);
-	}
-	
-	/**
-	 * <p> Crea un AlertDialog que ejecuta mediante reflexi&oacute;n la funci&oacute;n
-	 *     <tt>MainActivity.<i>onOKAction</i></tt> si se pincha en <b>OK</b>.
-	 *     
-	 * @param ma Referencia a MainActivity
-	 * @param context Contexto en el que se mostrar el AlertDialog
 	 * @param message Mensaje de la alerta
 	 * @param onOKAction <tt>String</tt> del nombre del m&eacute;todo a llamar
 	 *        cuando se pinche en <b>OK</b>
@@ -60,7 +39,7 @@ public class DialogoAlerta {
 		
 		ad_b
     	.setMessage(message)
-    	.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+    	.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
     		public void onClick(DialogInterface dialog, int which) {
     			if(accion != null && !accion.equals("")){
 	    			Class<? extends MainActivity> c = mainActivity.getClass();
@@ -88,12 +67,35 @@ public class DialogoAlerta {
     			}	
     		}
     	})
-    	.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+    	.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
     		public void onClick(DialogInterface dialog, int which) {
     		}
     	});
 	}
-	
+
+
+    /**
+     * <p> Crea un AlertDialog que ejecuta mediante reflexi&oacute;n la funci&oacute;n
+     *     <tt>MainActivity.<i>onOKAction</i></tt> si se pincha en <b>OK</b>.
+     *
+     * @param ma Referencia a MainActivity
+     * @param context Contexto en el que se mostrar el AlertDialog
+     * @param tittle T&iacute;tulo de la alerta
+     * @param message Mensaje de la alerta
+     * @param onOKAction <tt>String</tt> del nombre del m&eacute;todo a llamar
+     *        cuando se pinche en <b>OK</b>
+     * @param params Par&aacute;metros de la funci&oacute;n <tt>MainActivity.<i>onOKAction</i></tt>
+     */
+    public DialogoAlerta(
+            MainActivity ma, Context context,
+            String tittle, String message,
+            String onOKAction, Object[] params) {
+        this(ma,context, message, onOKAction, params);
+
+        ad_b.setTitle(tittle);
+    }
+
+
 	/**
 	 * <p> Crea un AlertDialog que ejecuta mediante reflexi&oacute;n la funci&oacute;n
 	 *     <tt>MainActivity.<i>onOKAction</i></tt> si se pincha en <b>OK</b>.

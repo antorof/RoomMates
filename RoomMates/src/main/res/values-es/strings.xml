@@ -15,7 +15,7 @@
     <string name="title_activity_new_apartment">Nueva Casa</string>
     <string name="title_activity_new_bill">Nueva Factura</string>
     <string name="title_activity_register">Registrarse</string>
-    <string name="drawer_name_home">Home</string>
+    <string name="drawer_name_home">Inicio</string>
     <string name="drawer_name_bills">Facturas</string>
     <string name="drawer_name_shopping">Compras</string>
     <string name="drawer_name_tasks">Tareas</string>
@@ -31,5 +31,8 @@
     <string name="alert_markurgentproduct_message">¿Quieres marcar este producto como urgente?</string>
     <string name="alert_deleteproduct_tittle">Eliminar Producto</string>
     <string name="alert_deleteproduct_message">¿Quieres eliminar este producto?</string>
+    <string name="expandablelist_markpurchased_text">Marcar como comprado</string>
+    <string name="expandablelist_markurgent_text">Marcar como Urgente</string>
+    <string name="expandablelist_deleteproduct_text">Eliminar Producto</string>
 
 </resources>
