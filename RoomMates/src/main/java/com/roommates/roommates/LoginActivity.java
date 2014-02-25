@@ -100,7 +100,7 @@ public class LoginActivity extends ActionBarActivity {
 	    String usuarioPref = sharedPref.getString("usuario", "-1");
 	    String passwordPref = sharedPref.getString("password", "-1");
         
-	    // Si está en las preferencias, lo ponemos:
+	    // Si esta en las preferencias, lo ponemos:
         if (!usuarioPref.equals("-1"))
         	mEmailView.setText(usuarioPref);
         if (!passwordPref.equals("-1"))
@@ -109,9 +109,9 @@ public class LoginActivity extends ActionBarActivity {
         /* Creamos un Dialog por si luego nos pregunta si queremos guardar
          * las preferencias */
         myAB = new AlertDialog.Builder(this);
-		myAB.setTitle("Save credentials")
-	    .setMessage("Do you want to save your user and password?")
-	    .setPositiveButton("Yes", new DialogInterface.OnClickListener() 
+		myAB.setTitle(getString(R.string.alert_savecredentials_tittle))
+	    .setMessage(getString(R.string.alert_savecredentials_message))
+	    .setPositiveButton(getString(android.R.string.yes), new DialogInterface.OnClickListener()
 	    {
 	        public void onClick(DialogInterface dialog, int which) {
 	        	// Almacenamos las credenciales:
@@ -126,7 +126,7 @@ public class LoginActivity extends ActionBarActivity {
     			tryAsyncLogin();
 	        }
 	     })
-	    .setNegativeButton("No", new DialogInterface.OnClickListener() 
+	    .setNegativeButton(getString(android.R.string.no), new DialogInterface.OnClickListener()
 	    {
 	        public void onClick(DialogInterface dialog, int which) {
 	        	// Eliminamos la ultima casa:
@@ -138,7 +138,7 @@ public class LoginActivity extends ActionBarActivity {
 	    		tryAsyncLogin();
 	        }
 	     });
-		
+
 
 		// Setup the button
 		findViewById(R.id.sign_in_button).setOnClickListener(
@@ -338,7 +338,7 @@ public class LoginActivity extends ActionBarActivity {
 				final AlertDialog.Builder myAB = new AlertDialog.Builder(LoginActivity.this);
 				myAB.setTitle("Error")
 			    .setMessage(getString(R.string.error_unable_to_connect))
-			    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			    .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
 			        public void onClick(DialogInterface dialog, int which) {
 			        	// No se hace nada						
 			        }

@@ -16,5 +16,7 @@
     <string name="error_incorrect_username_or_password">Wrong login data</string>
     <string name="error_field_required">This field is required</string>
     <string name="error_unable_to_connect">Unable to connect to server</string>
+    <string name="alert_savecredentials_tittle">Save credentials</string>
+    <string name="alert_savecredentials_message">Do you want to save your user and password?</string>
 
 </resources>
