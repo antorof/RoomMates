@@ -45,5 +45,10 @@
     <string name="expandablelist_deletebill_text">Delete the bill</string>
     <string name="expandablelist_markdone_text">Mark as done</string>
     <string name="expandablelist_deletetask_text">Delete the task</string>
+    <string name="card_homename_text">NAME</string>
+    <string name="card_homeroom_text">ROOM</string>
+    <string name="card_homebills_text">BILLS</string>
+    <string name="card_homeshopping_text">SHOPPING</string>
+    <string name="card_hometasks_text">TASKS</string>
 
 </resources>

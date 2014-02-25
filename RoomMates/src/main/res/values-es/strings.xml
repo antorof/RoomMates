@@ -38,5 +38,10 @@
     <string name="expandablelist_deletebill_text">Eliminar factura</string>
     <string name="expandablelist_markdone_text">Marcar como hecha</string>
     <string name="expandablelist_deletetask_text">Eliminar tarea</string>
+    <string name="card_homename_text">NOMBRE</string>
+    <string name="card_homeroom_text">CASA</string>
+    <string name="card_homebills_text">FACTURAS</string>
+    <string name="card_homeshopping_text">COMPRAS</string>
+    <string name="card_hometasks_text">TAREAS</string>
 
 </resources>

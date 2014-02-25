@@ -59,7 +59,7 @@
 					android:clickable="true"
 					android:gravity="left"
 					android:onClick="fragmentHome_onClick"
-					android:text="NAME"
+					android:text="@string/card_homename_text"
 					android:textSize="20sp"
 					android:textStyle="italic" />
 
@@ -79,7 +79,7 @@
 					android:clickable="true"
 					android:gravity="left"
 					android:onClick="fragmentHome_onClick"
-					android:text="ROOM"
+					android:text="@string/card_homeroom_text"
 					android:textSize="20sp"
 					android:textStyle="italic" />
 
@@ -115,7 +115,7 @@
 					android:layout_height="wrap_content"
 					android:layout_alignParentTop="true"
 					android:layout_marginLeft="7dp"
-					android:text="BILLS"
+					android:text="@string/card_homebills_text"
 					android:onClick="fragmentHome_onClick"
 					android:clickable="true"
 					android:textSize="20sp"
@@ -167,7 +167,7 @@
 					android:layout_height="wrap_content"
 					android:layout_alignParentTop="true"
 					android:layout_marginLeft="7dp"
-					android:text="SHOPPING"
+					android:text="@string/card_homeshopping_text"
 					android:onClick="fragmentHome_onClick"
 					android:clickable="true"
 					android:textSize="20sp"
@@ -219,7 +219,7 @@
 					android:layout_height="wrap_content"
 					android:layout_alignParentTop="true"
 					android:layout_marginLeft="7dp"
-					android:text="TASKS"
+					android:text="@string/card_hometasks_text"
 					android:onClick="fragmentHome_onClick"
 					android:clickable="true"
 					android:textSize="20sp"

@@ -16,7 +16,7 @@
     <string name="error_incorrect_username_or_password">Datos incorrectos</string>
     <string name="error_field_required">Campo requerido</string>
     <string name="error_unable_to_connect">Imposible conectar</string>
-    <string name="button_login_text">Log In</string>
+    <string name="button_login_text">Iniciar Sesión</string>
     <string name="button_register_text">Registrarse</string>
     <string name="alert_savecredentials_tittle">Guardar credenciales</string>
     <string name="alert_savecredentials_message">¿Quieres guardar el email y la contraseña?</string>
