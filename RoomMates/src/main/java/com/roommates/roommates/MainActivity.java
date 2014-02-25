@@ -114,7 +114,14 @@ public class MainActivity extends ActionBarActivity {
         idViviendaActual = "35";
 		/*							*/
 		
-        opcionesMenu = new String[] {"Home", "Bills", "Shopping", "Tasks", "Roommates", "Rooms"};
+        opcionesMenu = new String[] {
+                getString(R.string.drawer_name_home),
+                getString(R.string.drawer_name_bills),
+                getString(R.string.drawer_name_shopping),
+                getString(R.string.drawer_name_tasks),
+                getString(R.string.drawer_name_roommates),
+                getString(R.string.drawer_name_rooms)
+        };
 		
 		tituloOpcionesMenu = new String[] {
 				(String) getTitle(), opcionesMenu[1],opcionesMenu[2],
@@ -320,7 +327,7 @@ public class MainActivity extends ActionBarActivity {
 				break;
 			case R.id.action_add_apartment:
 				intent = new Intent(this,NewApartmentActivity.class);
-		    	intent.putExtra("USERNAME", "jm@email.com");
+		    	intent.putExtra("USERNAME", username);
 		    	intent.putExtra("PASSWORD", password);
 		    	startActivity(intent);
 				break;

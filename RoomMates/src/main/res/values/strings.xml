@@ -22,5 +22,11 @@
     <string name="title_activity_register">Register</string>
     <string name="button_login_text">Log In</string>
     <string name="button_register_text">Sign Up</string>
+    <string name="drawer_name_home">Home</string>
+    <string name="drawer_name_bills">Bills</string>
+    <string name="drawer_name_shopping">Shopping</string>
+    <string name="drawer_name_tasks">Tasks</string>
+    <string name="drawer_name_roommates">Roommates</string>
+    <string name="drawer_name_rooms">Rooms</string>
 
 </resources>
