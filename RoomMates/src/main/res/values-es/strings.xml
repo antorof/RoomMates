@@ -21,5 +21,15 @@
     <string name="drawer_name_tasks">Tareas</string>
     <string name="drawer_name_roommates">Compañeros</string>
     <string name="drawer_name_rooms">Casas</string>
+    <string name="alert_removebill_tittle">Eliminar Factura</string>
+    <string name="alert_removebill_message">¿Quieres eliminar esta factura?</string>
+    <string name="alert_removetask_tittle">Eliminar Tarea</string>
+    <string name="alert_removetask_message">¿Quieres eliminar esta tarea?</string>
+    <string name="alert_markpurchased_tittle">Marcar como comprado</string>
+    <string name="alert_markpurchased_message">¿Has comprado este producto?</string>
+    <string name="alert_markurgentproduct_tittle">Marcar como Urgente</string>
+    <string name="alert_markurgentproduct_message">¿Quieres marcar este producto como urgente?</string>
+    <string name="alert_deleteproduct_tittle">Eliminar Producto</string>
+    <string name="alert_deleteproduct_message">¿Quieres eliminar este producto?</string>
 
 </resources>

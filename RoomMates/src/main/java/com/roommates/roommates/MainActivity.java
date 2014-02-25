@@ -436,7 +436,7 @@ public class MainActivity extends ActionBarActivity {
 	        case R.id.opcion_comprado_producto:{;
 	        	final Object[] value = (Object[]) fragmentShopping.getListItem(info.position);
 	            	        	
-	        	//aqu� se quita el estado de urgente poniendo el 0
+	        	//aqui se quita el estado de urgente poniendo el 0
 	            new AsyncUpdate().execute("SHOPPING",(String)value[4],(String)value[1],"0");
 	        	
 	            return true;
@@ -506,7 +506,7 @@ public class MainActivity extends ActionBarActivity {
 	 * <p> Supuestamente no es bueno hacer esto porque rompe 
 	 *     con la guia de dise&ntilde;o de Android, en la que pone
 	 *     que solo deben aparecer en los tlfonos sin boton
-	 *     fisico de menu.*/
+	 *     f&iacute;sico de menu.*/
 	private void getOverflowMenu() {
 	     try {
 	        ViewConfiguration config = ViewConfiguration.get(this);
@@ -633,7 +633,7 @@ public class MainActivity extends ActionBarActivity {
     	
     	protected void onPostExecute(String result) {
     		pDialog.dismiss();//ocultamos progess dialog.
-    		Log.v("[asyncConsult] onPostExecute=",""+result);
+    		Log.v("[asyncRemove] onPostExecute=",""+result);
 
     		if (result.equals("ok")){
     			Toast.makeText(getApplicationContext(), tipo_elemento+" deleted", Toast.LENGTH_LONG).show();
@@ -706,7 +706,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
 	/**
-	 * Clase que se encarga de la actualizaci�n de un elemento.
+	 * Clase que se encarga de la actualizaci&oacute;n de un elemento.
 	 * 
 	 * */
 	class AsyncUpdate extends AsyncTask< String, String, String > {
@@ -754,7 +754,7 @@ public class MainActivity extends ActionBarActivity {
     	
     	protected void onPostExecute(String result) {
     		pDialog.dismiss();//ocultamos progess dialog.
-    		Log.v("[asyncConsult] onPostExecute=",""+result);
+    		Log.v("[asyncUpdate] onPostExecute=",""+result);
 
     		if (result.equals("ok")){
     			Toast.makeText(getApplicationContext(), tipo_elemento+" updated", Toast.LENGTH_LONG).show();
@@ -998,8 +998,11 @@ public class MainActivity extends ActionBarActivity {
         		{
         			Log.v("Click","Delete");
         			new DialogoAlerta(MainActivity.this, MainActivity.this, 
-        					"Remove bill", "Do you want to remove this bill?", DialogoAlerta.WARNING, 
-        					"remove_bill",new Object[]{header}).show();
+        					getString(R.string.alert_removebill_tittle),
+                            getString(R.string.alert_removebill_message),
+                            DialogoAlerta.WARNING,
+        					"remove_bill",
+                            new Object[]{header}).show();
         			return true;
         		}    
            
@@ -1070,7 +1073,9 @@ public class MainActivity extends ActionBarActivity {
         		{
         			Log.v("Click","Delete");
         			new DialogoAlerta(MainActivity.this, MainActivity.this, 
-        					"Remove task", "Do you want to remove this task?",  DialogoAlerta.WARNING,
+        					getString(R.string.alert_removetask_tittle),
+                            getString(R.string.alert_removetask_message),
+                            DialogoAlerta.WARNING,
         					"remove_task",new Object[]{header}).show();
         			return true;
         		}    
@@ -1142,19 +1147,23 @@ public class MainActivity extends ActionBarActivity {
         		if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition) == "Buy")
         		{
         			new DialogoAlerta(MainActivity.this, MainActivity.this, 
-        					"Mark as purchased", "Did you buy this product?", 
+        					getString(R.string.alert_markpurchased_tittle),
+                            getString(R.string.alert_markpurchased_message),
         					"buy_product",new Object[]{header}).show();
          			return true;
         		}else if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition) == "Urgent")
         		{
         			new DialogoAlerta(MainActivity.this, MainActivity.this, 
-        					"Mark as urgent", "Do you want to mark this product as urgent?", 
+        					getString(R.string.alert_markurgentproduct_tittle),
+                            getString(R.string.alert_markurgentproduct_message),
         					"urgent_product",new Object[]{header}).show();
         			return true;
         		}else if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition) == "Delete")
         		{
         			new DialogoAlerta(MainActivity.this, MainActivity.this, 
-        					"Delete", "Do you want to delete this product?", DialogoAlerta.WARNING,
+        					getString(R.string.alert_deleteproduct_tittle),
+                            getString(R.string.alert_deleteproduct_message),
+                            DialogoAlerta.WARNING,
         					"remove_product",new Object[]{header}).show();
         			return true;
         		}         

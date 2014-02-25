@@ -28,5 +28,15 @@
     <string name="drawer_name_tasks">Tasks</string>
     <string name="drawer_name_roommates">Roommates</string>
     <string name="drawer_name_rooms">Rooms</string>
+    <string name="alert_removebill_tittle">Remove bill</string>
+    <string name="alert_removebill_message">Do you want to remove this bill?</string>
+    <string name="alert_removetask_tittle">Remove task</string>
+    <string name="alert_removetask_message">Do you want to remove this task?</string>
+    <string name="alert_markpurchased_tittle">Mark as purchased</string>
+    <string name="alert_markpurchased_message">Did you buy this product?</string>
+    <string name="alert_markurgentproduct_tittle">Mark as urgent</string>
+    <string name="alert_markurgentproduct_message">Do you want to mark this product as urgent?</string>
+    <string name="alert_deleteproduct_tittle">Delete</string>
+    <string name="alert_deleteproduct_message">Do you want to delete this product?</string>
 
 </resources>

@@ -18,11 +18,11 @@ public class DialogoAlerta {
 	public static final int WARNING = 0;
 	
 	/**
-	 * <p> Crea un AlertDialog que ejecuta mediante reflexión la función 
+	 * <p> Crea un AlertDialog que ejecuta mediante reflexi&oacute;n la funci&oacute;n
 	 *     <tt>MainActivity.<i>onOKAction</i></tt> si se pincha en <b>OK</b>.
 	 *     
 	 * @param ma Referencia a MainActivity
-	 * @param context Contexto en el que se mostrará el AlertDialog
+	 * @param context Contexto en el que se mostrar el AlertDialog
 	 * @param tittle T&iacute;tulo de la alerta
 	 * @param message Mensaje de la alerta
 	 * @param onOKAction <tt>String</tt> del nombre del m&eacute;todo a llamar
@@ -39,12 +39,11 @@ public class DialogoAlerta {
 	}
 	
 	/**
-	 * <p> Crea un AlertDialog que ejecuta mediante reflexión la función 
+	 * <p> Crea un AlertDialog que ejecuta mediante reflexi&oacute;n la funci&oacute;n
 	 *     <tt>MainActivity.<i>onOKAction</i></tt> si se pincha en <b>OK</b>.
 	 *     
 	 * @param ma Referencia a MainActivity
-	 * @param context Contexto en el que se mostrará el AlertDialog
-	 * @param tittle T&iacute;tulo de la alerta
+	 * @param context Contexto en el que se mostrar el AlertDialog
 	 * @param message Mensaje de la alerta
 	 * @param onOKAction <tt>String</tt> del nombre del m&eacute;todo a llamar
 	 *        cuando se pinche en <b>OK</b>
@@ -96,11 +95,11 @@ public class DialogoAlerta {
 	}
 	
 	/**
-	 * <p> Crea un AlertDialog que ejecuta mediante reflexión la función 
+	 * <p> Crea un AlertDialog que ejecuta mediante reflexi&oacute;n la funci&oacute;n
 	 *     <tt>MainActivity.<i>onOKAction</i></tt> si se pincha en <b>OK</b>.
 	 *     
 	 * @param ma Referencia a MainActivity
-	 * @param context Contexto en el que se mostrará el AlertDialog
+	 * @param context Contexto en el que se mostrar el AlertDialog
 	 * @param tittle T&iacute;tulo de la alerta
 	 * @param message Mensaje de la alerta
 	 * @param icon <tt>Int</tt> que representa el icono de la alerta
