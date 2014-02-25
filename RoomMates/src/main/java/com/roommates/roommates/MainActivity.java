@@ -1,20 +1,5 @@
 package com.roommates.roommates;
 
-import java.lang.reflect.Field;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -42,7 +27,6 @@ import android.view.ViewConfiguration;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ImageButton;
@@ -52,7 +36,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.roommates.roommates.R;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Field;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -399,7 +396,7 @@ public class MainActivity extends ActionBarActivity {
 	        	
 	        	return true;
 	        }
-	        case R.id.opcion_hecho_tarea:{;
+	        case R.id.opcion_hecho_tarea:{
 	        	final Object[] value = (Object[]) fragmentTasks.getListItem(info.position);
 	            final String nombre = (String) value[1];
 	        	Toast.makeText(MainActivity.this, 
@@ -745,7 +742,7 @@ public class MainActivity extends ActionBarActivity {
     		}
     		
     		//enviamos y recibimos y analizamos los datos en segundo plano.
-    		if (actualizarElemento()==true){    		    		
+    		if (actualizarElemento()==true){
     			return "ok"; // tarea aniadida
     		} else{    		
     			return "err"; // tarea no aniadida   	          	  
@@ -895,7 +892,7 @@ public class MainActivity extends ActionBarActivity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) 
 			{
 				ListView prueba = (ListView) findViewById(R.id.listaApartments);
-				
+
 				final Object[] value = (Object[]) prueba.getItemAtPosition(position);
 				final AlertDialog.Builder myAB = new AlertDialog.Builder(MainActivity.this);
 			
@@ -987,14 +984,14 @@ public class MainActivity extends ActionBarActivity {
             public boolean onChildClick(ExpandableListView parent, View v,
             		int groupPosition, int childPosition, long id) {
     			header = listDataHeader.get(groupPosition);
-        		if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition) == "Done")
+        		if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).equals("Done"))
         		{
         			Log.v("Click","Done");
     	        	Toast.makeText(MainActivity.this, 
     	        			"Task done", 
     	        			Toast.LENGTH_LONG).show();
     	        	return true;
-        		}else if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition) == "Delete")
+        		}else if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).equals("Delete"))
         		{
         			Log.v("Click","Delete");
         			new DialogoAlerta(MainActivity.this, MainActivity.this, 
@@ -1062,14 +1059,14 @@ public class MainActivity extends ActionBarActivity {
             public boolean onChildClick(ExpandableListView parent, View v,
             		int groupPosition, int childPosition, long id) {
     			header = listDataHeader.get(groupPosition);
-        		if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition) == "Done")
+        		if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).equals("Done"))
         		{
         			Log.v("Click","Done");
     	        	Toast.makeText(MainActivity.this, 
     	        			"Task \""+listDataHeader.get(groupPosition)+"\" done", 
     	        			Toast.LENGTH_LONG).show();
          			return true;
-        		}else if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition) == "Delete")
+        		}else if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).equals("Delete"))
         		{
         			Log.v("Click","Delete");
         			new DialogoAlerta(MainActivity.this, MainActivity.this, 
@@ -1144,21 +1141,21 @@ public class MainActivity extends ActionBarActivity {
             public boolean onChildClick(ExpandableListView parent, View v,
             		int groupPosition, int childPosition, long id) {
     			header = listDataHeader.get(groupPosition);
-        		if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition) == "Buy")
+        		if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).equals("Buy"))
         		{
         			new DialogoAlerta(MainActivity.this, MainActivity.this, 
         					getString(R.string.alert_markpurchased_tittle),
                             getString(R.string.alert_markpurchased_message),
         					"buy_product",new Object[]{header}).show();
          			return true;
-        		}else if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition) == "Urgent")
+        		}else if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).equals("Urgent"))
         		{
         			new DialogoAlerta(MainActivity.this, MainActivity.this, 
         					getString(R.string.alert_markurgentproduct_tittle),
                             getString(R.string.alert_markurgentproduct_message),
         					"urgent_product",new Object[]{header}).show();
         			return true;
-        		}else if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition) == "Delete")
+        		}else if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).equals("Delete"))
         		{
         			new DialogoAlerta(MainActivity.this, MainActivity.this, 
         					getString(R.string.alert_deleteproduct_tittle),

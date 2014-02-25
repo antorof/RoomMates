@@ -53,15 +53,15 @@ public class WebDatabaseBackground extends AsyncTask<Object, Boolean, Object[] >
 		
 		postMethod = (String) params[5];
 		
-		if(consulta == "recuperarApartamentos")
+		if(consulta.equals("recuperarApartamentos"))
 			URL_todo = URL_consultaApartamentos;
-		else if(consulta == "recuperarRoommates")
+		else if(consulta.equals("recuperarRoommates"))
 			URL_todo = URL_consultaRoommates;
-		else if(consulta == "recuperarFacturas")
+		else if(consulta.equals("recuperarFacturas"))
 			URL_todo = URL_consultaFacturas;
-		else if(consulta == "recuperarCompras")
+		else if(consulta.equals("recuperarCompras"))
 			URL_todo = URL_consultaCompras;
-		else if(consulta == "recuperarTareas")
+		else if(consulta.equals("recuperarTareas"))
 			URL_todo = URL_consultaTareas;
 
 		// Creamos un ArrayList con los parametros de la consulta:
@@ -92,19 +92,19 @@ public class WebDatabaseBackground extends AsyncTask<Object, Boolean, Object[] >
 				
 				Object[] arr = null;
 				{
-					if(consulta == "recuperarApartamentos")
+					if(consulta.equals("recuperarApartamentos"))
 					{
 						arr = convertToObject(l, 5);
-					}else if(consulta == "recuperarRoommates")
+					}else if(consulta.equals("recuperarRoommates"))
 					{
 						arr = convertToObject(l, 6);
-					}else if(consulta == "recuperarFacturas")
+					}else if(consulta.equals("recuperarFacturas"))
 					{
 						arr = convertToObject(l, 8);
-					}else if(consulta == "recuperarCompras")
+					}else if(consulta.equals("recuperarCompras"))
 					{
 						arr = convertToObject(l, 7);
-					}else if(consulta == "recuperarTareas")
+					}else if(consulta.equals("recuperarTareas"))
 					{
 						arr = convertToObject(l, 7);
 					}

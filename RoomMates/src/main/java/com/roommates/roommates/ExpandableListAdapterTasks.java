@@ -57,15 +57,15 @@ public class ExpandableListAdapterTasks extends BaseExpandableListAdapter {
         
         TextView textViewDate = (TextView) convertView.findViewById(R.id.opcionItem);
         
-        if(childText == "Done")
+        if(childText.equals("Done"))
         	textViewDate.setText(_context.getString(R.string.expandablelist_markdone_text));
-        else if(childText == "Delete")
+        else if(childText.equals("Delete"))
         	textViewDate.setText(_context.getString(R.string.expandablelist_deletetask_text));
         
         ImageView icono = (ImageView) convertView.findViewById(R.id.listIcon);
-        if(childText == "Done")
+        if(childText.equals("Done"))
         	icono.setImageResource(R.drawable.ic_tick_dark);
-        else if(childText == "Delete")
+        else if(childText.equals("Delete"))
         	icono.setImageResource(R.drawable.ic_delete_dark);
 		
         return convertView;

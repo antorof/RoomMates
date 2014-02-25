@@ -57,19 +57,19 @@ public class ExpandableListAdapterShopping extends BaseExpandableListAdapter {
         
         TextView textViewDate = (TextView) convertView.findViewById(R.id.opcionItem);
         
-        if(childText == "Buy")
+        if(childText.equals("Buy"))
         	textViewDate.setText(_context.getString(R.string.expandablelist_markpurchased_text));
-        else if(childText == "Urgent")
+        else if(childText.equals("Urgent"))
         	textViewDate.setText(_context.getString(R.string.expandablelist_markurgent_text));
-        else if(childText == "Delete")
+        else if(childText.equals("Delete"))
         	textViewDate.setText(_context.getString(R.string.expandablelist_deleteproduct_text));
         
         ImageView icono = (ImageView) convertView.findViewById(R.id.listIcon);
-        if(childText == "Buy")
+        if(childText.equals("Buy"))
         	icono.setImageResource(R.drawable.ic_tick_dark);
-        else if(childText == "Urgent")
+        else if(childText.equals("Urgent"))
         	icono.setImageResource(R.drawable.ic_urgent_dark);
-        else if(childText == "Delete")
+        else if(childText.equals("Delete"))
         	icono.setImageResource(R.drawable.ic_delete_dark);
 		
     	
