@@ -23,6 +23,7 @@
 		        android:id="@+id/editTextNombreTarea"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
+                android:inputType="text"
 		        android:ems="10" >
 		
 		        <requestFocus />
@@ -47,7 +48,8 @@
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
 	            android:orientation="horizontal"
-		        android:layout_marginTop="12dip" >
+		        android:layout_marginTop="12dip"
+                android:baselineAligned="false">
 		        
 		        <LinearLayout
 		            android:layout_width="0dip"

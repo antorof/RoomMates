@@ -68,8 +68,7 @@
 			android:id="@+id/edit_pass"
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
-        	android:layout_above="@+id/layout_rpass"
-        	android:ems="10"
+            android:ems="10"
         	android:layout_gravity="center"
         	android:inputType="textPassword" >
     	</EditText>
