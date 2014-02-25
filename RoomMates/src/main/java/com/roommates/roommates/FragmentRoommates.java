@@ -81,7 +81,7 @@ public class FragmentRoommates extends Fragment {
         nowShowing.add("");
         
         List<String> comingSoon = new ArrayList<String>();
-        comingSoon.add("");;
+        comingSoon.add("");
  
     }
 }

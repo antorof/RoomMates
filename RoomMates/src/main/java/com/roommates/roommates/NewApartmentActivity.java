@@ -108,7 +108,7 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
 		switch(v.getId()) {
 		case R.id.boton_hecho : {
 			
-			// Comprobamos que todo esté rellenado
+			// Comprobamos que todo estï¿½ rellenado
 			if( nombre.getText().toString().equals("") ) {
 				Toast.makeText(this, "Apartment Name missing!", Toast.LENGTH_SHORT).show();
 				return;
@@ -123,7 +123,7 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
 				return;
 			}
 			
-			// Comprobamos que la contraseña sea mayor que 3 y menor que 10 (longitud)
+			// Comprobamos que la contraseï¿½a sea mayor que 3 y menor que 10 (longitud)
 			if( pass.getText().toString().length() < 3 || pass.getText().toString().length()>10) {
 				if( pass.getText().toString().length() < 3 ) {
 					Toast.makeText(this, "Password too short", Toast.LENGTH_SHORT).show();
@@ -134,17 +134,17 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
 				}
 			}
 			
-			// Comprobamos que las contraseñas sean iguales
+			// Comprobamos que las contraseï¿½as sean iguales
 			if( ! pass.getText().toString().equals( rPass.getText().toString() ) ) {
 				Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
 				return;
 			}
 		
 			
-			// Generación de código: tamaño 10, letras minus mayus y nºs
+			// Generaciï¿½n de cï¿½digo: tamaï¿½o 10, letras minus mayus y nï¿½s
 			codigo = generarCodigo();
 			
-			// Mensaje de confirmación
+			// Mensaje de confirmaciï¿½n
 			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
 			dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 				@Override
@@ -202,7 +202,7 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
 	}
 
 	/**
-	 * Función que genera un código de registro de vivienda.
+	 * Funciï¿½n que genera un cï¿½digo de registro de vivienda.
 	 * 
 	 */
 	private String generarCodigo()
@@ -259,7 +259,7 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
 
     	protected String doInBackground(String... params) {
     		//enviamos y recibimos y analizamos los datos en segundo plano.
-    		if (hacerCosas(correo)==true){    		    		
+    		if (hacerCosas(correo)){
     			return "ok"; // tarea aniadida
     		} else{    		
     			return "err"; // tarea no aniadida   	          	  

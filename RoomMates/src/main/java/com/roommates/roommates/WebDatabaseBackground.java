@@ -165,10 +165,7 @@ public class WebDatabaseBackground extends AsyncTask<Object, Boolean, Object[] >
 		for (int index = 0; index < oValues.length; index+=numItemsPerRow) 
 		{
 			Object[] item = new Object[numItemsPerRow];
-			for(int i=0; i<numItemsPerRow; i++)
-			{
-				item[i] = oValues[index+i];
-			} 
+            System.arraycopy(oValues, index, item, 0, numItemsPerRow);
 			nValues[index/numItemsPerRow] = item;
 		}
 		return nValues;

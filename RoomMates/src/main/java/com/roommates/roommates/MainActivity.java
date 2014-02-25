@@ -430,8 +430,8 @@ public class MainActivity extends ActionBarActivity {
 	        	
 	        	return true;
 	        }
-	        case R.id.opcion_comprado_producto:{;
-	        	final Object[] value = (Object[]) fragmentShopping.getListItem(info.position);
+	        case R.id.opcion_comprado_producto:{
+                final Object[] value = (Object[]) fragmentShopping.getListItem(info.position);
 	            	        	
 	        	//aqui se quita el estado de urgente poniendo el 0
 	            new AsyncUpdate().execute("SHOPPING",(String)value[4],(String)value[1],"0");
@@ -621,7 +621,7 @@ public class MainActivity extends ActionBarActivity {
     		    URL_CONNECT="http://"+IP_Server+"/eliminar_product_android.php";
     		}
     		//enviamos y recibimos y analizamos los datos en segundo plano.
-    		if (eliminarElemento()==true){    		    		
+    		if (eliminarElemento()){
     			return "ok"; // tarea aniadida
     		} else{    		
     			return "err"; // tarea no aniadida   	          	  
@@ -742,7 +742,7 @@ public class MainActivity extends ActionBarActivity {
     		}
     		
     		//enviamos y recibimos y analizamos los datos en segundo plano.
-    		if (actualizarElemento()==true){
+    		if (actualizarElemento()){
     			return "ok"; // tarea aniadida
     		} else{    		
     			return "err"; // tarea no aniadida   	          	  
@@ -1261,7 +1261,7 @@ public class MainActivity extends ActionBarActivity {
 			icono.setImageResource(R.drawable.ic_tasks_dark_mini);
 			
 			TextView nombreTarea = (TextView) linearLayout.findViewById(R.id.textoCentral) ;
-			nombreTarea.setText(elem.get(1).toString());
+			nombreTarea.setText(elem.get(1));
 	
 			TextView fechaTarea = (TextView) linearLayout.findViewById(R.id.textoDerecha) ;
 			fechaTarea.setText(elem.get(6));

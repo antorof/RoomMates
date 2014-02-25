@@ -115,7 +115,7 @@ public class NewProductActivity extends ActionBarActivity {
 
     	protected String doInBackground(String... params) {
     		//enviamos y recibimos y analizamos los datos en segundo plano.
-    		if (hacerCosas(username)==true){    		    		
+    		if (hacerCosas(username)){
     			return "ok"; // tarea aniadida
     		} else{    		
     			return "err"; // tarea no aniadida   	          	  

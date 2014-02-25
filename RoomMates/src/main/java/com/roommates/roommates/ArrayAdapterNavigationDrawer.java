@@ -45,7 +45,7 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
       switch(position){
 	      case 0:
 	    	  if(position == selectedItem) {
-	        	  ((View) rowView.findViewById(R.id.listItem1)).setBackgroundResource(R.drawable.lista_item_selected);
+	        	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
 	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
 	    	      textView2.setTextColor(Color.parseColor("#FFFEEE"));
 	    	      imageView.setImageResource(R.drawable.ic_home_light);
@@ -56,7 +56,7 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	    	  break;
 	      case 1:
 	    	  if(position == selectedItem) {
-	        	  ((View) rowView.findViewById(R.id.listItem1)).setBackgroundResource(R.drawable.lista_item_selected);
+	        	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
 	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
 	    	      textView2.setTextColor(Color.parseColor("#FFFEEE"));
 	    	      imageView.setImageResource(R.drawable.ic_bills_light);
@@ -67,7 +67,7 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	    	  break;
 	      case 2:
 	    	  if(position == selectedItem) {
-	        	  ((View) rowView.findViewById(R.id.listItem1)).setBackgroundResource(R.drawable.lista_item_selected);
+	        	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
 	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
 	    	      textView2.setTextColor(Color.parseColor("#FFFEEE"));
 	    	      imageView.setImageResource(R.drawable.ic_shopping_light);
@@ -78,7 +78,7 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	    	  break;
 	      case 3:
 	    	  if(position == selectedItem) {
-	        	  ((View) rowView.findViewById(R.id.listItem1)).setBackgroundResource(R.drawable.lista_item_selected);
+	        	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
 	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
 	    	      textView2.setTextColor(Color.parseColor("#FFFEEE"));
 	    	      imageView.setImageResource(R.drawable.ic_tasks_light);
@@ -89,7 +89,7 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	    	  break;
 	      case 4:
 	    	  if(position == selectedItem) {
-	        	  ((View) rowView.findViewById(R.id.listItem1)).setBackgroundResource(R.drawable.lista_item_selected);
+	        	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
 	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
 	    	      textView2.setTextColor(Color.parseColor("#FFFEEE"));
 	    	      imageView.setImageResource(R.drawable.ic_roommates_light);
@@ -100,7 +100,7 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	    	  break;
 	      case 5:
 	      	  if(position == selectedItem) {
-	          	  ((View) rowView.findViewById(R.id.listItem1)).setBackgroundResource(R.drawable.lista_item_selected);
+	          	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
 	      	      textView.setTextColor(Color.parseColor("#FFFFFF"));
 	      	      textView2.setTextColor(Color.parseColor("#FFFEEE"));
 	      	      imageView.setImageResource(R.drawable.ic_rooms_light);
