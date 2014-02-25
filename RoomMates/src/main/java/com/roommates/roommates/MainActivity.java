@@ -442,7 +442,7 @@ public class MainActivity extends ActionBarActivity {
 	            return true;
 	        }
 	        case R.id.opcion_urgente_producto:
-	        {//TODO
+	        {//TODO Mejorar esto para que se pueda tambien desmarcar (en php o aqui)
 	        	final Object[] value = (Object[]) fragmentShopping.getListItem(info.position);
 	            	        	
 	            //aqui se hace urgente = 1.
