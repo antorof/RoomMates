@@ -2,13 +2,14 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
     <EditTextPreference
         android:key="usuario"
-        android:title="Username"
-        android:summary="Username to access your account"/>
+        android:title="@string/settings_username_hint"
+        android:inputType="text"
+        android:summary="@string/settings_usernamesummary_text"/>
     
     <EditTextPreference
 		android:key="password"
-		android:title="Password"
+		android:title="@string/settings_password_hint"
 		android:inputType="textPassword"
-		android:summary="Password to access your account"/>
+		android:summary="@string/settings_passwordsummary_text"/>
 
 </PreferenceScreen>

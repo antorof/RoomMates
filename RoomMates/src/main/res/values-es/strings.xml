@@ -60,5 +60,9 @@
     <string name="newapartment_password_hint">Contraseña</string>
     <string name="newapartment_repeatpass_hint">Repetir contraseña</string>
     <string name="newapartment_button_text">Añadir casa</string>
+    <string name="settings_username_hint">Username</string>
+    <string name="settings_password_hint">Password</string>
+    <string name="settings_usernamesummary_text">Email de tu usuario</string>
+    <string name="settings_passwordsummary_text">Contraseña de tu usuario</string>
 
 </resources>
