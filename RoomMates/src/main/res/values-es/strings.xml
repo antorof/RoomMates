@@ -43,5 +43,22 @@
     <string name="card_homebills_text">FACTURAS</string>
     <string name="card_homeshopping_text">COMPRAS</string>
     <string name="card_hometasks_text">TAREAS</string>
+    <string name="register_firstname_hint">Nombre</string>
+    <string name="register_lastname_hint">Apellido</string>
+    <string name="register_email_hint">Email</string>
+    <string name="register_password_hint">Contraseña</string>
+    <string name="register_color_text">Color</string>
+    <string name="register_button_text">Registrarse</string>
+    <string name="newproduct_productname_hint">Nombre del producto</string>
+    <string name="newproduct_button_text">Añadir producto</string>
+    <string name="newbill_billname_hint">Nombre de factura</string>
+    <string name="newbill_description_hint">Descripción</string>
+    <string name="newbill_totalmoney_hint">Dinero total</string>
+    <string name="newbill_button_text">Añadir factura</string>
+    <string name="newapartment_name_hint">Nombre de la casa</string>
+    <string name="newapartment_address_hint">Dirección</string>
+    <string name="newapartment_password_hint">Contraseña</string>
+    <string name="newapartment_repeatpass_hint">Repetir contraseña</string>
+    <string name="newapartment_button_text">Añadir casa</string>
 
 </resources>

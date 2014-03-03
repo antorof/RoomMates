@@ -15,7 +15,7 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:inputType="text"
-	        android:hint="Bill name" >
+	        android:hint="@string/newbill_billname_hint" >
 	        <requestFocus />
 	    </EditText>
 	
@@ -25,7 +25,7 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:inputType="textMultiLine" 
-	        android:hint="Bill description" />
+	        android:hint="@string/newbill_description_hint" />
 
 	    <EditText
 		android:layout_marginTop="16dip"
@@ -33,14 +33,14 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:inputType="numberDecimal"  
-	        android:hint="Total money" />
+	        android:hint="@string/newbill_totalmoney_hint" />
 
 	    <Button
 		android:layout_marginTop="32dip"
 	        android:id="@+id/buttonAddBill"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:text="Add Bill" 
+	        android:text="@string/newbill_button_text"
 		    android:onClick="add_bill_button_onClick"/>
 	        
 	</LinearLayout>

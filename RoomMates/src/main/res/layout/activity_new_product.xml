@@ -8,17 +8,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".NewProductActivity"
     android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/textViewNombreProducto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Product Name:" />
     
     <EditText
         android:id="@+id/editTextNombreProducto"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" 
+        android:layout_height="wrap_content"
+        android:hint="@string/newproduct_productname_hint"
         android:inputType="text">
         <requestFocus />
     </EditText>
@@ -28,7 +23,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Add product"
+        android:text="@string/newproduct_button_text"
 		android:onClick="add_product_button_onClick" />
 
 </LinearLayout>

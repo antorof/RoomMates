@@ -18,7 +18,7 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:ems="10"
-	        android:hint="Firstname" 
+	        android:hint="@string/register_firstname_hint"
         	android:singleLine="true"
         	android:imeOptions="actionNext">
 	        <requestFocus />
@@ -29,7 +29,7 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:ems="10"
-	        android:hint="Lastname"
+	        android:hint="@string/register_lastname_hint"
         	android:singleLine="true"
         	android:imeOptions="actionNext" />
 	
@@ -38,7 +38,7 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:ems="10"
-	        android:hint="Email" 
+	        android:hint="@string/register_email_hint"
             android:inputType="textEmailAddress"/>
 	
 	    <EditText
@@ -46,16 +46,17 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:ems="10"
-	        android:hint="Password"
+	        android:hint="@string/register_password_hint"
 	        android:inputType="textPassword"
         	android:imeOptions="actionDone" />
 
 	    <Button
 	        android:id="@+id/btColor"
 	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_height="40dip"
 	        android:layout_gravity="center"
-	        android:text="Color"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+	        android:text="@string/register_color_text"
 	        android:textColor="#FFFFFF"
 	        android:background="#000000" />
 	
@@ -63,8 +64,8 @@
 	        android:id="@+id/btRegister"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_marginTop="7dp"
-	        android:text="Register"/>
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+	        android:text="@string/register_button_text"/>
 
 	</LinearLayout>
 </ScrollView>

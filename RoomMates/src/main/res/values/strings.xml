@@ -50,5 +50,22 @@
     <string name="card_homebills_text">BILLS</string>
     <string name="card_homeshopping_text">SHOPPING</string>
     <string name="card_hometasks_text">TASKS</string>
+    <string name="register_firstname_hint">Firstname</string>
+    <string name="register_lastname_hint">Lastname</string>
+    <string name="register_email_hint">Email</string>
+    <string name="register_password_hint">Password</string>
+    <string name="register_color_text">Color</string>
+    <string name="register_button_text">Register</string>
+    <string name="newproduct_productname_hint">Product Name</string>
+    <string name="newproduct_button_text">Add product</string>
+    <string name="newbill_billname_hint">Bill name</string>
+    <string name="newbill_description_hint">Bill description</string>
+    <string name="newbill_totalmoney_hint">Total money</string>
+    <string name="newbill_button_text">Add Bill</string>
+    <string name="newapartment_name_hint">Apartment Name</string>
+    <string name="newapartment_address_hint">Address</string>
+    <string name="newapartment_password_hint">Password</string>
+    <string name="newapartment_repeatpass_hint">Repeat Password</string>
+    <string name="newapartment_button_text">Add apartment</string>
 
 </resources>
