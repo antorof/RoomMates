@@ -71,5 +71,8 @@
     <string name="settings_password_hint">Password</string>
     <string name="settings_usernamesummary_text">Username to access your account</string>
     <string name="settings_passwordsummary_text">Password to access your account</string>
+    <string name="newtask_name_hint">Task name</string>
+    <string name="newtask_fromdate_hint">From (date)</string>
+    <string name="newtask_button_text">Add Task</string>
 
 </resources>

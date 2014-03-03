@@ -1,6 +1,7 @@
 package com.roommates.roommates;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -8,8 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.roommates.roommates.R;
-
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -30,6 +31,9 @@ public class NewTaskActivity extends ActionBarActivity {
 //    String URL_connect="http://"+IP_Server+"/addtarea.php";
 	private String URL_connect = "http://"+"roommate.hol.es"+"/aniadir_task_android.php";
 	private Httppostaux post;
+
+    private EditText inputDateFrom;
+    private EditText inputDateTo;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,61 @@ public class NewTaskActivity extends ActionBarActivity {
         }
         
         post = new Httppostaux();
+
+        inputDateFrom = (EditText) findViewById(R.id.editTextFechaInicio);
+        inputDateTo = (EditText) findViewById(R.id.editTextFechaFin);
+
+        final Calendar c = Calendar.getInstance();
+        inputDateFrom.setOnClickListener(
+            new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DatePickerDialog dpd = new DatePickerDialog(
+                        NewTaskActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                inputDateFrom.setText(
+                                        year+"-"+(monthOfYear+1)+"-"+dayOfMonth
+                                );
+//                                Toast.makeText(NewTaskActivity.this,
+//                                        dayOfMonth + "-" + monthOfYear + "-" + year,
+//                                        Toast.LENGTH_LONG).show();
+                            }
+                        },
+                        c.get(Calendar.YEAR),
+                        c.get(Calendar.MONTH),
+                        c.get(Calendar.DAY_OF_MONTH)
+                    );
+                    dpd.show();
+                }
+            });
+        inputDateTo.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        DatePickerDialog dpd = new DatePickerDialog(
+                                NewTaskActivity.this,
+                                new DatePickerDialog.OnDateSetListener() {
+
+                                    public void onDateSet(DatePicker view, int year,
+                                                          int monthOfYear, int dayOfMonth) {
+                                        inputDateTo.setText(
+                                                year + "-" + (monthOfYear + 1) + "-" + dayOfMonth
+                                        );
+//                                Toast.makeText(NewTaskActivity.this,
+//                                        dayOfMonth + "-" + monthOfYear + "-" + year,
+//                                        Toast.LENGTH_LONG).show();
+                                    }
+                                },
+                                c.get(Calendar.YEAR),
+                                c.get(Calendar.MONTH),
+                                c.get(Calendar.DAY_OF_MONTH)
+                        );
+                        dpd.show();
+                    }
+                });
         
 	}
 
