@@ -28,8 +28,9 @@ import android.widget.Toast;
 import com.roommates.roommates.R;
 
 public class RegisterActivity extends ActionBarActivity {
-	
-	private String URL_connect = "http://"+"roommate.hol.es"+"/registro_android.php";
+
+    private String URL_HOST = "roommates-antorofdev.rhcloud.com";
+	private String URL_connect = "http://"+URL_HOST+"/registro_android.php";
 	private String correo;
 	private String nombre;
 	private String apellidos;

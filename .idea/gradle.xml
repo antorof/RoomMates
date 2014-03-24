@@ -7,8 +7,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/RoomMates" />
+            <option value="C:\Users\Austregisilo\AndroidStudioProjects\RoomMates" />
+            <option value="C:\Users\Austregisilo\AndroidStudioProjects\RoomMates\RoomMates" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -59,8 +59,10 @@ public class LoginActivity extends ActionBarActivity {
 	private String nombre;
 	private String apellidos;
 	private String color;
-	
-    String URL_connect="http://roommate.hol.es/login_android.php";
+
+    private String URL_HOST = "roommates-antorofdev.rhcloud.com";
+    //    private String URL_HOST = "roommate.hol.es";
+    String URL_connect="http://"+URL_HOST+"/login_android.php";
 	
     private Httppostaux post;
 

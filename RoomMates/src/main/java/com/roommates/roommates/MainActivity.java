@@ -53,6 +53,9 @@ import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
+    private String URL_HOST = "roommates-antorofdev.rhcloud.com";
+//    private String URL_HOST="roommate.hol.es";
+
 	private static final int BILLS = 1;
 	private static final int SHOPPING = 2;
 	private static final int TASKS = 3; 
@@ -588,7 +591,6 @@ public class MainActivity extends ActionBarActivity {
      */
 	class AsyncRemove extends AsyncTask< String, String, String > {
 		private ProgressDialog pDialog;
-		private String IP_Server="roommate.hol.es";
 		private String URL_CONNECT;
 		private String elemento_a_borrar;
 		private String tipo_elemento;
@@ -610,15 +612,15 @@ public class MainActivity extends ActionBarActivity {
     		
     		if( params[0].equals("BILLS") ) {
     			tipo_elemento = "Bill";
-    		    URL_CONNECT="http://"+IP_Server+"/eliminar_bill_android.php";
+    		    URL_CONNECT="http://"+URL_HOST+"/eliminar_bill_android.php";
     		}
     		else if( params[0].equals("TASKS") ) {
     			tipo_elemento = "Task";
-    		    URL_CONNECT="http://"+IP_Server+"/eliminar_task_android.php";
+    		    URL_CONNECT="http://"+URL_HOST+"/eliminar_task_android.php";
     		}
     		else if( params[0].equals("SHOPPING") ) {
     			tipo_elemento = "Product";
-    		    URL_CONNECT="http://"+IP_Server+"/eliminar_product_android.php";
+    		    URL_CONNECT="http://"+URL_HOST+"/eliminar_product_android.php";
     		}
     		//enviamos y recibimos y analizamos los datos en segundo plano.
     		if (eliminarElemento()){
@@ -708,7 +710,6 @@ public class MainActivity extends ActionBarActivity {
 	 * */
 	class AsyncUpdate extends AsyncTask< String, String, String > {
 		private ProgressDialog pDialog;
-		private String IP_Server="roommate.hol.es";
 		private String URL_CONNECT;
 		private String elemento_a_actualizar;
 		private String tipo_elemento;
@@ -730,7 +731,7 @@ public class MainActivity extends ActionBarActivity {
     		
     		if( params[0].equals("BILLS") ) {
     			tipo_elemento = "Bill";
-    		    //URL_CONNECT="http://"+IP_Server+"/eliminar_bill_android.php";
+    		    //URL_CONNECT="http://"+IP_Server+"/eliminar_bill_android.php";URL_HOST
     		}
     		else if( params[0].equals("TASKS") ) {
     			tipo_elemento = "Task";
@@ -738,7 +739,7 @@ public class MainActivity extends ActionBarActivity {
     		}
     		else if( params[0].equals("SHOPPING") ) {
     			tipo_elemento = "Product";
-    		    URL_CONNECT="http://"+IP_Server+"/actualizar_product_android.php";
+    		    URL_CONNECT="http://"+URL_HOST+"/actualizar_product_android.php";
     		}
     		
     		//enviamos y recibimos y analizamos los datos en segundo plano.

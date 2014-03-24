@@ -27,9 +27,8 @@ public class NewTaskActivity extends ActionBarActivity {
 	private String username;
 	private String password;
 	private String idVivienda;
-//    String IP_Server="pruebasout.hol.es";//IP DE NUESTRO PC
-//    String URL_connect="http://"+IP_Server+"/addtarea.php";
-	private String URL_connect = "http://"+"roommate.hol.es"+"/aniadir_task_android.php";
+    private String URL_HOST = "roommates-antorofdev.rhcloud.com";
+	private String URL_connect = "http://"+URL_HOST+"/aniadir_task_android.php";
 	private Httppostaux post;
 
     private EditText inputDateFrom;

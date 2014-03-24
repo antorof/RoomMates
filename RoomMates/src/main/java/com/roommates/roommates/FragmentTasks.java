@@ -14,9 +14,6 @@ public class FragmentTasks extends Fragment {
 	private String username;
 	private String password;
 	private String vivienda;
-//	private String URL_connect = "http://"+"pruebasout.hol.es"+"/consultar_cosas.php";
-	private String URL_connect = "http://"+"roommate.hol.es"+"/consultar_tasks_android.php";
-	private Httppostaux post;
 	
 	private View view;
 //	private LayoutInflater inflater;

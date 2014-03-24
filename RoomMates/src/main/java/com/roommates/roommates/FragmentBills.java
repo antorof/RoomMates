@@ -15,8 +15,6 @@ public class FragmentBills extends Fragment {
 	private String username;
 	private String password;
 	private String vivienda;
-	private String URL_connect = "http://"+"roommate.hol.es"+"/consultar_bills_android.php";
-	private Httppostaux post;
 	
 	private View view;
 	private LayoutInflater inflater;

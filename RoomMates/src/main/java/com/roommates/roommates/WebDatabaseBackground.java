@@ -17,12 +17,13 @@ public class WebDatabaseBackground extends AsyncTask<Object, Boolean, Object[] >
 	
 	MainActivity callerActivity;
 	int numItemsObtenidos;
-	
-	private String URL_consultaApartamentos = "http://"+"roommate.hol.es"+"/consultar_apartments_android.php";
-	private String URL_consultaFacturas = "http://"+"roommate.hol.es"+"/consultar_bills_android.php";
-	private String URL_consultaCompras = "http://"+"roommate.hol.es"+"/consultar_shopping_android.php";
-	private String URL_consultaTareas = "http://"+"roommate.hol.es"+"/consultar_tasks_android.php";
-	private String URL_consultaRoommates = "http://"+"roommate.hol.es"+"/consultar_roomates_android.php";
+    private String URL_HOST = "roommates-antorofdev.rhcloud.com";
+//    private String URL_HOST = "roommate.hol.es";
+	private String URL_consultaApartamentos = "http://"+URL_HOST+"/consultar_apartments_android.php";
+	private String URL_consultaFacturas = "http://"+URL_HOST+"/consultar_bills_android.php";
+	private String URL_consultaCompras = "http://"+URL_HOST+"/consultar_shopping_android.php";
+	private String URL_consultaTareas = "http://"+URL_HOST+"/consultar_tasks_android.php";
+	private String URL_consultaRoommates = "http://"+URL_HOST+"/consultar_roomates_android.php";
 
 	String postMethod;
 	String consulta;
