@@ -655,16 +655,13 @@ public class MainActivity extends ActionBarActivity {
     		if (result.equals("ok")){
     			Toast.makeText(getApplicationContext(), tipo_elemento+" deleted", Toast.LENGTH_LONG).show();
         		if( elemento_a_borrar.equals("BILLS") ) {
-        			fragmentBills = new FragmentBills();
-					getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentBills).commit();
+                    fragmentBills.actualizarLista();
         		}
         		else if( elemento_a_borrar.equals("TASKS") ) {
-        			fragmentTasks = new FragmentTasks();
-					getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentTasks).commit();
+                    fragmentTasks.actualizarLista();
         		}
         		else if( elemento_a_borrar.equals("SHOPPING") ) {
-        			fragmentShopping = new FragmentShopping();
-					getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentShopping).commit();
+                    fragmentShopping.actualizarLista();
         		}
     		} else{
     			Toast.makeText(getApplicationContext(), "Error: "+tipo_elemento+" not deleted", Toast.LENGTH_LONG).show();
@@ -775,20 +772,14 @@ public class MainActivity extends ActionBarActivity {
     		if (result.equals("ok")){
     			Toast.makeText(getApplicationContext(), tipo_elemento+" updated", Toast.LENGTH_LONG).show();
     			
-        		if( elemento_a_actualizar.equals("BILLS") ) 
-        		{
-        			fragmentBills = new FragmentBills();
-					getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentBills).commit();
+        		if( elemento_a_actualizar.equals("BILLS") )  {
+                    fragmentBills.actualizarLista();
         		}
-        		else if( elemento_a_actualizar.equals("TASKS") ) 
-        		{
-        			fragmentTasks = new FragmentTasks();
-					getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentTasks).commit();
+        		else if( elemento_a_actualizar.equals("TASKS") ) {
+                    fragmentTasks.actualizarLista();
         		}
-        		else if( elemento_a_actualizar.equals("SHOPPING") ) 
-        		{
-        			fragmentShopping = new FragmentShopping();
-					getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentShopping).commit();
+        		else if( elemento_a_actualizar.equals("SHOPPING") ) {
+                    fragmentShopping.actualizarLista();
         		}
     		} else{
     			Toast.makeText(getApplicationContext(), "Error: "+tipo_elemento+" not updated", Toast.LENGTH_LONG).show();
@@ -1138,15 +1129,15 @@ public class MainActivity extends ActionBarActivity {
 	    top250.add("Urgent");
 	    top250.add("Delete");
 	 
-	    List<String> nowShowing = new ArrayList<String>();
-	    nowShowing.add("Buy");
-	    nowShowing.add("Urgent");
-	    nowShowing.add("Delete");
-	        
-	    List<String> comingSoon = new ArrayList<String>();
-	    comingSoon.add("Buy");
-	    comingSoon.add("Urgente");
-	    comingSoon.add("Delete");
+//	    List<String> nowShowing = new ArrayList<String>();
+//	    nowShowing.add("Buy");
+//	    nowShowing.add("Urgent");
+//	    nowShowing.add("Delete");
+//
+//	    List<String> comingSoon = new ArrayList<String>();
+//	    comingSoon.add("Buy");
+//	    comingSoon.add("Urgente");
+//	    comingSoon.add("Delete");
 	    
 	    for(int i=0; i<numItems/itemsPerProduct; i++)
 	    {
