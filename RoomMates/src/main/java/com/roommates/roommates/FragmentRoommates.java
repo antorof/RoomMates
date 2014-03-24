@@ -41,8 +41,8 @@ public class FragmentRoommates extends Fragment {
 		casa = mainActivity.idViviendaActual;
 //		lista = (ListView) view.findViewById(R.id.listaRoommates);
 
-		new WebDatabaseBackground().execute("recuperarRoommates", mainActivity, username, password, casa,  
-				"actualizarListaRoommates");
+		actualizarLista();
+
 		return view;
     	
     	
@@ -63,25 +63,12 @@ public class FragmentRoommates extends Fragment {
 //        
 //        return view;
     }
- 
-    /*
-     * Preparing the list data
+
+    /**
+     *  Vuelve a consultar la BD y actualiza la lista
      */
-    private void prepareListData() {
-        listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
- 
-        // Adding child data
- 
-        // Adding child data
-        List<String> top250 = new ArrayList<String>();
-        top250.add("");
- 
-        List<String> nowShowing = new ArrayList<String>();
-        nowShowing.add("");
-        
-        List<String> comingSoon = new ArrayList<String>();
-        comingSoon.add("");
- 
+    public void actualizarLista(){
+        new WebDatabaseBackground().execute("recuperarRoommates", mainActivity, username, password, casa,
+                "actualizarListaRoommates");
     }
 }

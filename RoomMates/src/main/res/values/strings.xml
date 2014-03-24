@@ -13,6 +13,7 @@
     <string name="action_shopping">New Product</string>
     <string name="action_bills">New Bill</string>
     <string name="action_apartment">New Apartment</string>
+    <string name="action_roommate">Add roommate</string>
     <string name="action_sync">Synchronize</string>
     <string name="title_activity_new_task">New Task</string>
     <string name="title_activity_preferencias">Settings</string>
@@ -20,6 +21,7 @@
     <string name="title_activity_new_apartment">New House</string>
     <string name="title_activity_new_bill">New Bill</string>
     <string name="title_activity_register">Register</string>
+    <string name="title_activity_add_roommate">Add roommate</string>
     <string name="button_login_text">Log In</string>
     <string name="button_register_text">Sign Up</string>
     <string name="drawer_name_home">Home</string>
@@ -74,5 +76,7 @@
     <string name="newtask_name_hint">Task name</string>
     <string name="newtask_fromdate_hint">From (date)</string>
     <string name="newtask_button_text">Add Task</string>
+    <string name="addroommate_useremail_hint">User email (not yours)</string>
+    <string name="addroommate_button_text">Add roommate</string>
 
 </resources>

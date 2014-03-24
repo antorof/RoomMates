@@ -84,6 +84,17 @@
                 android:value="com.roommate.roommate.LoginActivity" />
         </activity>
 
+        <activity
+            android:name="com.roommates.roommates.AddRoommateActivity"
+            android:label="@string/title_activity_add_roommate"
+            android:parentActivityName="com.roommates.roommates.MainActivity"
+            android:windowSoftInputMode="adjustResize|stateVisible"
+            android:screenOrientation="portrait"  >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.roommate.roommate.MainActivity" />
+        </activity>
+
     </application>
 
 </manifest>

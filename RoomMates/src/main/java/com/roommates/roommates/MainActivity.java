@@ -78,7 +78,8 @@ public class MainActivity extends ActionBarActivity {
 	private FragmentBills fragmentBills;
 	private FragmentApartments fragmentApartments;
 	private FragmentShopping fragmentShopping;
-	private FragmentTasks fragmentTasks;
+    private FragmentTasks fragmentTasks;
+    private FragmentRoommates fragmentRoommates;
 
 	private Menu menu;
 	protected String username = null;
@@ -163,6 +164,7 @@ public class MainActivity extends ActionBarActivity {
 						break;
 					case ROOMMATES:
 						fragment = new FragmentRoommates();
+                        fragmentRoommates = (FragmentRoommates)fragment;
 						break;
 					case APARTMENTS:
 						fragmentApartments = new FragmentApartments();
@@ -246,9 +248,12 @@ public class MainActivity extends ActionBarActivity {
 			case APARTMENTS:
 				getMenuInflater().inflate(R.menu.apartments, menu);
 				break;
-			case BILLS:
-				getMenuInflater().inflate(R.menu.bills, menu);
-				break;
+            case BILLS:
+                getMenuInflater().inflate(R.menu.bills, menu);
+                break;
+            case ROOMMATES:
+                getMenuInflater().inflate(R.menu.roommates, menu);
+                break;
 			default:
 				break;
 		}
@@ -331,15 +336,24 @@ public class MainActivity extends ActionBarActivity {
 		    	intent.putExtra("PASSWORD", password);
 		    	startActivity(intent);
 				break;
-			case R.id.action_add_bill:
-				if(!idViviendaActual.equals("-1")){
-					intent = new Intent(this,NewBillActivity.class);
-			    	intent.putExtra("USERNAME", username);
-			    	intent.putExtra("PASSWORD", password);
-			    	intent.putExtra("ID_VIVIENDA", idViviendaActual);
-			    	startActivity(intent);
-				}
-				break;
+            case R.id.action_add_bill:
+                if(!idViviendaActual.equals("-1")){
+                    intent = new Intent(this,NewBillActivity.class);
+                    intent.putExtra("USERNAME", username);
+                    intent.putExtra("PASSWORD", password);
+                    intent.putExtra("ID_VIVIENDA", idViviendaActual);
+                    startActivity(intent);
+                }
+                break;
+            case R.id.action_add_roommate:
+                if(!idViviendaActual.equals("-1")){
+                    intent = new Intent(this,AddRoommateActivity.class);
+                    intent.putExtra("USERNAME", username);
+                    intent.putExtra("PASSWORD", password);
+                    intent.putExtra("ID_VIVIENDA", idViviendaActual);
+                    startActivityForResult(intent, ROOMMATES);
+                }
+                break;
 			case R.id.action_sync_tasks:
 				fragmentTasks = new FragmentTasks();
 				getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentTasks).commit();
@@ -352,10 +366,14 @@ public class MainActivity extends ActionBarActivity {
 				fragmentApartments = new FragmentApartments();
 				getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentApartments).commit();
 				break;
-			case R.id.action_sync_bills:
-				fragmentBills = new FragmentBills();
-				getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentBills).commit();
-				break;
+            case R.id.action_sync_bills:
+                fragmentBills = new FragmentBills();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentBills).commit();
+                break;
+            case R.id.action_sync_roommates:
+                fragmentRoommates = new FragmentRoommates();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentRoommates).commit();
+                break;
 			default:
 				return super.onOptionsItemSelected(item);
 		}
@@ -364,9 +382,9 @@ public class MainActivity extends ActionBarActivity {
 	}
 	
 	/*
-	 * Acciones de los botones del menu contextual
-	 * 
-	 * */
+	 * Acciones de los botones del menu contextual,
+	 * cuando mantenemos pulsado un item.
+	 */
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 	 Log.v("hola","hola");
@@ -1216,6 +1234,7 @@ public class MainActivity extends ActionBarActivity {
 	
 	/**
 	 * Actualiza la lista de compras del resumen en Home.
+     * Se utiliza en WebDatabaseBackground.
 	 * 
 	 * @param values: elementos obtenidos en la consulta
 	 * @param numItems: numero de elementos
@@ -1296,5 +1315,15 @@ public class MainActivity extends ActionBarActivity {
 		
 		return list;
 	}
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        switch (requestCode) {
+            case ROOMMATES:
+                if (resultCode == ActionBarActivity.RESULT_OK)
+                    fragmentRoommates.actualizarLista();
+                break;
+        }
+    }
 
 }
