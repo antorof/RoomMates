@@ -132,7 +132,7 @@ public class WebDatabaseBackground extends AsyncTask<Object, Boolean, Object[] >
 			Class c = callerActivity.getClass();
 			Method m = null;
 
-			//El arreglo de par�metros
+			//El arreglo de parametros
 			Object[] args_value = { result };
 			
 			//El arreglo con los tipos de datos de los par�metros

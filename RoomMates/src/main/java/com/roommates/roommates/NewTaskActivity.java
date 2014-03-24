@@ -131,6 +131,7 @@ public class NewTaskActivity extends ActionBarActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
+            setResult(ActionBarActivity.RESULT_CANCELED);
 			finish();
 			return true;
 		}
@@ -177,6 +178,7 @@ public class NewTaskActivity extends ActionBarActivity {
 
     		if (result.equals("ok")){
     			Toast.makeText(getApplicationContext(), "Task added", Toast.LENGTH_LONG).show();
+                setResult(ActionBarActivity.RESULT_OK);
     			finish();
     		} else{
     			Toast.makeText(getApplicationContext(), "Error: task not added", Toast.LENGTH_LONG).show();

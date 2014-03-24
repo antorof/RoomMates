@@ -28,14 +28,13 @@ public class FragmentApartments extends Fragment {
 		username = mainActivity.username;
 		password = mainActivity.password;
 		casa = mainActivity.idViviendaActual;
-		
-		new WebDatabaseBackground().execute("recuperarApartamentos", mainActivity, username, password, 
-									casa, "actualizarListaApartamentos");	
-		
+
+        actualizarLista();
+
 		return view;
 	}
 	
-	public void refresh(){		
+	public void actualizarLista(){
 		new WebDatabaseBackground().execute("recuperarApartamentos", mainActivity, username, password, 	 
 				"actualizarListaApartamentos");		
 	}

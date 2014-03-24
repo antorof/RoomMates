@@ -98,6 +98,7 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
+            setResult(ActionBarActivity.RESULT_CANCELED);
 			finish();
 			return true;
 		}
@@ -273,6 +274,7 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
 
     		if (result.equals("ok")){
     			Toast.makeText(getApplicationContext(), "Apartment added", Toast.LENGTH_LONG).show();
+                setResult(ActionBarActivity.RESULT_OK);
     			finish();
     		} else{
     			Toast.makeText(getApplicationContext(), "Error: Apartment not added", Toast.LENGTH_LONG).show();

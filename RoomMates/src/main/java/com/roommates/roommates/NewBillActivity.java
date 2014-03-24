@@ -75,7 +75,8 @@ public class NewBillActivity extends ActionBarActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			finish();
+            setResult(ActionBarActivity.RESULT_CANCELED);
+            finish();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -121,6 +122,7 @@ public class NewBillActivity extends ActionBarActivity {
 
     		if (result.equals("ok")){
     			Toast.makeText(getApplicationContext(), "Bill added", Toast.LENGTH_LONG).show();
+                setResult(ActionBarActivity.RESULT_OK);
     			finish();
     		} else{
     			Toast.makeText(getApplicationContext(), "Error: bill not added", Toast.LENGTH_LONG).show();

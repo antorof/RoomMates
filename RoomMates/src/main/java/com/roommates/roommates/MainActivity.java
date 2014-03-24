@@ -89,8 +89,8 @@ public class MainActivity extends ActionBarActivity {
 	protected String color = null;
 	protected String idViviendaActual = null;
 	protected String nombreViviendaActual = null;
-	
-	@Override
+
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -318,7 +318,7 @@ public class MainActivity extends ActionBarActivity {
 			    	intent.putExtra("USERNAME", username);
 			    	intent.putExtra("PASSWORD", password);
 			    	intent.putExtra("ID_VIVIENDA", idViviendaActual);
-			    	startActivity(intent);
+                    startActivityForResult(intent, TASKS);
 				}
 				break;
 			case R.id.action_add_product:
@@ -327,14 +327,14 @@ public class MainActivity extends ActionBarActivity {
 			    	intent.putExtra("USERNAME", username);
 			    	intent.putExtra("PASSWORD", password);
 			    	intent.putExtra("ID_VIVIENDA", idViviendaActual);
-			    	startActivity(intent);
+                    startActivityForResult(intent, SHOPPING);
 				}
 				break;
 			case R.id.action_add_apartment:
 				intent = new Intent(this,NewApartmentActivity.class);
 		    	intent.putExtra("USERNAME", username);
 		    	intent.putExtra("PASSWORD", password);
-		    	startActivity(intent);
+                startActivityForResult(intent, APARTMENTS);
 				break;
             case R.id.action_add_bill:
                 if(!idViviendaActual.equals("-1")){
@@ -342,7 +342,7 @@ public class MainActivity extends ActionBarActivity {
                     intent.putExtra("USERNAME", username);
                     intent.putExtra("PASSWORD", password);
                     intent.putExtra("ID_VIVIENDA", idViviendaActual);
-                    startActivity(intent);
+                    startActivityForResult(intent, BILLS);
                 }
                 break;
             case R.id.action_add_roommate:
@@ -963,14 +963,16 @@ public class MainActivity extends ActionBarActivity {
 	 */
 	public void actualizarListaExpBills(Object[] values, int numItems)
 	{
-		ExpandableListAdapterBills listAdapter;
+        int itemsPerBill = 8; // numero de elementos de cada factura
+
+        ExpandableListAdapterBills listAdapter;
 		ExpandableListView expListView;
 		    
 		listDataHeader = new ArrayList<String>();
 	    listDataChild = new HashMap<String, List<String>>();
 	 
 	    // Adding child data
-	    for(int i=0; i<numItems/8; i++)
+	    for(int i=0; i<numItems/itemsPerBill; i++)
 	    {
 	    	Object[] value = (Object[]) values[i];
 	    	listDataHeader.add(value[1].toString());
@@ -983,7 +985,7 @@ public class MainActivity extends ActionBarActivity {
 	    subitems.add("Delete");
 	    
 	    // Añadir los hijos a cada Grupo
-	    for(int i=0; i<numItems/8; i++)
+	    for(int i=0; i<numItems/itemsPerBill; i++)
 	    {
 	    	listDataChild.put(listDataHeader.get(i), subitems);
 	    }
@@ -1038,6 +1040,8 @@ public class MainActivity extends ActionBarActivity {
 	 */
 	public void actualizarListaExpTareas(Object[] values, int numItems)
 	{
+        int itemsPerTask = 7; // numero de elementos de cada tarea
+
 		ExpandableListAdapterTasks listAdapter;
 		ExpandableListView expListView;
 		    
@@ -1045,7 +1049,7 @@ public class MainActivity extends ActionBarActivity {
 	    listDataChild = new HashMap<String, List<String>>();
 	 
 	    // Adding child data
-	    for(int i=0; i<numItems/7; i++)
+	    for(int i=0; i<numItems/itemsPerTask; i++)
 	    {
 	    	Object[] value = (Object[]) values[i];
 	    	listDataHeader.add(value[1].toString());
@@ -1058,7 +1062,7 @@ public class MainActivity extends ActionBarActivity {
 	    subitems.add("Delete");
 	    
 	    // Añadir los hijos a cada Grupo
-	    for(int i=0; i<numItems/7; i++)
+	    for(int i=0; i<numItems/itemsPerTask; i++)
 	    {
 	    	listDataChild.put(listDataHeader.get(i), subitems);
 	    }
@@ -1112,6 +1116,8 @@ public class MainActivity extends ActionBarActivity {
 	 */
 	public void actualizarListaExpCompras(Object[] values, int numItems)
 	{
+        int itemsPerProduct = 7; // numero de elementos de cada producto
+
 		ExpandableListAdapterShopping listAdapter;
 		ExpandableListView expListView;
 		    
@@ -1119,7 +1125,7 @@ public class MainActivity extends ActionBarActivity {
 	    listDataChild = new HashMap<String, List<String>>();
 	 
 	    // Adding child data
-	    for(int i=0; i<numItems/6; i++)
+	    for(int i=0; i<numItems/itemsPerProduct; i++)
 	    {
 	    	Object[] value = (Object[]) values[i];
 	    	listDataHeader.add(value[1].toString());
@@ -1142,7 +1148,7 @@ public class MainActivity extends ActionBarActivity {
 	    comingSoon.add("Urgente");
 	    comingSoon.add("Delete");
 	    
-	    for(int i=0; i<numItems/6; i++)
+	    for(int i=0; i<numItems/itemsPerProduct; i++)
 	    {
 	    	listDataChild.put(listDataHeader.get(i), top250);
 	    }
@@ -1243,7 +1249,7 @@ public class MainActivity extends ActionBarActivity {
 	{
 		LinearLayout ll = (LinearLayout) findViewById(R.id.cardListShopping);
 		
-		ArrayList<ArrayList<String> > lista = convertObjectToArrayList(values, numItems, 6);
+		ArrayList<ArrayList<String> > lista = convertObjectToArrayList(values, numItems, 7);
 		
 		for(ArrayList<String> elem : lista)
 		{
@@ -1322,6 +1328,22 @@ public class MainActivity extends ActionBarActivity {
             case ROOMMATES:
                 if (resultCode == ActionBarActivity.RESULT_OK)
                     fragmentRoommates.actualizarLista();
+                break;
+            case BILLS:
+                if (resultCode == ActionBarActivity.RESULT_OK)
+                    fragmentBills.actualizarLista();
+                break;
+            case APARTMENTS:
+                if (resultCode == ActionBarActivity.RESULT_OK)
+                    fragmentApartments.actualizarLista();
+                break;
+            case TASKS:
+                if (resultCode == ActionBarActivity.RESULT_OK)
+                    fragmentTasks.actualizarLista();
+                break;
+            case SHOPPING:
+                if (resultCode == ActionBarActivity.RESULT_OK)
+                    fragmentShopping.actualizarLista();
                 break;
         }
     }

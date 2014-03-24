@@ -30,16 +30,16 @@ public class FragmentTasks extends Fragment {
 		password = mainActivity.password;
 		vivienda= mainActivity.idViviendaActual;
 		lista = (ListView) view.findViewById(R.id.listaTareas);
-//		
-		new WebDatabaseBackground().execute("recuperarTareas", mainActivity, username, password,  
-				vivienda, "actualizarListaExpTareas");	
+
+        actualizarLista();
 
 		return view;
 	}
 	
-	public void refresh(){
-		// post = new Httppostaux();
-	}
+	public void actualizarLista(){
+        new WebDatabaseBackground().execute("recuperarTareas", mainActivity, username, password,
+                vivienda, "actualizarListaExpTareas");
+    }
 	
 	public Object getListItem(int pos){
 		return lista.getItemAtPosition(pos);

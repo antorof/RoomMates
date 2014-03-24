@@ -35,9 +35,8 @@ public class FragmentShopping extends Fragment {
 		// TODO: revisar todo esto a ver si se puede hacer algo o dejarlo así.
 		lista = (ExpandableListView) view.findViewById(R.id.listaCompras);
 
-		new WebDatabaseBackground().execute("recuperarCompras", mainActivity, username, password,  
-									vivienda, "actualizarListaExpCompras");	
-		
+        actualizarLista();
+
 		return view;
 	}
 	
@@ -47,6 +46,12 @@ public class FragmentShopping extends Fragment {
 //		ListView lista = (ListView) mainActivity.findViewById(R.id.listaCompras);
 //		lista.setAdapter(adapter);
 //	}
+
+
+    public void actualizarLista(){
+        new WebDatabaseBackground().execute("recuperarCompras", mainActivity, username, password,
+                vivienda, "actualizarListaExpCompras");
+    }
 	
 	public Object getListItem(int pos){
 		return lista.getItemAtPosition(pos);

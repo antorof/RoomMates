@@ -34,20 +34,16 @@ public class FragmentBills extends Fragment {
 		Log.v("vivienda :", vivienda);
 		
 		lista = (ListView) view.findViewById(R.id.listaFacturas);
-		
-//		post = new Httppostaux();
-//		
-//		new asyncConsultList().execute();
-		
-		new WebDatabaseBackground().execute("recuperarFacturas", mainActivity, username, password, 
-									vivienda, "actualizarListaExpBills");	
-		
+
+        actualizarLista();
 		
 		return view;
 	}
-		
-	private void refresh(){
-	}
+
+    public void actualizarLista(){
+        new WebDatabaseBackground().execute("recuperarFacturas", mainActivity, username, password,
+                vivienda, "actualizarListaExpBills");
+    }
 	
 	public Object getListItem(int pos){
 		return lista.getItemAtPosition(pos);
