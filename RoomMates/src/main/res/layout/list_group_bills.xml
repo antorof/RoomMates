@@ -5,7 +5,7 @@
     android:padding="6dip" 
 	android:background="@drawable/selector_item_lista"
     android:id="@+id/listItem1">
-	
+
     <LinearLayout
         android:id="@+id/lllistIcon"
 	   	android:orientation="horizontal"

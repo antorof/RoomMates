@@ -63,8 +63,9 @@ public class MainActivity extends ActionBarActivity {
 	private static final int APARTMENTS = 5;
 	
 	private List<String> listDataHeader;
-	private HashMap<String, List<String>> listDataChild;
-	
+    private HashMap<String, Object[]> listDataHeaderElems;
+    private HashMap<String, List<String>> listDataChild;
+
 	
 	private String[] opcionesMenu;				// Las opciones diferentes que tendra el menu
 	private DrawerLayout drawerLayout;			// Layout principal
@@ -746,7 +747,7 @@ public class MainActivity extends ActionBarActivity {
     		
     		if( params[0].equals("BILLS") ) {
     			tipo_elemento = "Bill";
-    		    //URL_CONNECT="http://"+IP_Server+"/eliminar_bill_android.php";URL_HOST
+                URL_CONNECT="http://"+URL_HOST+"/pagar_bill_android.php";
     		}
     		else if( params[0].equals("TASKS") ) {
     			tipo_elemento = "Task";
@@ -771,7 +772,6 @@ public class MainActivity extends ActionBarActivity {
 
     		if (result.equals("ok")){
     			Toast.makeText(getApplicationContext(), tipo_elemento+" updated", Toast.LENGTH_LONG).show();
-    			
         		if( elemento_a_actualizar.equals("BILLS") )  {
                     fragmentBills.actualizarLista();
         		}
@@ -792,11 +792,19 @@ public class MainActivity extends ActionBarActivity {
 
     		ArrayList<NameValuePair> postparameters2send= new ArrayList<NameValuePair>();
     		postparameters2send.add(new BasicNameValuePair("Correo",MainActivity.this.username)); 
-    		postparameters2send.add(new BasicNameValuePair("Contrasena",MainActivity.this.password)); 
+    		postparameters2send.add(new BasicNameValuePair("Contrasena",MainActivity.this.password));
     		
     		if( elemento_a_actualizar.equals("BILLS") ) {
-                // TODO Marcar como pagada una factura, hará falta también el PHP
-        		//postparameters2send.add(new BasicNameValuePair("idFactura",parametrosRecibidos[1]));
+                postparameters2send.add(new BasicNameValuePair("idVivienda",parametrosRecibidos[1]));
+                postparameters2send.add(new BasicNameValuePair("idFactura",parametrosRecibidos[2]));
+                postparameters2send.add(new BasicNameValuePair("Pagado",parametrosRecibidos[3]));
+                Calendar cal = new GregorianCalendar();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH) + 1;
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+                postparameters2send.add(new BasicNameValuePair("Fecha",
+                        Integer.toString(year)+"-"+Integer.toString(month)
+                                +"-"+Integer.toString(day)));
     		}
     		else if( elemento_a_actualizar.equals("TASKS") ) {
                 // TODO Marcar como hecha una tarea, hará falta también el PHP
@@ -831,7 +839,7 @@ public class MainActivity extends ActionBarActivity {
     				json_data = jdata.getJSONObject(jdata.length()-1); //leemos el primer segmento en nuestro caso el unico
     				estado=json_data.getInt("Resultado");//accedemos al valor 
     				Log.i("Resultado","Resultado= "+estado);//muestro por log que obtuvimos
-    			} catch (JSONException e) { e.printStackTrace(); }		            
+    			} catch (JSONException e) { e.printStackTrace(); estado=0; }
 
     			//validamos el valor obtenido
     			if (estado==0){
@@ -961,13 +969,15 @@ public class MainActivity extends ActionBarActivity {
 		ExpandableListView expListView;
 		    
 		listDataHeader = new ArrayList<String>();
-	    listDataChild = new HashMap<String, List<String>>();
+        listDataChild = new HashMap<String, List<String>>();
+        listDataHeaderElems = new HashMap<String, Object[]>();
 	 
 	    // Adding child data
 	    for(int i=0; i<numItems/itemsPerBill; i++)
 	    {
 	    	Object[] value = (Object[]) values[i];
 	    	listDataHeader.add(value[1].toString());
+            listDataHeaderElems.put(value[1].toString(),value);
 	    	Log.v("nombre", value[1].toString());
 	    }
 	 
@@ -999,12 +1009,22 @@ public class MainActivity extends ActionBarActivity {
     			header = listDataHeader.get(groupPosition);
         		if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).equals("Done"))
         		{
-        			Log.v("Click","Done");
-    	        	Toast.makeText(MainActivity.this, 
-    	        			"Task done", 
-    	        			Toast.LENGTH_LONG).show();
-    	        	return true;
-        		}else if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).equals("Delete"))
+        			Log.v("Click","Pay");
+                    if (listDataHeaderElems.get(header)[8].equals("1"))
+                        new DialogoAlerta(MainActivity.this, MainActivity.this,
+                                getString(R.string.alert_cancelpaymentbill_tittle),
+                                getString(R.string.alert_cancelpaymentbill_message),
+                                "cancel_payment_bill",
+                                new Object[]{header}).show();
+                    else
+                        new DialogoAlerta(MainActivity.this, MainActivity.this,
+                                getString(R.string.alert_paybill_tittle),
+                                getString(R.string.alert_paybill_message),
+                                "pay_bill",
+                                new Object[]{header}).show();
+                    return true;
+        		}
+                else if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).equals("Delete"))
         		{
         			Log.v("Click","Delete");
         			new DialogoAlerta(MainActivity.this, MainActivity.this, 
@@ -1020,8 +1040,14 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 	}
-    public void remove_bill(String header){
-		new AsyncRemove().execute("BILLS", header);
+    public void remove_bill(String idFactura){
+        new AsyncRemove().execute("BILLS", idFactura);
+    }
+    public void pay_bill(String idFactura){
+        new AsyncUpdate().execute("BILLS", idViviendaActual, idFactura,"1");
+    }
+    public void cancel_payment_bill(String idFactura){
+        new AsyncUpdate().execute("BILLS", idViviendaActual, idFactura,"0");
     }
 	
 	/**

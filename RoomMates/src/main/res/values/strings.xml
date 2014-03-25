@@ -39,6 +39,10 @@
     <string name="alert_markurgentproduct_tittle">Mark as urgent</string>
     <string name="alert_markurgentproduct_message">Do you want to mark this product as urgent?</string>
     <string name="alert_deleteproduct_tittle">Delete</string>
+    <string name="alert_cancelpaymentbill_tittle">Cancel payment</string>
+    <string name="alert_cancelpaymentbill_message">Do you want to cancel this payment?</string>
+    <string name="alert_paybill_tittle">Pay bill</string>
+    <string name="alert_paybill_message">Did you pay this bill?</string>
     <string name="alert_deleteproduct_message">Do you want to delete this product?</string>
     <string name="expandablelist_markpurchased_text">Mark as purchased</string>
     <string name="expandablelist_markurgent_text">Mark as urgent</string>

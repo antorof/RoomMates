@@ -33,6 +33,10 @@
     <string name="alert_markurgentproduct_message">¿Quieres marcar este producto como urgente?</string>
     <string name="alert_deleteproduct_tittle">Eliminar Producto</string>
     <string name="alert_deleteproduct_message">¿Quieres eliminar este producto?</string>
+    <string name="alert_cancelpaymentbill_tittle">Cancelar pago</string>
+    <string name="alert_cancelpaymentbill_message">¿Quieres cancelar el pago?</string>
+    <string name="alert_paybill_tittle">Pagar factura</string>
+    <string name="alert_paybill_message">¿Has pagado esta factura?</string>
     <string name="expandablelist_markpurchased_text">Marcar como comprado</string>
     <string name="expandablelist_markurgent_text">Marcar como Urgente</string>
     <string name="expandablelist_deleteproduct_text">Eliminar Producto</string>
