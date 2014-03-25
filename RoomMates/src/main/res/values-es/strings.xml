@@ -41,6 +41,7 @@
     <string name="expandablelist_markurgent_text">Marcar como Urgente</string>
     <string name="expandablelist_deleteproduct_text">Eliminar Producto</string>
     <string name="expandablelist_markpaid_text">Marcar como pagada</string>
+    <string name="expandablelist_cancelpayment_text">Cancelar pago</string>
     <string name="expandablelist_deletebill_text">Eliminar factura</string>
     <string name="expandablelist_markdone_text">Marcar como hecha</string>
     <string name="expandablelist_deletetask_text">Eliminar tarea</string>

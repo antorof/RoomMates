@@ -35,7 +35,7 @@ public class FragmentApartments extends Fragment {
 	}
 	
 	public void actualizarLista(){
-		new WebDatabaseBackground().execute("recuperarApartamentos", mainActivity, username, password, 	 
-				"actualizarListaApartamentos");		
+		new WebDatabaseBackground().execute("recuperarApartamentos", mainActivity, username, password,
+                casa, "actualizarListaApartamentos");
 	}
 }

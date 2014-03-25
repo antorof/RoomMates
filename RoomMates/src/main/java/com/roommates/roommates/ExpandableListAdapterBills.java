@@ -55,14 +55,16 @@ public class ExpandableListAdapterBills extends BaseExpandableListAdapter {
         }
         
         TextView textViewDate = (TextView) convertView.findViewById(R.id.opcionItem);
-        
-        if(childText.equals("Done"))
-        	textViewDate.setText(_context.getString(R.string.expandablelist_markpaid_text));
+
+        if(childText.equals("Pay"))
+            textViewDate.setText(_context.getString(R.string.expandablelist_markpaid_text));
+        if(childText.equals("Cancel"))
+            textViewDate.setText(_context.getString(R.string.expandablelist_cancelpayment_text));//expandablelist_markpaid_text
         else if(childText.equals("Delete"))
         	textViewDate.setText(_context.getString(R.string.expandablelist_deletebill_text));
         
         ImageView icono = (ImageView) convertView.findViewById(R.id.listIcon);
-        if(childText.equals("Done"))
+        if(childText.equals("Pay") || childText.equals("Cancel"))
         	icono.setImageResource(R.drawable.ic_tick_dark);
         else if(childText.equals("Delete"))
         	icono.setImageResource(R.drawable.ic_delete_dark);

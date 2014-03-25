@@ -82,5 +82,6 @@
     <string name="newtask_button_text">Add Task</string>
     <string name="addroommate_useremail_hint">User email (not yours)</string>
     <string name="addroommate_button_text">Add roommate</string>
+    <string name="expandablelist_cancelpayment_text">Cancel bill\'s payment</string>
 
 </resources>

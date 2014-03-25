@@ -980,15 +980,16 @@ public class MainActivity extends ActionBarActivity {
             listDataHeaderElems.put(value[1].toString(),value);
 	    	Log.v("nombre", value[1].toString());
 	    }
-	 
-	    // Adding child data
-	    List<String> subitems = new ArrayList<String>();
-	    subitems.add("Done");
-	    subitems.add("Delete");
 	    
 	    // Añadir los hijos a cada Grupo
 	    for(int i=0; i<numItems/itemsPerBill; i++)
 	    {
+            List<String> subitems = new ArrayList<String>();
+            if(listDataHeaderElems.get(listDataHeader.get(i))[8].equals("0"))
+                subitems.add("Pay");
+            else
+                subitems.add("Cancel");
+            subitems.add("Delete");
 	    	listDataChild.put(listDataHeader.get(i), subitems);
 	    }
 	    
@@ -1007,23 +1008,26 @@ public class MainActivity extends ActionBarActivity {
             public boolean onChildClick(ExpandableListView parent, View v,
             		int groupPosition, int childPosition, long id) {
     			header = listDataHeader.get(groupPosition);
-        		if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).equals("Done"))
+        		if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).equals("Pay"))
         		{
         			Log.v("Click","Pay");
-                    if (listDataHeaderElems.get(header)[8].equals("1"))
-                        new DialogoAlerta(MainActivity.this, MainActivity.this,
-                                getString(R.string.alert_cancelpaymentbill_tittle),
-                                getString(R.string.alert_cancelpaymentbill_message),
-                                "cancel_payment_bill",
-                                new Object[]{header}).show();
-                    else
-                        new DialogoAlerta(MainActivity.this, MainActivity.this,
-                                getString(R.string.alert_paybill_tittle),
-                                getString(R.string.alert_paybill_message),
-                                "pay_bill",
-                                new Object[]{header}).show();
+                    new DialogoAlerta(MainActivity.this, MainActivity.this,
+                            getString(R.string.alert_paybill_tittle),
+                            getString(R.string.alert_paybill_message),
+                            "pay_bill",
+                            new Object[]{header}).show();
                     return true;
         		}
+                else if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).equals("Cancel"))
+                {
+                    Log.v("Click","Cancel");
+                    new DialogoAlerta(MainActivity.this, MainActivity.this,
+                            getString(R.string.alert_cancelpaymentbill_tittle),
+                            getString(R.string.alert_cancelpaymentbill_message),
+                            "cancel_payment_bill",
+                            new Object[]{header}).show();
+                    return true;
+                }
                 else if(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition).equals("Delete"))
         		{
         			Log.v("Click","Delete");
