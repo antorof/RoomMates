@@ -93,20 +93,19 @@ public class WebDatabaseBackground extends AsyncTask<Object, Boolean, Object[] >
 				
 				Object[] arr = null;
 				{
-					if(consulta.equals("recuperarApartamentos"))
-					{
+					if(consulta.equals("recuperarApartamentos")) {
 						arr = convertToObject(l, 5);
-					}else if(consulta.equals("recuperarRoommates"))
-					{
+					}
+                    else if(consulta.equals("recuperarRoommates")) {
 						arr = convertToObject(l, 6);
-					}else if(consulta.equals("recuperarFacturas"))
-					{
-						arr = convertToObject(l, 8);
-					}else if(consulta.equals("recuperarCompras"))
-					{
+					}
+                    else if(consulta.equals("recuperarFacturas")) {
+						arr = convertToObject(l, 9);
+					}
+                    else if(consulta.equals("recuperarCompras")) {
 						arr = convertToObject(l, 7);
-					}else if(consulta.equals("recuperarTareas"))
-					{
+					}
+                    else if(consulta.equals("recuperarTareas")) {
 						arr = convertToObject(l, 7);
 					}
 				}

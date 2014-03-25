@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.roommates.roommates.R;
@@ -103,6 +105,7 @@ public class ExpandableListAdapterBills extends BaseExpandableListAdapter {
         TextView textViewFecha = (TextView) convertView.findViewById(R.id.tvFecha);
         TextView textViewParcial = (TextView) convertView.findViewById(R.id.tvParcial);
         TextView textViewTotal = (TextView) convertView.findViewById(R.id.tvTotal);
+        LinearLayout llPaid = (LinearLayout)convertView.findViewById(R.id.color_paid);
 //        ImageView imageView = (ImageView) rowView.findViewById(R.id.listIcon);
         
         Object[] value = (Object[]) listInterna.get(groupPosition);
@@ -119,7 +122,12 @@ public class ExpandableListAdapterBills extends BaseExpandableListAdapter {
       	  	textViewTotal.setText(value[6].toString());
         else
       	  	textViewTotal.setText(value[6].toString()+"\u20AC");
-        
+
+        if(value[8].toString().equals("0"))
+            llPaid.setBackgroundColor(Color.parseColor("#FF7373"));
+        else
+            llPaid.setBackgroundColor(Color.TRANSPARENT);
+
          return convertView;
     }
  

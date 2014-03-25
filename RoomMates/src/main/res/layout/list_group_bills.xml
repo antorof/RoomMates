@@ -12,7 +12,16 @@
         android:layout_width="wrap_content"
         android:layout_height="fill_parent" 
         android:gravity="center">
-        
+
+        <LinearLayout
+            android:id="@+id/color_paid"
+            android:layout_width="6dip"
+            android:layout_height="match_parent"
+            android:background="#009B95"
+            android:orientation="vertical"
+            android:gravity="left">
+        </LinearLayout>
+
 	    <ImageView
 	        android:id="@+id/listIcon"
 	        android:layout_width="wrap_content"

@@ -392,116 +392,116 @@ public class MainActivity extends ActionBarActivity {
 //		getListAdapter().getItem(info.position);
 		switch (item.getItemId()) 
 	    {
-	    	/* TASKS */
-	        case R.id.opcion_eliminar_tarea:{
-	        	View v = info.targetView;
-	        	final Object[] value = (Object[]) fragmentTasks.getListItem(info.position);
-                final String nombre = (String) value[1];
-                
-                // ---- dialog ----
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);	
-				dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						new AsyncRemove().execute("TASKS",(String)value[2],(String)value[1]);
-					}
-				});
-				dialogBuilder.setNeutralButton("No", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-					}
-				});
-				dialogBuilder.setMessage("Do you want to delete this task? ("+nombre+")");
-				dialogBuilder.setCancelable(true);//.setTitle("AVISO");
-				dialogBuilder.setIcon(R.drawable.ic_action_warning).setTitle("Delete item");
-				dialogBuilder.create().show();
-	        	
-	        	return true;
-	        }
-	        case R.id.opcion_hecho_tarea:{
-	        	final Object[] value = (Object[]) fragmentTasks.getListItem(info.position);
-	            final String nombre = (String) value[1];
-	        	Toast.makeText(MainActivity.this, 
-	        			"Task \""+nombre+"\" done", 
-	        			Toast.LENGTH_LONG).show();
-	        	
-	            return true;
-	        }
-	        /* SHOPPING */
-	        case R.id.opcion_eliminar_producto:{
-	        	View v = info.targetView;
-	        	final Object[] value = (Object[]) fragmentShopping.getListItem(info.position);
-                final String nombre = (String) value[1];
-                
-                // ---- dialog ----
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);	
-				dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						new AsyncRemove().execute("SHOPPING",(String)value[4],(String)value[1]);
-					}
-				});
-				dialogBuilder.setNeutralButton("No", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-					}
-				});
-				dialogBuilder.setMessage("Do you want to delete this product? ("+nombre+")");
-				dialogBuilder.setCancelable(true);//.setTitle("AVISO");
-				dialogBuilder.setIcon(R.drawable.ic_action_warning).setTitle("Delete item");
-				dialogBuilder.create().show();
-	        	
-	        	return true;
-	        }
-	        case R.id.opcion_comprado_producto:{
-                final Object[] value = (Object[]) fragmentShopping.getListItem(info.position);
-	            	        	
-	        	//aqui se quita el estado de urgente poniendo el 0
-	            new AsyncUpdate().execute("SHOPPING",(String)value[4],(String)value[1],"0");
-	        	
-	            return true;
-	        }
-	        case R.id.opcion_urgente_producto:
-	        {//TODO Mejorar esto para que se pueda tambien desmarcar (en php o aqui)
-	        	final Object[] value = (Object[]) fragmentShopping.getListItem(info.position);
-	            	        	
-	            //aqui se hace urgente = 1.
-	            new AsyncUpdate().execute("SHOPPING",(String)value[4],(String)value[1],"1");
-	        	
-	            return true;
-	        }
-	        /* BILLS */
-	        case R.id.opcion_eliminar_factura:{
-	        	View v = info.targetView;
-	        	final Object[] value = (Object[]) fragmentBills.getListItem(info.position);
-                final String nombre = (String) value[2];
-                
-                // ---- dialog ----
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-                dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        new AsyncRemove().execute("BILLS",(String)value[1]);
-                    }
-                });
-                dialogBuilder.setNeutralButton("No", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-					}
-				});
-				dialogBuilder.setMessage("Do you want to delete this bill? ("+nombre+")");
-				dialogBuilder.setCancelable(true);//.setTitle("AVISO");
-				dialogBuilder.setIcon(R.drawable.ic_action_warning).setTitle("Delete item");
-				dialogBuilder.create().show();
-	        	
-	        	return true;
-	        }
-	        case R.id.opcion_pagada_factura:{
-	        	final Object[] value = (Object[]) fragmentBills.getListItem(info.position);
-                final String nombre = (String) value[2];
-	        	Toast.makeText(MainActivity.this, 
-	        			"Bill \""+nombre+"\" paid", 
-	        			Toast.LENGTH_LONG).show();
-	        	
-	            return true;
-	        }
+	    	/* TASKS */ /* AHORA MISMO NO SE USA POR LOS EXPANDABLE-LIST*/
+//	        case R.id.opcion_eliminar_tarea:{
+//	        	View v = info.targetView;
+//	        	final Object[] value = (Object[]) fragmentTasks.getListItem(info.position);
+//                final String nombre = (String) value[1];
+//
+//                // ---- dialog ----
+//                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+//				dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//					@Override
+//					public void onClick(DialogInterface dialog, int which) {
+//						new AsyncRemove().execute("TASKS",(String)value[2],(String)value[1]);
+//					}
+//				});
+//				dialogBuilder.setNeutralButton("No", new DialogInterface.OnClickListener() {
+//					public void onClick(DialogInterface dialog, int which) {
+//					}
+//				});
+//				dialogBuilder.setMessage("Do you want to delete this task? ("+nombre+")");
+//				dialogBuilder.setCancelable(true);//.setTitle("AVISO");
+//				dialogBuilder.setIcon(R.drawable.ic_action_warning).setTitle("Delete item");
+//				dialogBuilder.create().show();
+//
+//	        	return true;
+//	        }
+//	        case R.id.opcion_hecho_tarea:{
+//	        	final Object[] value = (Object[]) fragmentTasks.getListItem(info.position);
+//	            final String nombre = (String) value[1];
+//	        	Toast.makeText(MainActivity.this,
+//	        			"Task \""+nombre+"\" done",
+//	        			Toast.LENGTH_LONG).show();
+//
+//	            return true;
+//	        }
+	        /* SHOPPING */ /* AHORA MISMO NO SE USA POR LOS EXPANDABLE-LIST*/
+//	        case R.id.opcion_eliminar_producto:{
+//	        	View v = info.targetView;
+//	        	final Object[] value = (Object[]) fragmentShopping.getListItem(info.position);
+//                final String nombre = (String) value[1];
+//
+//                // ---- dialog ----
+//                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+//				dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//					@Override
+//					public void onClick(DialogInterface dialog, int which) {
+//						new AsyncRemove().execute("SHOPPING",(String)value[4],(String)value[1]);
+//					}
+//				});
+//				dialogBuilder.setNeutralButton("No", new DialogInterface.OnClickListener() {
+//					public void onClick(DialogInterface dialog, int which) {
+//					}
+//				});
+//				dialogBuilder.setMessage("Do you want to delete this product? ("+nombre+")");
+//				dialogBuilder.setCancelable(true);//.setTitle("AVISO");
+//				dialogBuilder.setIcon(R.drawable.ic_action_warning).setTitle("Delete item");
+//				dialogBuilder.create().show();
+//
+//	        	return true;
+//	        }
+//	        case R.id.opcion_comprado_producto:{
+//                final Object[] value = (Object[]) fragmentShopping.getListItem(info.position);
+//
+//	        	//aqui se quita el estado de urgente poniendo el 0
+//	            new AsyncUpdate().execute("SHOPPING",(String)value[4],(String)value[1],"0");
+//
+//	            return true;
+//	        }
+//	        case R.id.opcion_urgente_producto:
+//	        {//TODO ¿Mejorar la funcion de producto urgente para que se pueda tambien desmarcar? (en php o aqui)
+//	        	final Object[] value = (Object[]) fragmentShopping.getListItem(info.position);
+//
+//	            //aqui se hace urgente = 1.
+//	            new AsyncUpdate().execute("SHOPPING",(String)value[4],(String)value[1],"1");
+//
+//	            return true;
+//	        }
+	        /* BILLS */ /* AHORA MISMO NO SE USA POR LOS EXPANDABLE-LIST*/
+//	        case R.id.opcion_eliminar_factura:{
+//	        	View v = info.targetView;
+//	        	final Object[] value = (Object[]) fragmentBills.getListItem(info.position);
+//                final String nombre = (String) value[2];
+//
+//                // ---- dialog ----
+//                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+//                dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        new AsyncRemove().execute("BILLS",(String)value[1]);
+//                    }
+//                });
+//                dialogBuilder.setNeutralButton("No", new DialogInterface.OnClickListener() {
+//					public void onClick(DialogInterface dialog, int which) {
+//					}
+//				});
+//				dialogBuilder.setMessage("Do you want to delete this bill? ("+nombre+")");
+//				dialogBuilder.setCancelable(true);//.setTitle("AVISO");
+//				dialogBuilder.setIcon(R.drawable.ic_action_warning).setTitle("Delete item");
+//				dialogBuilder.create().show();
+//
+//	        	return true;
+//	        }
+//	        case R.id.opcion_pagada_factura:{
+//	        	final Object[] value = (Object[]) fragmentBills.getListItem(info.position);
+//                final String nombre = (String) value[2];
+//	        	Toast.makeText(MainActivity.this,
+//	        			"Bill \""+nombre+"\" paid",
+//	        			Toast.LENGTH_LONG).show();
+//
+//	            return true;
+//	        }
 	        default:
 	            return super.onContextItemSelected(item);
 	    }
@@ -640,11 +640,11 @@ public class MainActivity extends ActionBarActivity {
     			tipo_elemento = "Product";
     		    URL_CONNECT="http://"+URL_HOST+"/eliminar_product_android.php";
     		}
-    		//enviamos y recibimos y analizamos los datos en segundo plano.
+    		// enviamos y recibimos y analizamos los datos en segundo plano.
     		if (eliminarElemento()){
-    			return "ok"; // tarea aniadida
+    			return "ok";
     		} else{    		
-    			return "err"; // tarea no aniadida   	          	  
+    			return "err";
     		}
     	}
     	
@@ -722,7 +722,7 @@ public class MainActivity extends ActionBarActivity {
 	/**
 	 * Clase que se encarga de la actualizaci&oacute;n de un elemento.
 	 * 
-	 * */
+	 */
 	class AsyncUpdate extends AsyncTask< String, String, String > {
 		private ProgressDialog pDialog;
 		private String URL_CONNECT;
@@ -795,9 +795,11 @@ public class MainActivity extends ActionBarActivity {
     		postparameters2send.add(new BasicNameValuePair("Contrasena",MainActivity.this.password)); 
     		
     		if( elemento_a_actualizar.equals("BILLS") ) {
+                // TODO Marcar como pagada una factura, hará falta también el PHP
         		//postparameters2send.add(new BasicNameValuePair("idFactura",parametrosRecibidos[1]));
     		}
     		else if( elemento_a_actualizar.equals("TASKS") ) {
+                // TODO Marcar como hecha una tarea, hará falta también el PHP
         		//postparameters2send.add(new BasicNameValuePair("idVivienda",parametrosRecibidos[1]));
         		//postparameters2send.add(new BasicNameValuePair("nombreTarea",parametrosRecibidos[2]));
     		}
@@ -852,7 +854,6 @@ public class MainActivity extends ActionBarActivity {
 	{
 		collapse(R.id.cardListBills, view);
 	}
-	
 	public void collapseShopping(View view)
 	{
 		collapse(R.id.cardListShopping, view);
@@ -954,7 +955,7 @@ public class MainActivity extends ActionBarActivity {
 	 */
 	public void actualizarListaExpBills(Object[] values, int numItems)
 	{
-        int itemsPerBill = 8; // numero de elementos de cada factura
+        int itemsPerBill = 9; // numero de elementos de cada factura
 
         ExpandableListAdapterBills listAdapter;
 		ExpandableListView expListView;
@@ -1124,24 +1125,14 @@ public class MainActivity extends ActionBarActivity {
 	    }
 	 
 	    // Adding child data
-	    List<String> top250 = new ArrayList<String>();
-	    top250.add("Buy");
-	    top250.add("Urgent");
-	    top250.add("Delete");
-	 
-//	    List<String> nowShowing = new ArrayList<String>();
-//	    nowShowing.add("Buy");
-//	    nowShowing.add("Urgent");
-//	    nowShowing.add("Delete");
-//
-//	    List<String> comingSoon = new ArrayList<String>();
-//	    comingSoon.add("Buy");
-//	    comingSoon.add("Urgente");
-//	    comingSoon.add("Delete");
+	    List<String> subItems = new ArrayList<String>();
+	    subItems.add("Buy");
+	    subItems.add("Urgent");
+	    subItems.add("Delete");
 	    
 	    for(int i=0; i<numItems/itemsPerProduct; i++)
 	    {
-	    	listDataChild.put(listDataHeader.get(i), top250);
+	    	listDataChild.put(listDataHeader.get(i), subItems);
 	    }
 	    // get the listview
 	    expListView = (ExpandableListView)findViewById(R.id.listaCompras);
