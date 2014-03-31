@@ -1,7 +1,3 @@
-.gradle
-/local.properties
-/.idea/workspace.xml
-.DS_Store
 
 #IntelliJ IDEA
 .idea
@@ -13,3 +9,10 @@ out
 #Gradle
 .gradle
 build
+
+# Custom local
+/.idea
+.gradle
+/local.properties
+/.idea/workspace.xml
+.DS_Store
