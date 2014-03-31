@@ -44,6 +44,8 @@
     <string name="alert_paybill_tittle">Pay bill</string>
     <string name="alert_paybill_message">Did you pay this bill?</string>
     <string name="alert_deleteproduct_message">Do you want to delete this product?</string>
+    <string name="alert_selectapartment_tittle">Select apartment</string>
+    <string name="alert_selectapartment_message">Do you want to select this apartment?</string>
     <string name="expandablelist_markpurchased_text">Mark as purchased</string>
     <string name="expandablelist_markurgent_text">Mark as urgent</string>
     <string name="expandablelist_deleteproduct_text">Delete the product</string>

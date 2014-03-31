@@ -37,6 +37,8 @@
     <string name="alert_cancelpaymentbill_message">¿Quieres cancelar el pago?</string>
     <string name="alert_paybill_tittle">Pagar factura</string>
     <string name="alert_paybill_message">¿Has pagado esta factura?</string>
+    <string name="alert_selectapartment_tittle">Seleccionar casa</string>
+    <string name="alert_selectapartment_message">¿Quieres seleccionar esta casa?</string>
     <string name="expandablelist_markpurchased_text">Marcar como comprado</string>
     <string name="expandablelist_markurgent_text">Marcar como Urgente</string>
     <string name="expandablelist_deleteproduct_text">Eliminar Producto</string>

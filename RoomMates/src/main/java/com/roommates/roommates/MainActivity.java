@@ -89,7 +89,8 @@ public class MainActivity extends ActionBarActivity {
 	protected String apellidos = null;
 	protected String color = null;
 	protected String idViviendaActual = null;
-	protected String nombreViviendaActual = null;
+    protected String nombreViviendaActual = null;
+    protected String rolEnViviendaActual = null;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -254,6 +255,8 @@ public class MainActivity extends ActionBarActivity {
                 break;
             case ROOMMATES:
                 getMenuInflater().inflate(R.menu.roommates, menu);
+                if( rolEnViviendaActual.equals("1") )
+                    getMenuInflater().inflate(R.menu.roommates_plus, menu);
                 break;
 			default:
 				break;
@@ -915,25 +918,29 @@ public class MainActivity extends ActionBarActivity {
 				final Object[] value = (Object[]) prueba.getItemAtPosition(position);
 				final AlertDialog.Builder myAB = new AlertDialog.Builder(MainActivity.this);
 			
-				myAB.setTitle("Select apartment")
-			    	.setMessage("Do you want to select this apartment? ("+value[2]+")")
-			    	.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+				myAB.setTitle(getString(R.string.alert_selectapartment_tittle))
+			    	.setMessage(getString(R.string.alert_selectapartment_message))
+			    	.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 			    		public void onClick(DialogInterface dialog, int which) {
 				        	Toast.makeText(MainActivity.this, 
 				        	"Apartment \""+value[2]+"\" selected", 
 				        	Toast.LENGTH_LONG).show();
 				        	MainActivity.this.idViviendaActual = (String) value[1];
 				        	MainActivity.this.nombreViviendaActual = (String) value[2];
-				        	
+				        	MainActivity.this.rolEnViviendaActual = (String) value[4];
+
 				        	// Almacenamos la vivienda actual en las preferencias:
 				    		SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
 				    		SharedPreferences.Editor Ed=sp.edit();
 				    		Ed.putString("id_vivienda",MainActivity.this.idViviendaActual );
-				    		Ed.putString("nombre_vivienda",MainActivity.this.nombreViviendaActual );
+                            Ed.putString("nombre_vivienda",MainActivity.this.nombreViviendaActual );
+                            Ed.putString("rol_en_vivienda",MainActivity.this.rolEnViviendaActual );
 				    		Ed.commit();
+
+                            Log.i("rol_en_vivienda",MainActivity.this.rolEnViviendaActual);
 			    		}
 			    	})
-			    	.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+			    	.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
 			    		public void onClick(DialogInterface dialog, int which) {
 			    		}
 			    	}).show();

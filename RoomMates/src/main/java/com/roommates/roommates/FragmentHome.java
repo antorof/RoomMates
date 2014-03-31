@@ -44,11 +44,16 @@ public class FragmentHome extends Fragment {
 		// Buscamos en las preferencias la ultima vivienda:
 	    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(mainActivity);
 	    String idViviendaActual = sharedPref.getString("id_vivienda", "-1");
-	    String nombreViviendaActual = sharedPref.getString("nombre_vivienda", "");
+        String nombreViviendaActual = sharedPref.getString("nombre_vivienda", "");
+        String rolEnViviendaActual = sharedPref.getString("rol_en_vivienda", "-1");
+
 	    mainActivity.idViviendaActual = idViviendaActual;
-	    mainActivity.nombreViviendaActual = nombreViviendaActual;
+        mainActivity.nombreViviendaActual = nombreViviendaActual;
+        mainActivity.rolEnViviendaActual = rolEnViviendaActual;
 	    
-	    if (!mainActivity.idViviendaActual.equals("-1") && !mainActivity.nombreViviendaActual.equals("-1") ) {
+	    if (!mainActivity.idViviendaActual.equals("-1")
+                && !mainActivity.nombreViviendaActual.equals("")
+                && !mainActivity.rolEnViviendaActual.equals("-1") ) {
 			// Se llama a las distintas consultas de la base de datos 
 			new WebDatabaseBackground().execute("recuperarFacturas", mainActivity, username, password, 
 											idViviendaActual, "actualizarHomeFacturas");
