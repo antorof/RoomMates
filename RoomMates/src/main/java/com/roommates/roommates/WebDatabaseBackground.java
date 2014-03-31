@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 public class WebDatabaseBackground extends AsyncTask<Object, Boolean, Object[] >{
 	
@@ -114,7 +115,14 @@ public class WebDatabaseBackground extends AsyncTask<Object, Boolean, Object[] >
     			return values;
 			} catch (JSONException e) { e.printStackTrace();  }
 		}else{	//json obtenido invalido: verificar parte WEB.
-			Log.e("JSON  ", "ERROR");
+			Log.e("JSON", "ERROR");
+            if( post.error != Constantes.NO_ERROR ) {
+                callerActivity.runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(callerActivity, R.string.error_unable_to_connect, Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
 			return null;
 		}
 		
