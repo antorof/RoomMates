@@ -75,8 +75,15 @@
     <string name="settings_passwordsummary_text">Contraseña de tu usuario</string>
     <string name="newtask_name_hint">Nombre de la tarea</string>
     <string name="newtask_fromdate_hint">Fecha de inicio</string>
+    <string name="newtask_interval_hint">Intervalo</string>
     <string name="newtask_button_text">Añadir tarea</string>
     <string name="addroommate_useremail_hint">Email del usuario</string>
     <string name="addroommate_button_text">Añadir compañero</string>
+    <string-array name="tipo_intervalo_tarea">
+        <item>Días</item>
+        <item>Semanas</item>
+        <item>Meses</item>
+    </string-array>
+
 
 </resources>

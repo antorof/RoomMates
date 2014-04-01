@@ -26,49 +26,42 @@
 		
 		        <requestFocus />
 		    </EditText>
-		
-<!-- 		    <TextView -->
-<!-- 		        android:id="@+id/textViewDescripcion" -->
-<!-- 		        android:layout_width="wrap_content" -->
-<!-- 		        android:layout_height="wrap_content" -->
-<!-- 		        android:text="Task description:" /> -->
-		
-<!-- 		    <EditText -->
-<!-- 		        android:id="@+id/editTextDescripcion" -->
-<!-- 		        android:layout_width="match_parent" -->
-<!-- 		        android:layout_height="wrap_content" -->
-<!-- 		        android:ems="10" -->
-<!-- 		        android:inputType="textMultiLine" /> -->
-		
-		
-		    
-	        <LinearLayout
-	            android:layout_width="match_parent"
-	            android:layout_height="wrap_content"
-	            android:orientation="horizontal"
-		        android:layout_marginTop="12dip"
-                android:baselineAligned="false">
+
+
+            <EditText
+                android:id="@+id/editTextFechaInicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dip"
+                android:hint="@string/newtask_fromdate_hint"
+                android:inputType="date"
+                android:focusable="false" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dip" >
 
                 <EditText
-                    android:id="@+id/editTextFechaInicio"
+                    android:id="@+id/editTextIntervalo"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:hint="@string/newtask_interval_hint"
+                    android:inputType="number" />
+
+                <Spinner
+                    android:id="@+id/spinnerTipoIntervalo"
                     android:layout_width="0dip"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:hint="@string/newtask_fromdate_hint"
-                    android:inputType="date"
-                    android:focusable="false" />
+                    android:layout_gravity="center"/>
 
+            </LinearLayout>
 
-                <EditText
-                    android:id="@+id/editTextFechaFin"
-                    android:layout_width="0dip"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:inputType="date"
-                    android:hint="To (date)"
-                    android:focusable="false" />
-
-			</LinearLayout>
 
             <Button
 		        android:id="@+id/button1"

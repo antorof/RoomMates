@@ -1,15 +1,7 @@
 package com.roommates.roommates;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.DatePickerDialog;
+import android.app.Instrumentation;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,9 +10,21 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class NewTaskActivity extends ActionBarActivity {
 
@@ -32,7 +36,7 @@ public class NewTaskActivity extends ActionBarActivity {
 	private Httppostaux post;
 
     private EditText inputDateFrom;
-    private EditText inputDateTo;
+    private Spinner spinnerTipoIntervalo;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +48,8 @@ public class NewTaskActivity extends ActionBarActivity {
 		Bundle extras = getIntent().getExtras();
         //Obtenemos datos enviados en el intent.
         if (extras != null) {
-        	username = extras.getString("USERNAME");
-        	password = extras.getString("PASSWORD");
+        	username   = extras.getString("USERNAME");
+        	password   = extras.getString("PASSWORD");
         	idVivienda = extras.getString("ID_VIVIENDA");
         }
         else {
@@ -57,7 +61,6 @@ public class NewTaskActivity extends ActionBarActivity {
         post = new Httppostaux();
 
         inputDateFrom = (EditText) findViewById(R.id.editTextFechaInicio);
-        inputDateTo = (EditText) findViewById(R.id.editTextFechaFin);
 
         final Calendar c = Calendar.getInstance();
         inputDateFrom.setOnClickListener(
@@ -73,9 +76,6 @@ public class NewTaskActivity extends ActionBarActivity {
                                 inputDateFrom.setText(
                                         year+"-"+(monthOfYear+1)+"-"+dayOfMonth
                                 );
-//                                Toast.makeText(NewTaskActivity.this,
-//                                        dayOfMonth + "-" + monthOfYear + "-" + year,
-//                                        Toast.LENGTH_LONG).show();
                             }
                         },
                         c.get(Calendar.YEAR),
@@ -85,33 +85,27 @@ public class NewTaskActivity extends ActionBarActivity {
                     dpd.show();
                 }
             });
-        inputDateTo.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        DatePickerDialog dpd = new DatePickerDialog(
-                                NewTaskActivity.this,
-                                new DatePickerDialog.OnDateSetListener() {
 
-                                    public void onDateSet(DatePicker view, int year,
-                                                          int monthOfYear, int dayOfMonth) {
-                                        inputDateTo.setText(
-                                                year + "-" + (monthOfYear + 1) + "-" + dayOfMonth
-                                        );
-//                                Toast.makeText(NewTaskActivity.this,
-//                                        dayOfMonth + "-" + monthOfYear + "-" + year,
-//                                        Toast.LENGTH_LONG).show();
-                                    }
-                                },
-                                c.get(Calendar.YEAR),
-                                c.get(Calendar.MONTH),
-                                c.get(Calendar.DAY_OF_MONTH)
-                        );
-                        dpd.show();
-                    }
-                });
-        
-	}
+        spinnerTipoIntervalo = (Spinner) findViewById(R.id.spinnerTipoIntervalo);
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,
+                R.array.tipo_intervalo_tarea, android.R.layout.simple_spinner_item);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTipoIntervalo.setAdapter(spinnerAdapter);
+        spinnerTipoIntervalo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                Toast.makeText(NewTaskActivity.this,
+                        ":"+pos+":"+" "+parent.getItemAtPosition(pos),
+                        Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+    }
 
 	/**
 	 * Set up the ActionBar
@@ -165,7 +159,7 @@ public class NewTaskActivity extends ActionBarActivity {
 
     	protected String doInBackground(String... params) {
     		//enviamos y recibimos y analizamos los datos en segundo plano.
-    		if (hacerCosas(username)){
+    		if (realizarFuncion()){
     			return "ok"; // tarea aniadida
     		} else{    		
     			return "err"; // tarea no aniadida   	          	  
@@ -186,33 +180,29 @@ public class NewTaskActivity extends ActionBarActivity {
 
     	}
 
-    	public boolean hacerCosas(String username) {
+    	public boolean realizarFuncion() {
     		int estado = -1;
     		EditText etNombre = (EditText) findViewById(R.id.editTextNombreTarea);
-//    		EditText etDescripcion = (EditText) findViewById(R.id.editTextDescripcion);
-    		EditText etFrom = (EditText) findViewById(R.id.editTextFechaInicio);
-    		EditText etTo = (EditText) findViewById(R.id.editTextFechaFin);
+            EditText etFrom = (EditText) findViewById(R.id.editTextFechaInicio);
+            EditText etIntervalo = (EditText) findViewById(R.id.editTextIntervalo);
+            Spinner spTipoIntervalo = (Spinner) findViewById(R.id.spinnerTipoIntervalo);
 
     		if( etNombre.getText().toString().length() == 0   ||
-    				etFrom.getText().toString().length() == 0 ||
-    				etTo.getText().toString().length() == 0 ) {
+                    etFrom.getText().toString().length() == 0 ||
+                    etIntervalo.getText().toString().length() == 0 ) {
 				Log.e("error datos", "campos no rellenados");
     			return false;	
     		}
     		
     		ArrayList<NameValuePair> postparameters2send= new ArrayList<NameValuePair>();
 
-//    		postparameters2send.add(new BasicNameValuePair("usuario",username)); 
-//    		postparameters2send.add(new BasicNameValuePair("nombretarea",etNombre.getText().toString())); 
-//    		postparameters2send.add(new BasicNameValuePair("descripcion",etDescripcion.getText().toString()));
-
     		postparameters2send.add(new BasicNameValuePair("Correo",NewTaskActivity.this.username));
     		postparameters2send.add(new BasicNameValuePair("Contrasena",NewTaskActivity.this.password));
+            postparameters2send.add(new BasicNameValuePair("idVivienda",idVivienda));
     		postparameters2send.add(new BasicNameValuePair("nombreTarea",etNombre.getText().toString()));
-    		postparameters2send.add(new BasicNameValuePair("idVivienda",idVivienda));
-    		postparameters2send.add(new BasicNameValuePair("Repeticion","3"));
-    		postparameters2send.add(new BasicNameValuePair("Inicio",etFrom.getText().toString()));
-    		postparameters2send.add(new BasicNameValuePair("Fin",etTo.getText().toString()));
+            postparameters2send.add(new BasicNameValuePair("inicio",etFrom.getText().toString()));
+            postparameters2send.add(new BasicNameValuePair("intervalo",etIntervalo.getText().toString()));
+            postparameters2send.add(new BasicNameValuePair("tipoIntervalo",""+spTipoIntervalo.getSelectedItemPosition()));
 
     		//realizamos una peticion y como respuesta obtenes un array JSON
     		JSONArray jdata=post.getserverdata(postparameters2send, URL_connect);
@@ -223,22 +213,22 @@ public class NewTaskActivity extends ActionBarActivity {
     			
     			try {
     				json_data = jdata.getJSONObject(jdata.length()-1); //leemos el primer segmento en nuestro caso el unico
-    				estado=json_data.getInt("tareaAniadida");//accedemos al valor 
-    				Log.i("tareaAniadida","tareaAniadida= "+estado);//muestro por log que obtuvimos
+    				estado    = json_data.getInt("tareaAniadida");//accedemos al valor
+    				Log.i("tareaAniadida",""+estado);//muestro por log que obtuvimos
     			} catch (JSONException e) { e.printStackTrace(); }		            
 
     			//validamos el valor obtenido
-    			if (estado==0){
-    				Log.e("tareaAniadida ", "invalido");
+    			if (estado == 0) {
+    				Log.e("tareaAniadida", "invalido");
     				return false;
     			}
-    			else{
-    				Log.i("tareaAniadida ", "valido");
+    			else {
+    				Log.i("tareaAniadida", "valido");
     				return true;
     			}
 
     		}else{	//json obtenido invalido verificar parte WEB.
-    			Log.e("JSON  ", "ERROR");
+    			Log.e("JSON", "ERROR");
     			return false;
     		}
     	}

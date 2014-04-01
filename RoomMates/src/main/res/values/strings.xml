@@ -81,9 +81,15 @@
     <string name="settings_passwordsummary_text">Password to access your account</string>
     <string name="newtask_name_hint">Task name</string>
     <string name="newtask_fromdate_hint">From (date)</string>
+    <string name="newtask_interval_hint">Interval</string>
     <string name="newtask_button_text">Add Task</string>
     <string name="addroommate_useremail_hint">User email (not yours)</string>
     <string name="addroommate_button_text">Add roommate</string>
     <string name="expandablelist_cancelpayment_text">Cancel bill\'s payment</string>
+    <string-array name="tipo_intervalo_tarea">
+        <item>Days</item>
+        <item>Weeks</item>
+        <item>Months</item>
+    </string-array>
 
 </resources>
