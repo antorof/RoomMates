@@ -15,7 +15,7 @@ public class Constantes {
     public static final int MESES = 1;
 
     // URLS
-    public static final String HTTP_PROTOCOL = "http://";
+    public static final String HTTP_PROTOCOL = "https://";
     public static final String HOST = "roommates-antorofdev.rhcloud.com";
     public static final String NUEVA_TAREA_URL = HTTP_PROTOCOL+HOST+"/aniadir_task_android.php";
     public static final String NUEVA_CASA_URL=HTTP_PROTOCOL+HOST+"/aniadir_apartment_android.php";
