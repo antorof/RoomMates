@@ -27,8 +27,7 @@ public class NewBillActivity extends ActionBarActivity {
 	private String username;
 	private String password;
 	private String vivienda;
-    private String URL_HOST = "roommates-antorofdev.rhcloud.com";
-	private String URL_connect = "http://"+URL_HOST+"/aniadir_bill_android.php";
+	private String URL_connect = Constantes.NUEVA_FACTURA_URL;
 	private Httppostaux post;
 
 	@Override

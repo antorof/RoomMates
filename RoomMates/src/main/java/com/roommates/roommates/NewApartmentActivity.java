@@ -38,8 +38,7 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
 	private EditText rPass ;
 	private ImageView imagenAyuda ;
 
-    private String URL_HOST = "roommates-antorofdev.rhcloud.com";
-    String URL_connect="http://"+URL_HOST+"/aniadir_apartment_android.php";
+    String URL_connect = Constantes.NUEVA_CASA_URL;
     
 	private Httppostaux post;
 	private String correo;

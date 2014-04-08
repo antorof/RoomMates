@@ -28,8 +28,7 @@ public class NewProductActivity extends ActionBarActivity {
 	private String username;
 	private String password;
 	private String idVivienda;
-    private String URL_HOST = "roommates-antorofdev.rhcloud.com";
-	private String URL_connect = "http://"+URL_HOST+"/aniadir_product_android.php";
+	private String URL_connect = Constantes.NUEVO_PODUCTO_URL;
 	private Httppostaux post;
 
 	@Override
