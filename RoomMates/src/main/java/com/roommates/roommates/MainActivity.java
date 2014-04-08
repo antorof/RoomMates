@@ -53,7 +53,7 @@ import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
-    private String URL_HOST = "roommates-antorofdev.rhcloud.com";
+    private String URL_HOST = Constantes.HOST;
 //    private String URL_HOST="roommate.hol.es";
 
 	private static final int BILLS = 1;
@@ -106,11 +106,11 @@ public class MainActivity extends ActionBarActivity {
         	apellidos = extras.getString("APELLIDOS");
         	color     = extras.getString("COLOR");
         }else{
-        	username="error";
-     	   	password="error";
-     	   	nombre="error";
-     	   	apellidos="error";
-     	   	color="error";
+        	username  = "error";
+     	   	password  = "error";
+     	   	nombre    = "error";
+     	   	apellidos = "error";
+     	   	color     = "error";
         }
         
         /*	SOLO PARA EL PROTOTIPO	*/
@@ -204,8 +204,8 @@ public class MainActivity extends ActionBarActivity {
 				this,
 				drawerLayout,
 				R.drawable.ic_navigation_drawer,
-				R.string.drawer_open,
-				R.string.drawer_close) 
+                R.string.app_name, // Drawer open
+                R.string.app_name) // Drawer close
 		{
 			
 			// Cuando el menu esta cerrado pongo como titulo el titulo de la seccion:
