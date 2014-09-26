@@ -7,9 +7,13 @@
         app3:showAsAction="never"
         android:title="@string/action_settings"/>
 
+    <item android:id="@+id/action_logout"
+        android:orderInCategory="99"
+        android:title="@string/action_logout"
+        app3:showAsAction="never"  />
     
     <item android:id="@+id/action_about"
-          android:orderInCategory="99"
+          android:orderInCategory="98"
           android:icon="@drawable/ic_action_about"
           android:title="@string/action_about"
           app3:showAsAction="never"  />

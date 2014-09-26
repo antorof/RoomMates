@@ -105,7 +105,13 @@ public class LoginActivity extends ActionBarActivity {
         	mEmailView.setText(usuarioPref);
         if (!passwordPref.equals("-1"))
         	mPasswordView.setText(passwordPref);
-		
+
+		if (!usuarioPref.equals("-1") && !passwordPref.equals("-1")) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null)
+                attemptLogin();
+        }
+
         /* Creamos un Dialog por si luego nos pregunta si queremos guardar
          * las preferencias */
         myAB = new AlertDialog.Builder(this);
@@ -321,7 +327,7 @@ public class LoginActivity extends ActionBarActivity {
 		    	intent.putExtra("COLOR", color);
 		    	
 		    	startActivity(intent);
-//				finish(); // Cerramos la pantalla de login
+				finish(); // Cerramos la pantalla de login
 				
 			} else if (success == 0)  {
 				mEmailView.setError(getString(R.string.error_incorrect_username_or_password));

@@ -313,9 +313,15 @@ public class MainActivity extends ActionBarActivity {
 				intent = new Intent(this, Preferencias.class);
 		    	startActivity(intent);
 				break;
-			case R.id.action_about:
-				Toast.makeText(this, "RoomMates est\u00E1 todav\u00EDa en fase de prototipo.", Toast.LENGTH_SHORT).show();
-				break;
+            case R.id.action_about:
+                Toast.makeText(this, "RoomMates est\u00E1 todav\u00EDa en fase de prototipo.", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_logout:
+                intent = new Intent(this, LoginActivity.class);
+                intent.putExtra("LOGOGUT",true);
+                startActivity(intent);
+                finish();
+                break;
 			case R.id.action_add_task:
 				if(!idViviendaActual.equals("-1")){
 					intent = new Intent(this,NewTaskActivity.class);
@@ -938,6 +944,8 @@ public class MainActivity extends ActionBarActivity {
 				    		Ed.commit();
 
                             Log.i("rol_en_vivienda",MainActivity.this.rolEnViviendaActual);
+
+                            onBackPressed(); // Volvemos al HOME
 			    		}
 			    	})
 			    	.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {

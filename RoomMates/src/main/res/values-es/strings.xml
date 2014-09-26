@@ -3,6 +3,7 @@
 
     <string name="app_name">RoomMates</string>
     <string name="action_about">Acerca de RoomMates</string>
+    <string name="action_logout">Cerrar sesión</string>
     <string name="action_settings">Configuración</string>
     <string name="action_tasks">Nueva Tarea</string>
     <string name="action_shopping">Nuevo Producto</string>
