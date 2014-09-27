@@ -8,8 +8,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.roommates.roommates.R;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
@@ -379,7 +377,7 @@ public class LoginActivity extends ActionBarActivity {
 		postparameters2send.add(new BasicNameValuePair("Contrasena",password));// que en el php
 
 		//realizamos una peticion y como respuesta obtenes un array JSON
-		JSONArray jdata=post.getserverdata(postparameters2send, URL_connect);
+		JSONArray jdata=post.getServerData(postparameters2send, URL_connect);
 
 		//si lo que obtuvimos no es null
 		if (jdata!=null && jdata.length() > 0){

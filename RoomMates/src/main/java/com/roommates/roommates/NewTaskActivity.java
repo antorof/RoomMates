@@ -1,7 +1,6 @@
 package com.roommates.roommates;
 
 import android.app.DatePickerDialog;
-import android.app.Instrumentation;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -204,7 +203,7 @@ public class NewTaskActivity extends ActionBarActivity {
             postparameters2send.add(new BasicNameValuePair("tipoIntervalo",""+spTipoIntervalo.getSelectedItemPosition()));
 
     		//realizamos una peticion y como respuesta obtenes un array JSON
-    		JSONArray jdata=post.getserverdata(postparameters2send, URL_connect);
+    		JSONArray jdata=post.getServerData(postparameters2send, URL_connect);
 
     		//si lo que obtuvimos no es null
     		if (jdata!=null && jdata.length() > 0){

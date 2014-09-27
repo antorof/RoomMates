@@ -25,8 +25,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.roommates.roommates.R;
-
 public class RegisterActivity extends ActionBarActivity {
 
 	private String URL_connect = Constantes.REGISTER_URL;
@@ -206,7 +204,7 @@ public class RegisterActivity extends ActionBarActivity {
     		postparameters2send.add(new BasicNameValuePair("Color",color_usuario));
 
     		//realizamos una peticion y como respuesta obtenes un array JSON
-    		JSONArray jdata=post.getserverdata(postparameters2send, URL_connect);
+    		JSONArray jdata=post.getServerData(postparameters2send, URL_connect);
 
     		//si lo que obtuvimos no es null
     		if (jdata!=null && jdata.length() > 0){

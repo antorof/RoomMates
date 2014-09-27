@@ -27,8 +27,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.roommates.roommates.R;
-
 public class NewApartmentActivity extends ActionBarActivity implements OnClickListener{
 
 	private Button botonAceptar;
@@ -300,7 +298,7 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
     		postparameters2send.add(new BasicNameValuePair("CodigoVivienda",codigoVivienda));
 
     		//realizamos una peticion y como respuesta obtenes un array JSON
-    		JSONArray jdata=post.getserverdata(postparameters2send, URL_connect);
+    		JSONArray jdata=post.getServerData(postparameters2send, URL_connect);
 
     		//si lo que obtuvimos no es null
     		if (jdata!=null && jdata.length() > 0){

@@ -6,8 +6,8 @@ package com.roommates.roommates;
 public class Constantes {
     // Httppostaux
     public static final int NO_ERROR = 0;
-    public static final int TIMEOUT = 1;
-    public static final int UNKNOWN_HOST = 2;
+    public static final int ERR_TIMEOUT = 1;
+    public static final int ERR_UNKNOWN_HOST = 2;
     public static final String DIA = "DIA";
     public static final String MES = "MES";
     public static final int DIAS = 0;

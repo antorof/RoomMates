@@ -20,8 +20,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.roommates.roommates.R;
-
 public class NewBillActivity extends ActionBarActivity {
 
 	private String username;
@@ -158,7 +156,7 @@ public class NewBillActivity extends ActionBarActivity {
     		postparameters2send.add(new BasicNameValuePair("Fecha",year+"-"+month+"-"+day));
 
     		//realizamos una peticion y como respuesta obtenes un array JSON
-    		JSONArray jdata=post.getserverdata(postparameters2send, URL_connect);
+    		JSONArray jdata=post.getServerData(postparameters2send, URL_connect);
 
     		//si lo que obtuvimos no es null
     		if (jdata!=null && jdata.length() > 0){

@@ -31,13 +31,13 @@ public class Httppostaux {
 	String result = "";
     public int error = Constantes.NO_ERROR;
 
-	public JSONArray getserverdata(ArrayList<NameValuePair> parameters, String urlwebserver ) {
+	public JSONArray getServerData(ArrayList<NameValuePair> parameters, String serverUrl) {
 		//conecta via http y envia un post.
-		httppostconnect(parameters,urlwebserver);
+		httppostconnect(parameters,serverUrl);
 
 		if (inputStream != null) { //si obtuvo una respuesta
-			getPostResponse();
-			return responseToJSONArray();
+			responseToString();
+			return stringToJSONArray(result);
 		} 
 		else
 			return null;
@@ -48,10 +48,10 @@ public class Httppostaux {
      * Realiza la consulta al servicio web y almacena
      * la respuesta en inputStream.
      *
-     * @param parametros Parametros que se van a pasar por POST
-     * @param urlwebserver URL del servicio al que se quiere acceder
+     * @param parameters Parametros que se van a pasar por POST
+     * @param serverUrl URL del servicio al que se quiere acceder
      */
-	private void httppostconnect(ArrayList<NameValuePair> parametros, String urlwebserver){
+	private void httppostconnect(ArrayList<NameValuePair> parameters, String serverUrl){
 		//
 		try {
 			HttpParams httpParameters = new BasicHttpParams();
@@ -61,21 +61,21 @@ public class Httppostaux {
 			HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
 			
 			HttpClient httpclient = new DefaultHttpClient(httpParameters);
-			HttpPost httppost = new HttpPost(urlwebserver);
-			httppost.setEntity(new UrlEncodedFormEntity(parametros));
+			HttpPost httppost = new HttpPost(serverUrl);
+			httppost.setEntity(new UrlEncodedFormEntity(parameters));
 			//ejecuto peticion enviando datos por POST
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
 			inputStream = entity.getContent();
         }
         catch(SocketTimeoutException e){
-            error = Constantes.TIMEOUT;
-            Log.e("http Error", "Socket timed out"+e.toString());
+            error = Constantes.ERR_TIMEOUT;
+            Log.e("http Error", "Socket timed out "+e.toString());
         } catch(ConnectTimeoutException e){
-            error = Constantes.TIMEOUT;
-            Log.e("http Error", "Conection timed out"+e.toString());
+            error = Constantes.ERR_TIMEOUT;
+            Log.e("http Error", "Conection timed out "+e.toString());
 		} catch(Exception e){
-            error = Constantes.UNKNOWN_HOST;
+            error = Constantes.ERR_UNKNOWN_HOST;
 			Log.e("http Error", "Error in http connection "+e.toString());
 		}
 	}
@@ -84,7 +84,7 @@ public class Httppostaux {
      * Convierte la respuesta almacenada en inputStream
      * en un String en result.
      */
-	public void getPostResponse() {
+	private void responseToString() {
 		//Convierte respuesta a String
 		try{
 			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"),8);
@@ -100,20 +100,17 @@ public class Httppostaux {
 
 			result=sb.toString();
 
-			Log.i("getPostResponse", sb.toString());
+			Log.i("responseToString", sb.toString());
 		} catch(Exception e){
 			Log.e("result Error", "Error converting result "+e.toString());
 		}
 	}
 
     /**
-     * Convierte el String result a JSONArray.
-     * @return JSONArray de la respuesta
      */
-	public JSONArray responseToJSONArray() {
-		//parse json data
+	public static JSONArray stringToJSONArray(String str) {
 		try {
-			JSONArray jArray = new JSONArray(result);
+			JSONArray jArray = new JSONArray(str);
 			return jArray;
 		}
 		catch(JSONException e) {

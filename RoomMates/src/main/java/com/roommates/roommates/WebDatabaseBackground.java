@@ -73,7 +73,7 @@ public class WebDatabaseBackground extends AsyncTask<Object, Boolean, Object[] >
 		postparameters2send.add(new BasicNameValuePair("idVivienda",vivienda));
 
 		// Realizamos una peticion y como respuesta obtenemos un array JSON
-		JSONArray jdata=post.getserverdata(postparameters2send, URL_todo);
+		JSONArray jdata=post.getServerData(postparameters2send, URL_todo);
 
 		//si lo que obtuvimos no es null
 		if (jdata!=null && jdata.length() > 0){

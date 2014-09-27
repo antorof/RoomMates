@@ -10,8 +10,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.roommates.roommates.R;
-
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -159,7 +157,7 @@ public class NewProductActivity extends ActionBarActivity {
     		postparameters2send.add(new BasicNameValuePair("Urgente","0")); //0->false, 1->true
 
     		//realizamos una peticion y como respuesta obtenes un array JSON
-    		JSONArray jdata=post.getserverdata(postparameters2send, URL_connect);
+    		JSONArray jdata=post.getServerData(postparameters2send, URL_connect);
 
     		//si lo que obtuvimos no es null
     		if (jdata!=null && jdata.length() > 0){

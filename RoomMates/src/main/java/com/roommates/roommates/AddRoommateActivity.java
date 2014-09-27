@@ -18,8 +18,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class AddRoommateActivity extends ActionBarActivity {
 
@@ -151,7 +149,7 @@ public class AddRoommateActivity extends ActionBarActivity {
     		postparameters2send.add(new BasicNameValuePair("idVivienda",idVivienda));
 
     		//realizamos una peticion y como respuesta obtenes un array JSON
-    		JSONArray jdata=post.getserverdata(postparameters2send, URL_connect);
+    		JSONArray jdata=post.getServerData(postparameters2send, URL_connect);
 
     		//si lo que obtuvimos no es null
     		if (jdata!=null && jdata.length() > 0){

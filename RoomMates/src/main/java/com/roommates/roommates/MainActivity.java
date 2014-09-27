@@ -700,7 +700,7 @@ public class MainActivity extends ActionBarActivity {
 
     		post = new Httppostaux();
     		//realizamos una peticion y como respuesta obtenes un array JSON
-    		JSONArray jdata=post.getserverdata(postparameters2send, URL_CONNECT);
+    		JSONArray jdata=post.getServerData(postparameters2send, URL_CONNECT);
 
     		//si lo que obtuvimos no es null
     		if (jdata!=null && jdata.length() > 0){
@@ -838,7 +838,7 @@ public class MainActivity extends ActionBarActivity {
     		post = new Httppostaux();
     		
     		//realizamos una peticion y como respuesta obtenes un array JSON
-    		JSONArray jdata = post.getserverdata(postparameters2send, URL_CONNECT);
+    		JSONArray jdata = post.getServerData(postparameters2send, URL_CONNECT);
 
     		//si lo que obtuvimos no es null
     		if (jdata!=null && jdata.length() > 0){
