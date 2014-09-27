@@ -34,12 +34,9 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
       View rowView = inflater.inflate(R.layout.list_item_navigation_drawer, parent, false);
       
       TextView textView = (TextView) rowView.findViewById(R.id.firstLine);
-      TextView textView2 = (TextView) rowView.findViewById(R.id.secondLine);
       ImageView imageView = (ImageView) rowView.findViewById(R.id.listIcon);
       
       textView.setText(values[position]);
-//      textView2.setText("Descripcion de "+values[position]);
-      textView2.setText(""); // No necesitamos descripcion por ahora
       
       // Apariencia:
       switch(position){
@@ -47,7 +44,6 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	    	  if(position == selectedItem) {
 	        	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
 	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
-	    	      textView2.setTextColor(Color.parseColor("#FFFEEE"));
 	    	      imageView.setImageResource(R.drawable.ic_home_light);
 	          }
 	          else {
@@ -58,7 +54,6 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	    	  if(position == selectedItem) {
 	        	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
 	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
-	    	      textView2.setTextColor(Color.parseColor("#FFFEEE"));
 	    	      imageView.setImageResource(R.drawable.ic_bills_light);
 	          }
 	          else {
@@ -69,7 +64,6 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	    	  if(position == selectedItem) {
 	        	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
 	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
-	    	      textView2.setTextColor(Color.parseColor("#FFFEEE"));
 	    	      imageView.setImageResource(R.drawable.ic_shopping_light);
 	          }
 	          else {
@@ -80,7 +74,6 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	    	  if(position == selectedItem) {
 	        	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
 	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
-	    	      textView2.setTextColor(Color.parseColor("#FFFEEE"));
 	    	      imageView.setImageResource(R.drawable.ic_tasks_light);
 	          }
 	          else {
@@ -91,7 +84,6 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	    	  if(position == selectedItem) {
 	        	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
 	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
-	    	      textView2.setTextColor(Color.parseColor("#FFFEEE"));
 	    	      imageView.setImageResource(R.drawable.ic_roommates_light);
 	          }
 	          else {
@@ -102,7 +94,6 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	      	  if(position == selectedItem) {
 	          	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
 	      	      textView.setTextColor(Color.parseColor("#FFFFFF"));
-	      	      textView2.setTextColor(Color.parseColor("#FFFEEE"));
 	      	      imageView.setImageResource(R.drawable.ic_rooms_light);
 	            }
 	            else {

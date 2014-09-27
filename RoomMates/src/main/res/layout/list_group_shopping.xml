@@ -58,7 +58,7 @@
 
     <LinearLayout
         android:id="@+id/urgent"
-        android:layout_width="6dip"
+        android:layout_width="4dip"
         android:layout_height="match_parent"
         android:background="#009B95"
         android:orientation="vertical"
