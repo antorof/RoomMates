@@ -45,6 +45,7 @@ public class ArrayAdapterRoommates extends ArrayAdapter<Object> {
     	
     	// Cambio la inicial y el color:
     	textViewInicialNombre.setText(value[1].toString().substring(0, 1));
+        textViewInicialNombre.setTextColor(Utilities.getContrastYIQ(value[5].toString())>=128?Color.BLACK:Color.WHITE);
     	textViewInicialNombre.setBackgroundColor( Color.parseColor(value[5].toString()));
     	
     	// Quito el + si el roommate no e roommate+

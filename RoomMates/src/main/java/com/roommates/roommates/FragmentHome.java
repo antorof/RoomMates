@@ -74,6 +74,7 @@ public class FragmentHome extends Fragment {
 
 		TextView tvInicial = (TextView) view.findViewById(R.id.homeCardName);
 		tvInicial.setText(nombre.substring(0, 1));
+        tvInicial.setTextColor(Utilities.getContrastYIQ(color)>=128?Color.BLACK:Color.WHITE);
 		
 		LinearLayout llBackgroundInicial = (LinearLayout) view.findViewById(R.id.homeCardNameBackground);
 		llBackgroundInicial.setBackgroundColor(Color.parseColor(color));

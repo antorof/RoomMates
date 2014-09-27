@@ -131,6 +131,7 @@ public class ExpandableListAdapterShopping extends BaseExpandableListAdapter {
 
     	// Cambio la inicial y el color:
     	textViewInicialNombre.setText(value[3].toString().substring(0, 1));
+        textViewInicialNombre.setTextColor(Utilities.getContrastYIQ(value[6].toString())>=128?Color.BLACK:Color.WHITE);
     	llinicialBack.setBackgroundColor( Color.parseColor(value[6].toString()) );
         
         return convertView;
