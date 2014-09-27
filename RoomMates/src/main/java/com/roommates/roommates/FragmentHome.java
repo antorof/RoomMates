@@ -16,13 +16,9 @@ import android.widget.TextView;
 import com.roommates.roommates.R;
 
 public class FragmentHome extends Fragment {
-	private String username;
-	private String password;
-
 	private View view;
-	private MainActivity mainActivity;
 
-	String inicial;
+    String inicial;
 	ArrayList<String> listaUsuarios;
 	ArrayList<String> listaApartamentos;
 	ArrayList<String> listaBills;
@@ -30,16 +26,10 @@ public class FragmentHome extends Fragment {
 	ArrayList<String> listaShopping;
 
 	@Override
-	public View onCreateView(
-		LayoutInflater inflater, ViewGroup container,
-		Bundle savedInstanceState) {	
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		view = inflater.inflate(R.layout.fragment_newhome, container, false);
-		
-		mainActivity = (MainActivity) getActivity();
-		username = mainActivity.username;
-		password = mainActivity.password;
-		
+        MainActivity mainActivity = (MainActivity) getActivity();
 
 		// Buscamos en las preferencias la ultima vivienda:
 	    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(mainActivity);
@@ -47,22 +37,23 @@ public class FragmentHome extends Fragment {
         String nombreViviendaActual = sharedPref.getString("nombre_vivienda", "");
         String rolEnViviendaActual = sharedPref.getString("rol_en_vivienda", "-1");
 
-	    mainActivity.idViviendaActual = idViviendaActual;
-        mainActivity.nombreViviendaActual = nombreViviendaActual;
-        mainActivity.rolEnViviendaActual = rolEnViviendaActual;
+	    Session.currentApartmentID   = idViviendaActual;
+        Session.currentApartmentName = nombreViviendaActual;
+        Session.currentRole          = rolEnViviendaActual;
 	    
-	    if (!mainActivity.idViviendaActual.equals("-1")
-                && !mainActivity.nombreViviendaActual.equals("")
-                && !mainActivity.rolEnViviendaActual.equals("-1") ) {
+	    if ( !idViviendaActual.equals("-1") &&
+             !nombreViviendaActual.equals("") &&
+             !rolEnViviendaActual.equals("-1") )
+        {
 			// Se llama a las distintas consultas de la base de datos 
-			new WebDatabaseBackground().execute("recuperarFacturas", mainActivity, username, password, 
-											idViviendaActual, "actualizarHomeFacturas");
+			new WebDatabaseBackground().execute("recuperarFacturas", mainActivity, Session.email, Session.password,
+                    Session.currentApartmentID, "actualizarHomeFacturas");
 	
-			new WebDatabaseBackground().execute("recuperarCompras", mainActivity, username, password, 
-											idViviendaActual, "actualizarHomeCompras");
+			new WebDatabaseBackground().execute("recuperarCompras", mainActivity, Session.email, Session.password,
+                    Session.currentApartmentID, "actualizarHomeCompras");
 	
-			new WebDatabaseBackground().execute("recuperarTareas", mainActivity, username, password, 
-											idViviendaActual, "actualizarHomeTareas");
+			new WebDatabaseBackground().execute("recuperarTareas", mainActivity, Session.email, Session.password,
+                    Session.currentApartmentID, "actualizarHomeTareas");
 	
 			setNombreVivienda();
 	    }
@@ -75,12 +66,11 @@ public class FragmentHome extends Fragment {
 	 * Funcion que pone el nombre y la inicial de el usuario en el Home
 	 */
 	private void setNombreEInicial() {
-		String nombre = mainActivity.nombre;
-		String apellidos = mainActivity.apellidos;
-		String color = mainActivity.color;
+		String nombre = Session.name;
+		String color = Session.color;
 		
 		TextView tvNombre = (TextView) view.findViewById(R.id.cardHomeCurrentUser);
-		tvNombre.setText(nombre+" "+apellidos);
+		tvNombre.setText(nombre);
 
 		TextView tvInicial = (TextView) view.findViewById(R.id.homeCardName);
 		tvInicial.setText(nombre.substring(0, 1));
@@ -94,6 +84,6 @@ public class FragmentHome extends Fragment {
 	 */
 	private void setNombreVivienda() {		
 		TextView tvNombreVivienda = (TextView) view.findViewById(R.id.cardHomeCurrentHome);
-		tvNombreVivienda.setText(mainActivity.nombreViviendaActual);
+		tvNombreVivienda.setText(Session.currentApartmentName);
 	}
 }

@@ -318,11 +318,16 @@ public class LoginActivity extends ActionBarActivity {
 	    			Ed.commit();
 			    }
 				Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-		    	intent.putExtra("USERNAME", username);
-		    	intent.putExtra("PASSWORD", password);
-		    	intent.putExtra("NOMBRE", nombre);
-		    	intent.putExtra("APELLIDOS", apellidos);
-		    	intent.putExtra("COLOR", color);
+//		    	intent.putExtra("USERNAME", username);
+//                intent.putExtra("PASSWORD", password);
+//                intent.putExtra("NOMBRE", nombre);
+//                intent.putExtra("APELLIDOS", apellidos);
+//                intent.putExtra("COLOR", color);
+
+                Session.email = username;
+                Session.password = password;
+                Session.name = nombre;
+                Session.color = color;
 		    	
 		    	startActivity(intent);
 				finish(); // Cerramos la pantalla de login

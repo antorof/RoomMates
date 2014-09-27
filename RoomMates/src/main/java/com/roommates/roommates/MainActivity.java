@@ -255,7 +255,7 @@ public class MainActivity extends ActionBarActivity {
                 break;
             case ROOMMATES:
                 getMenuInflater().inflate(R.menu.roommates, menu);
-                if( rolEnViviendaActual.equals("1") )
+                if( Session.currentRole.equals("1") )
                     getMenuInflater().inflate(R.menu.roommates_plus, menu);
                 break;
 			default:
@@ -400,118 +400,7 @@ public class MainActivity extends ActionBarActivity {
 	 Log.v("hola","hola");
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
 //		getListAdapter().getItem(info.position);
-		switch (item.getItemId()) 
-	    {
-	    	/* TASKS */ /* AHORA MISMO NO SE USA POR LOS EXPANDABLE-LIST*/
-//	        case R.id.opcion_eliminar_tarea:{
-//	        	View v = info.targetView;
-//	        	final Object[] value = (Object[]) fragmentTasks.getListItem(info.position);
-//                final String nombre = (String) value[1];
-//
-//                // ---- dialog ----
-//                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-//				dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//					@Override
-//					public void onClick(DialogInterface dialog, int which) {
-//						new AsyncRemove().execute("TASKS",(String)value[2],(String)value[1]);
-//					}
-//				});
-//				dialogBuilder.setNeutralButton("No", new DialogInterface.OnClickListener() {
-//					public void onClick(DialogInterface dialog, int which) {
-//					}
-//				});
-//				dialogBuilder.setMessage("Do you want to delete this task? ("+nombre+")");
-//				dialogBuilder.setCancelable(true);//.setTitle("AVISO");
-//				dialogBuilder.setIcon(R.drawable.ic_action_warning).setTitle("Delete item");
-//				dialogBuilder.create().show();
-//
-//	        	return true;
-//	        }
-//	        case R.id.opcion_hecho_tarea:{
-//	        	final Object[] value = (Object[]) fragmentTasks.getListItem(info.position);
-//	            final String nombre = (String) value[1];
-//	        	Toast.makeText(MainActivity.this,
-//	        			"Task \""+nombre+"\" done",
-//	        			Toast.LENGTH_LONG).show();
-//
-//	            return true;
-//	        }
-	        /* SHOPPING */ /* AHORA MISMO NO SE USA POR LOS EXPANDABLE-LIST*/
-//	        case R.id.opcion_eliminar_producto:{
-//	        	View v = info.targetView;
-//	        	final Object[] value = (Object[]) fragmentShopping.getListItem(info.position);
-//                final String nombre = (String) value[1];
-//
-//                // ---- dialog ----
-//                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-//				dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//					@Override
-//					public void onClick(DialogInterface dialog, int which) {
-//						new AsyncRemove().execute("SHOPPING",(String)value[4],(String)value[1]);
-//					}
-//				});
-//				dialogBuilder.setNeutralButton("No", new DialogInterface.OnClickListener() {
-//					public void onClick(DialogInterface dialog, int which) {
-//					}
-//				});
-//				dialogBuilder.setMessage("Do you want to delete this product? ("+nombre+")");
-//				dialogBuilder.setCancelable(true);//.setTitle("AVISO");
-//				dialogBuilder.setIcon(R.drawable.ic_action_warning).setTitle("Delete item");
-//				dialogBuilder.create().show();
-//
-//	        	return true;
-//	        }
-//	        case R.id.opcion_comprado_producto:{
-//                final Object[] value = (Object[]) fragmentShopping.getListItem(info.position);
-//
-//	        	//aqui se quita el estado de urgente poniendo el 0
-//	            new AsyncUpdate().execute("SHOPPING",(String)value[4],(String)value[1],"0");
-//
-//	            return true;
-//	        }
-//	        case R.id.opcion_urgente_producto:
-//	        {//TODO ¿Mejorar la funcion de producto urgente para que se pueda tambien desmarcar? (en php o aqui)
-//	        	final Object[] value = (Object[]) fragmentShopping.getListItem(info.position);
-//
-//	            //aqui se hace urgente = 1.
-//	            new AsyncUpdate().execute("SHOPPING",(String)value[4],(String)value[1],"1");
-//
-//	            return true;
-//	        }
-	        /* BILLS */ /* AHORA MISMO NO SE USA POR LOS EXPANDABLE-LIST*/
-//	        case R.id.opcion_eliminar_factura:{
-//	        	View v = info.targetView;
-//	        	final Object[] value = (Object[]) fragmentBills.getListItem(info.position);
-//                final String nombre = (String) value[2];
-//
-//                // ---- dialog ----
-//                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-//                dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        new AsyncRemove().execute("BILLS",(String)value[1]);
-//                    }
-//                });
-//                dialogBuilder.setNeutralButton("No", new DialogInterface.OnClickListener() {
-//					public void onClick(DialogInterface dialog, int which) {
-//					}
-//				});
-//				dialogBuilder.setMessage("Do you want to delete this bill? ("+nombre+")");
-//				dialogBuilder.setCancelable(true);//.setTitle("AVISO");
-//				dialogBuilder.setIcon(R.drawable.ic_action_warning).setTitle("Delete item");
-//				dialogBuilder.create().show();
-//
-//	        	return true;
-//	        }
-//	        case R.id.opcion_pagada_factura:{
-//	        	final Object[] value = (Object[]) fragmentBills.getListItem(info.position);
-//                final String nombre = (String) value[2];
-//	        	Toast.makeText(MainActivity.this,
-//	        			"Bill \""+nombre+"\" paid",
-//	        			Toast.LENGTH_LONG).show();
-//
-//	            return true;
-//	        }
+		switch (item.getItemId()) {
 	        default:
 	            return super.onContextItemSelected(item);
 	    }
@@ -684,7 +573,7 @@ public class MainActivity extends ActionBarActivity {
 
     		ArrayList<NameValuePair> postparameters2send= new ArrayList<NameValuePair>();
     		postparameters2send.add(new BasicNameValuePair("Correo",MainActivity.this.username)); 
-    		postparameters2send.add(new BasicNameValuePair("Contrasena",MainActivity.this.password)); 
+    		postparameters2send.add(new BasicNameValuePair("Contrasena",Session.password)); 
     		
     		if( elemento_a_borrar.equals("BILLS") ) {
         		postparameters2send.add(new BasicNameValuePair("idFactura",parametrosRecibidos[1]));
@@ -800,11 +689,11 @@ public class MainActivity extends ActionBarActivity {
     		int estado = -1;
 
     		ArrayList<NameValuePair> postparameters2send= new ArrayList<NameValuePair>();
-    		postparameters2send.add(new BasicNameValuePair("Correo",MainActivity.this.username)); 
-    		postparameters2send.add(new BasicNameValuePair("Contrasena",MainActivity.this.password));
+    		postparameters2send.add(new BasicNameValuePair("Correo",Session.email)); 
+    		postparameters2send.add(new BasicNameValuePair("Contrasena",Session.password));
     		
     		if( elemento_a_actualizar.equals("BILLS") ) {
-                postparameters2send.add(new BasicNameValuePair("idVivienda",parametrosRecibidos[1]));
+                postparameters2send.add(new BasicNameValuePair("idVivienda",Session.currentApartmentID));
                 postparameters2send.add(new BasicNameValuePair("idFactura",parametrosRecibidos[2]));
                 postparameters2send.add(new BasicNameValuePair("Pagado",parametrosRecibidos[3]));
                 Calendar cal = new GregorianCalendar();
@@ -821,7 +710,7 @@ public class MainActivity extends ActionBarActivity {
         		//postparameters2send.add(new BasicNameValuePair("nombreTarea",parametrosRecibidos[2]));
     		}
     		else if( elemento_a_actualizar.equals("SHOPPING") ) {
-        		postparameters2send.add(new BasicNameValuePair("idVivienda",parametrosRecibidos[1]));
+        		postparameters2send.add(new BasicNameValuePair("idVivienda",Session.currentApartmentID));
         		postparameters2send.add(new BasicNameValuePair("nombreProducto",parametrosRecibidos[2]));
         		postparameters2send.add(new BasicNameValuePair("urgente",parametrosRecibidos[3]));
         		if(this.parametrosRecibidos[3].equals("0")){ // si vamos a marcar como comprado

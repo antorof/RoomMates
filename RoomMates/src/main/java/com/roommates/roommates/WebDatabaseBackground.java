@@ -48,9 +48,9 @@ public class WebDatabaseBackground extends AsyncTask<Object, Boolean, Object[] >
 		
 		consulta = (String) params[0];
 		callerActivity = (MainActivity) params[1];
-		username = (String) params[2];
-		password = (String) params[3];
-		vivienda = (String) params[4];
+		username = Session.email;
+		password = Session.password;
+		vivienda = Session.currentApartmentID;
 		
 		postMethod = (String) params[5];
 		
