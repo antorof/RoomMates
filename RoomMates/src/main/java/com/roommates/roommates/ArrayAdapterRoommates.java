@@ -49,6 +49,7 @@ public class ArrayAdapterRoommates extends ArrayAdapter<Object> {
     	textViewInicialNombre.setBackgroundColor( Color.parseColor(value[5].toString()));
     	
     	// Quito el + si el roommate no e roommate+
+        textViewPlus.setTextColor(Utilities.getContrastYIQ(value[5].toString())>=128?Color.BLACK:Color.WHITE);
     	if(value[4].toString().equals("0"))
     		textViewPlus.setText("");
     	
