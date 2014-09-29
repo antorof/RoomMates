@@ -604,18 +604,18 @@ public class MainActivity extends ActionBarActivity {
     		int estado = -1;
 
     		ArrayList<NameValuePair> postparameters2send= new ArrayList<NameValuePair>();
-    		postparameters2send.add(new BasicNameValuePair("Correo",MainActivity.this.username)); 
+    		postparameters2send.add(new BasicNameValuePair("Correo",Session.email));
     		postparameters2send.add(new BasicNameValuePair("Contrasena",Session.password)); 
     		
     		if( elemento_a_borrar.equals("BILLS") ) {
         		postparameters2send.add(new BasicNameValuePair("idFactura",parametrosRecibidos[1]));
     		}
     		else if( elemento_a_borrar.equals("TASKS") ) {
-        		postparameters2send.add(new BasicNameValuePair("idVivienda",parametrosRecibidos[1]));
+        		postparameters2send.add(new BasicNameValuePair("idVivienda",Session.currentApartmentID));
         		postparameters2send.add(new BasicNameValuePair("nombreTarea",parametrosRecibidos[2]));
     		}
     		else if( elemento_a_borrar.equals("SHOPPING") ) {
-        		postparameters2send.add(new BasicNameValuePair("idVivienda",parametrosRecibidos[1]));
+        		postparameters2send.add(new BasicNameValuePair("idVivienda",Session.currentApartmentID));
         		postparameters2send.add(new BasicNameValuePair("nombreProducto",parametrosRecibidos[2]));
     		}
 
