@@ -347,6 +347,13 @@ public class MainActivity extends ActionBarActivity {
                 Toast.makeText(this, "RoomMates est\u00E1 todav\u00EDa en fase de prototipo.", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_logout:
+                SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                SharedPreferences.Editor Ed=sp.edit();
+                Ed.putString("password","-1");
+                Ed.putString("id_vivienda","-1");
+                Ed.putString("nombre_vivienda","-1");
+                Ed.commit();
+
                 intent = new Intent(this, LoginActivity.class);
                 intent.putExtra("LOGOGUT",true);
                 startActivity(intent);
