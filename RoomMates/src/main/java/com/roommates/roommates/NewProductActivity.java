@@ -59,6 +59,12 @@ public class NewProductActivity extends ActionBarActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.right_in, R.anim.right_out);
+    }
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -72,6 +78,7 @@ public class NewProductActivity extends ActionBarActivity {
 		case android.R.id.home:
             setResult(ActionBarActivity.RESULT_CANCELED);
 			finish();
+            overridePendingTransition(R.anim.right_in, R.anim.right_out);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -127,6 +134,7 @@ public class NewProductActivity extends ActionBarActivity {
     			Toast.makeText(getApplicationContext(), "Product added", Toast.LENGTH_LONG).show();
                 setResult(ActionBarActivity.RESULT_OK);
     			finish();
+                overridePendingTransition(R.anim.right_in, R.anim.right_out);
     		} else{
     			Toast.makeText(getApplicationContext(), "Error: product not added", Toast.LENGTH_LONG).show();
     		}

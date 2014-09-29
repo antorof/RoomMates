@@ -57,6 +57,12 @@ public class AddRoommateActivity extends ActionBarActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.right_in, R.anim.right_out);
+    }
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -70,6 +76,7 @@ public class AddRoommateActivity extends ActionBarActivity {
 		case android.R.id.home:
             setResult(ActionBarActivity.RESULT_CANCELED);
 			finish();
+            overridePendingTransition(R.anim.right_in, R.anim.right_out);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

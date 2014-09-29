@@ -330,6 +330,7 @@ public class LoginActivity extends ActionBarActivity {
                 Session.color = color;
 		    	
 		    	startActivity(intent);
+                overridePendingTransition(R.anim.left_in, R.anim.left_out);
 				finish(); // Cerramos la pantalla de login
 				
 			} else if (success == 0)  {

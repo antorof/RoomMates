@@ -350,6 +350,7 @@ public class MainActivity extends ActionBarActivity {
                 intent = new Intent(this, LoginActivity.class);
                 intent.putExtra("LOGOGUT",true);
                 startActivity(intent);
+                overridePendingTransition(R.anim.right_in, R.anim.right_out);
                 finish();
                 break;
 			case R.id.action_add_task:
@@ -359,6 +360,7 @@ public class MainActivity extends ActionBarActivity {
 			    	intent.putExtra("PASSWORD", password);
 			    	intent.putExtra("ID_VIVIENDA", idViviendaActual);
                     startActivityForResult(intent, TASKS);
+                    overridePendingTransition(R.anim.left_in, R.anim.left_out);
 				}
 				break;
 			case R.id.action_add_product:
@@ -368,6 +370,7 @@ public class MainActivity extends ActionBarActivity {
 			    	intent.putExtra("PASSWORD", password);
 			    	intent.putExtra("ID_VIVIENDA", idViviendaActual);
                     startActivityForResult(intent, SHOPPING);
+                    overridePendingTransition(R.anim.left_in, R.anim.left_out);
 				}
 				break;
 			case R.id.action_add_apartment:
@@ -375,6 +378,7 @@ public class MainActivity extends ActionBarActivity {
 		    	intent.putExtra("USERNAME", username);
 		    	intent.putExtra("PASSWORD", password);
                 startActivityForResult(intent, APARTMENTS);
+                overridePendingTransition(R.anim.left_in, R.anim.left_out);
 				break;
             case R.id.action_add_bill:
                 if(!idViviendaActual.equals("-1")){
@@ -383,6 +387,7 @@ public class MainActivity extends ActionBarActivity {
                     intent.putExtra("PASSWORD", password);
                     intent.putExtra("ID_VIVIENDA", idViviendaActual);
                     startActivityForResult(intent, BILLS);
+                    overridePendingTransition(R.anim.left_in, R.anim.left_out);
                 }
                 break;
             case R.id.action_add_roommate:
@@ -392,6 +397,7 @@ public class MainActivity extends ActionBarActivity {
                     intent.putExtra("PASSWORD", password);
                     intent.putExtra("ID_VIVIENDA", idViviendaActual);
                     startActivityForResult(intent, ROOMMATES);
+                    overridePendingTransition(R.anim.left_in, R.anim.left_out);
                 }
                 break;
 			case R.id.action_sync_tasks:
