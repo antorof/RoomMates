@@ -39,8 +39,6 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
     String URL_connect = Constantes.NUEVA_CASA_URL;
     
 	private Httppostaux post;
-	private String correo;
-	private String contrasenia;
 	
 	private String codigo = "n_code";
 	
@@ -61,18 +59,6 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
 		
 		botonAceptar = (Button) findViewById (R.id.boton_hecho);
 		botonAceptar.setOnClickListener(this);
-		
-
-		Bundle extras = getIntent().getExtras();
-        //Obtenemos datos enviados en el intent.
-        if (extras != null) {
-        	correo  = extras.getString("USERNAME");
-        	contrasenia = extras.getString("PASSWORD");
-        }
-        else {
-        	correo  = "error";
-        	contrasenia = "error";
-        }
         
         post = new Httppostaux();
 	}
@@ -146,7 +132,7 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
 				return;
 			}
 		
-			
+
 			// Generaci�n de c�digo: tama�o 10, letras minus mayus y n�s
 			codigo = generarCodigo();
 			
@@ -159,7 +145,7 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
 //					direccion.setText("");
 //					pass.setText("");
 //					rPass.setText("");
-					new asyncConsult().execute("");
+					new asyncCreateApartment().execute("");
 				}
 			});
 			dialogBuilder.setNeutralButton("Copy to clipboard", new DialogInterface.OnClickListener() {
@@ -178,7 +164,7 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
 			            }
 			            
 			        } catch (Exception e) { e.printStackTrace(); }
-					new asyncConsult().execute("");
+					new asyncCreateApartment().execute("");
 				}
 			});
 			dialogBuilder.setMessage("Generated code:\n"+ codigo);
@@ -251,7 +237,7 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
      * Clase que se encarga de la peticion asincrona para aniadir una tarea
      * 
      */
-	class asyncConsult extends AsyncTask< String, String, String > {
+	class asyncCreateApartment extends AsyncTask< String, String, String > {
 		private ProgressDialog pDialog;
     	
     	protected void onPreExecute() {
@@ -265,7 +251,7 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
 
     	protected String doInBackground(String... params) {
     		//enviamos y recibimos y analizamos los datos en segundo plano.
-    		if (hacerCosas(correo)){
+    		if (hacerCosas("")){
     			return "ok"; // tarea aniadida
     		} else{    		
     			return "err"; // tarea no aniadida   	          	  
@@ -274,7 +260,7 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
     	
     	protected void onPostExecute(String result) {
     		pDialog.dismiss();//ocultamos progess dialog.
-    		Log.v("[asyncConsult] onPostExecute=",""+result);
+    		Log.v("[asyncCreateApartment] onPostExecute=",""+result);
 
     		if (result.equals("ok")){
     			Toast.makeText(getApplicationContext(), "Apartment added", Toast.LENGTH_LONG).show();
@@ -297,8 +283,8 @@ public class NewApartmentActivity extends ActionBarActivity implements OnClickLi
     		
     		ArrayList<NameValuePair> postparameters2send= new ArrayList<NameValuePair>();
 
-    		postparameters2send.add(new BasicNameValuePair("Correo",correo)); 
-    		postparameters2send.add(new BasicNameValuePair("Contrasena",contrasenia)); 
+    		postparameters2send.add(new BasicNameValuePair("Correo",Session.email));
+    		postparameters2send.add(new BasicNameValuePair("Contrasena",Session.password));
     		postparameters2send.add(new BasicNameValuePair("NombreVivienda",nombreVivienda));
     		postparameters2send.add(new BasicNameValuePair("DireccionVivienda",direccionVivienda));
     		postparameters2send.add(new BasicNameValuePair("ContrasenaVivienda",contrasenaVivienda));

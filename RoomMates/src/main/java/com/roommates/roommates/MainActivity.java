@@ -382,8 +382,6 @@ public class MainActivity extends ActionBarActivity {
 				break;
 			case R.id.action_add_apartment:
 				intent = new Intent(this,NewApartmentActivity.class);
-		    	intent.putExtra("USERNAME", username);
-		    	intent.putExtra("PASSWORD", password);
                 startActivityForResult(intent, APARTMENTS);
                 overridePendingTransition(R.anim.left_in, R.anim.left_out);
 				break;
