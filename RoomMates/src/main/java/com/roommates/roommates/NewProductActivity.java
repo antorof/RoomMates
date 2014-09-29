@@ -22,10 +22,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class NewProductActivity extends ActionBarActivity {
-
-	private String username;
-	private String password;
-	private String idVivienda;
 	private String URL_connect = Constantes.NUEVO_PODUCTO_URL;
 	private Httppostaux post;
 
@@ -33,21 +29,8 @@ public class NewProductActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_product);
-		// Show the Up button in the action bar.
+
 		setupActionBar();
-		
-		Bundle extras = getIntent().getExtras();
-        //Obtenemos datos enviados en el intent.
-        if (extras != null) {
-        	username = extras.getString("USERNAME");
-        	password = extras.getString("PASSWORD");
-        	idVivienda = extras.getString("ID_VIVIENDA");
-        }
-        else {
-        	username = "error";
-        	password = "error";
-        	idVivienda = "";
-        }
         
         post = new Httppostaux();
 	}
@@ -94,7 +77,7 @@ public class NewProductActivity extends ActionBarActivity {
 			etNombre.setError(getResources().getString(R.string.error_field_required));
 		}
 		else {
-			new asyncConsult().execute("");
+			new asyncCreateTask().execute("");
 			etNombre.setError(null);
 		}
 		
@@ -105,7 +88,7 @@ public class NewProductActivity extends ActionBarActivity {
      * Clase que se encarga de la peticion asincrona para aniadir una tarea
      * 
      */
-	class asyncConsult extends AsyncTask< String, String, String > {
+	class asyncCreateTask extends AsyncTask< String, String, String > {
 		private ProgressDialog pDialog;
     	
     	protected void onPreExecute() {
@@ -119,7 +102,7 @@ public class NewProductActivity extends ActionBarActivity {
 
     	protected String doInBackground(String... params) {
     		//enviamos y recibimos y analizamos los datos en segundo plano.
-    		if (hacerCosas(username)){
+    		if (hacerCosas(null)){
     			return "ok"; // tarea aniadida
     		} else{    		
     			return "err"; // tarea no aniadida   	          	  
@@ -128,7 +111,7 @@ public class NewProductActivity extends ActionBarActivity {
     	
     	protected void onPostExecute(String result) {
     		pDialog.dismiss();//ocultamos progess dialog.
-    		Log.v("[asyncConsult] onPostExecute=",""+result);
+    		Log.v("[asyncCreateTask] onPostExecute=",""+result);
 
     		if (result.equals("ok")){
     			Toast.makeText(getApplicationContext(), "Product added", Toast.LENGTH_LONG).show();
@@ -157,10 +140,10 @@ public class NewProductActivity extends ActionBarActivity {
     	    		
     		ArrayList<NameValuePair> postparameters2send= new ArrayList<NameValuePair>();
     		
-    		postparameters2send.add(new BasicNameValuePair("Correo",NewProductActivity.this.username));
-    		postparameters2send.add(new BasicNameValuePair("Contrasena",NewProductActivity.this.password));
+    		postparameters2send.add(new BasicNameValuePair("Correo",Session.email));
+    		postparameters2send.add(new BasicNameValuePair("Contrasena",Session.password));
+            postparameters2send.add(new BasicNameValuePair("idVivienda",Session.currentApartmentID));
     		postparameters2send.add(new BasicNameValuePair("nombreProducto",etNombre.getText().toString()));
-    		postparameters2send.add(new BasicNameValuePair("idVivienda",idVivienda));
     		postparameters2send.add(new BasicNameValuePair("Fecha",year+"-"+month+"-"+day));
     		postparameters2send.add(new BasicNameValuePair("Urgente","0")); //0->false, 1->true
 
