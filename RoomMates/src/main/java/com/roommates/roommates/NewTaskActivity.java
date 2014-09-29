@@ -26,10 +26,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class NewTaskActivity extends ActionBarActivity {
-
-	private String username;
-	private String password;
-	private String idVivienda;
 	private String URL_connect = Constantes.NUEVA_TAREA_URL;
 	private Httppostaux post;
 
@@ -40,21 +36,8 @@ public class NewTaskActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_task);
-		// Show the Up button in the action bar.
+
 		setupActionBar();
-		
-		Bundle extras = getIntent().getExtras();
-        //Obtenemos datos enviados en el intent.
-        if (extras != null) {
-        	username   = extras.getString("USERNAME");
-        	password   = extras.getString("PASSWORD");
-        	idVivienda = extras.getString("ID_VIVIENDA");
-        }
-        else {
-        	username   = "error";
-        	password   = "error";
-        	idVivienda = "error";
-        }
         
         post = new Httppostaux();
 
@@ -92,9 +75,9 @@ public class NewTaskActivity extends ActionBarActivity {
         spinnerTipoIntervalo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                Toast.makeText(NewTaskActivity.this,
-                        ":"+pos+":"+" "+parent.getItemAtPosition(pos),
-                        Toast.LENGTH_LONG).show();
+//                Toast.makeText(NewTaskActivity.this,
+//                        ":"+pos+":"+" "+parent.getItemAtPosition(pos),
+//                        Toast.LENGTH_LONG).show();
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -202,9 +185,9 @@ public class NewTaskActivity extends ActionBarActivity {
     		
     		ArrayList<NameValuePair> postparameters2send= new ArrayList<NameValuePair>();
 
-    		postparameters2send.add(new BasicNameValuePair("Correo",NewTaskActivity.this.username));
-    		postparameters2send.add(new BasicNameValuePair("Contrasena",NewTaskActivity.this.password));
-            postparameters2send.add(new BasicNameValuePair("idVivienda",idVivienda));
+    		postparameters2send.add(new BasicNameValuePair("Correo",Session.email));
+    		postparameters2send.add(new BasicNameValuePair("Contrasena",Session.password));
+            postparameters2send.add(new BasicNameValuePair("idVivienda",Session.currentApartmentID));
     		postparameters2send.add(new BasicNameValuePair("nombreTarea",etNombre.getText().toString()));
             postparameters2send.add(new BasicNameValuePair("inicio",etFrom.getText().toString()));
             postparameters2send.add(new BasicNameValuePair("intervalo",etIntervalo.getText().toString()));
