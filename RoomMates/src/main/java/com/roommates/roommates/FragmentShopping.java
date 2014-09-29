@@ -49,6 +49,7 @@ public class FragmentShopping extends Fragment {
 
 
     public void actualizarLista(){
+        view.findViewById(R.id.progressBarListaCompras).setVisibility(View.VISIBLE);
         new WebDatabaseBackground().execute("recuperarCompras", mainActivity, username, password,
                 vivienda, "actualizarListaExpCompras");
     }

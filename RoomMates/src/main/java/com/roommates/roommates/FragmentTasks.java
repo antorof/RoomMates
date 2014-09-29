@@ -37,6 +37,7 @@ public class FragmentTasks extends Fragment {
 	}
 	
 	public void actualizarLista(){
+        view.findViewById(R.id.progressBarListaTareas).setVisibility(View.VISIBLE);
         new WebDatabaseBackground().execute("recuperarTareas", mainActivity, username, password,
                 vivienda, "actualizarListaExpTareas");
     }

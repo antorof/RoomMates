@@ -35,6 +35,7 @@ public class FragmentApartments extends Fragment {
 	}
 	
 	public void actualizarLista(){
+        view.findViewById(R.id.progressBarListaApartaments).setVisibility(View.VISIBLE);
 		new WebDatabaseBackground().execute("recuperarApartamentos", mainActivity, username, password,
                 casa, "actualizarListaApartamentos");
 	}

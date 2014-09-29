@@ -41,6 +41,7 @@ public class FragmentBills extends Fragment {
 	}
 
     public void actualizarLista(){
+        view.findViewById(R.id.progressBarListaFacturas).setVisibility(View.VISIBLE);
         new WebDatabaseBackground().execute("recuperarFacturas", mainActivity, username, password,
                 vivienda, "actualizarListaExpBills");
     }

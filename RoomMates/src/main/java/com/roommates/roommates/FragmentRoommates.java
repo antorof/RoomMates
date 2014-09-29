@@ -68,6 +68,7 @@ public class FragmentRoommates extends Fragment {
      *  Vuelve a consultar la BD y actualiza la lista
      */
     public void actualizarLista(){
+        view.findViewById(R.id.progressBarListaRoommates).setVisibility(View.VISIBLE);
         new WebDatabaseBackground().execute("recuperarRoommates", mainActivity, username, password, casa,
                 "actualizarListaRoommates");
     }

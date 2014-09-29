@@ -878,6 +878,7 @@ public class MainActivity extends ActionBarActivity {
 			    	}).show();
 			}
 		});
+        findViewById(R.id.progressBarListaApartaments).setVisibility(View.GONE);
 	}
 
 	/**
@@ -892,6 +893,8 @@ public class MainActivity extends ActionBarActivity {
 				this, android.R.layout.simple_list_item_1, values);
 		ListView listaRoommates = (ListView) findViewById(R.id.listaRoommates);
 		listaRoommates.setAdapter(adapter);
+
+        findViewById(R.id.progressBarListaRoommates).setVisibility(View.GONE);
 	}
 	
 	/**
@@ -982,6 +985,7 @@ public class MainActivity extends ActionBarActivity {
                	return false;
             }
         });
+        findViewById(R.id.progressBarListaFacturas).setVisibility(View.GONE);
 	}
     public void remove_bill(String idFactura){
         new AsyncRemove().execute("BILLS", idFactura);
@@ -1064,6 +1068,7 @@ public class MainActivity extends ActionBarActivity {
                	return false;
             }
         });
+        findViewById(R.id.progressBarListaTareas).setVisibility(View.GONE);
 	}
     public void remove_task(String header){
 		new AsyncRemove().execute("TASKS", idViviendaActual, header);
@@ -1144,6 +1149,7 @@ public class MainActivity extends ActionBarActivity {
                	return false;
             }
         });
+        findViewById(R.id.progressBarListaCompras).setVisibility(View.GONE);
 	}
     public void buy_product(String nombre){
     	new AsyncUpdate().execute("SHOPPING", idViviendaActual, nombre,"0");
