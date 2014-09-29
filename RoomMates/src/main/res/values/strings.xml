@@ -82,6 +82,7 @@
     <string name="addroommate_useremail_hint">User email (not yours)</string>
     <string name="addroommate_button_text">Add roommate</string>
     <string name="expandablelist_cancelpayment_text">Cancel bill\'s payment</string>
+    <string name="tasklist_every">Every</string>
     <string-array name="tipo_intervalo_tarea">
         <item>Days</item>
         <item>Weeks</item>

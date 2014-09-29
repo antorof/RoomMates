@@ -108,7 +108,11 @@ public class ExpandableListAdapterTasks extends BaseExpandableListAdapter {
          
          textViewDate.setText(value[5]+" \u21E8 "+value[6]); //" \u2192 "
          textViewFirstLine.setText(value[1].toString());
-         textViewSecondLine.setText("");
+         textViewSecondLine.setText(
+                 parent.getResources().getString(R.string.tasklist_every) + " " +
+                 value[5] +
+                 " " + parent.getResources().getStringArray(R.array.tipo_intervalo_tarea)[Integer.parseInt(value[6].toString())]
+         );
          
          return convertView;
     }

@@ -80,6 +80,7 @@
     <string name="newtask_button_text">Añadir tarea</string>
     <string name="addroommate_useremail_hint">Email del usuario</string>
     <string name="addroommate_button_text">Añadir compañero</string>
+    <string name="tasklist_every">Cada</string>
     <string-array name="tipo_intervalo_tarea">
         <item>Días</item>
         <item>Semanas</item>

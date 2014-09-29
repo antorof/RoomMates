@@ -52,7 +52,8 @@
         android:layout_alignBottom="@id/listIcon"
         android:singleLine="true"
         android:text="Description"
-        android:textSize="12sp" 
+        android:textSize="12sp"
+        android:textColor="@color/gris_oscuro"
         android:gravity="center_vertical"/>
 
 </RelativeLayout> 
