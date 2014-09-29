@@ -146,31 +146,61 @@ public class MainActivity extends ActionBarActivity {
 			public void onItemClick(AdapterView parent, View view,
 					int position, long id) {
 
-				Fragment fragment = null;
+				Fragment fragment;
 
 				switch (position) {
 					case 0:
 						fragment = new FragmentHome();
 						break;
 					case BILLS:
-						fragment = new FragmentBills();
-						fragmentBills = (FragmentBills)fragment;
+                        if (fragmentBills == null) {
+                            fragment = new FragmentBills();
+                            fragmentBills = (FragmentBills)fragment;
+                        }
+						else{
+                            fragment = fragmentBills;
+                            fragmentBills.actualizarLista();
+                        }
 						break;
 					case SHOPPING:
-						fragment = new FragmentShopping();
-						fragmentShopping = (FragmentShopping)fragment;
+                        if (fragmentShopping == null) {
+                            fragment = new FragmentShopping();
+                            fragmentShopping = (FragmentShopping)fragment;
+                        }
+                        else {
+                            fragment = fragmentShopping;
+                            fragmentShopping.actualizarLista();
+                        }
 						break;
 					case TASKS:
-						fragment = new FragmentTasks();
-						fragmentTasks = (FragmentTasks)fragment;
+                        if (fragmentTasks == null) {
+                            fragment = new FragmentTasks();
+                            fragmentTasks = (FragmentTasks)fragment;
+                        }
+                        else {
+                            fragment = fragmentTasks;
+                            fragmentTasks.actualizarLista();
+                        }
 						break;
 					case ROOMMATES:
-						fragment = new FragmentRoommates();
-                        fragmentRoommates = (FragmentRoommates)fragment;
+                        if (fragmentRoommates == null) {
+                            fragment = new FragmentRoommates();
+                            fragmentRoommates = (FragmentRoommates) fragment;
+                        }
+                        else {
+                            fragment = fragmentRoommates;
+                            fragmentRoommates.actualizarLista();
+                        }
 						break;
 					case APARTMENTS:
-						fragmentApartments = new FragmentApartments();
-						fragment = fragmentApartments;
+                        if (fragmentApartments == null) {
+                            fragmentApartments = new FragmentApartments();
+                            fragment = fragmentApartments;
+                        }
+                        else {
+                            fragment = fragmentApartments;
+                            fragmentApartments.actualizarLista();
+                        }
 						break;
 					default:
 						fragment = new FragmentHome();
@@ -365,24 +395,29 @@ public class MainActivity extends ActionBarActivity {
                 }
                 break;
 			case R.id.action_sync_tasks:
-				fragmentTasks = new FragmentTasks();
-				getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentTasks).commit();
+//				fragmentTasks = new FragmentTasks();
+//				getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentTasks).commit();
+                fragmentTasks.actualizarLista();
 				break;
 			case R.id.action_sync_shopping:
-				fragmentShopping = new FragmentShopping();
-				getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentShopping).commit();
+//				fragmentShopping = new FragmentShopping();
+//				getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentShopping).commit();
+                fragmentShopping.actualizarLista();
 				break;
 			case R.id.action_sync_apartments:
-				fragmentApartments = new FragmentApartments();
-				getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentApartments).commit();
+//				fragmentApartments = new FragmentApartments();
+//				getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentApartments).commit();
+                fragmentApartments.actualizarLista();
 				break;
             case R.id.action_sync_bills:
-                fragmentBills = new FragmentBills();
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentBills).commit();
+//                fragmentBills = new FragmentBills();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentBills).commit();
+                fragmentBills.actualizarLista();
                 break;
             case R.id.action_sync_roommates:
-                fragmentRoommates = new FragmentRoommates();
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentRoommates).commit();
+//                fragmentRoommates = new FragmentRoommates();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragmentRoommates).commit();
+                fragmentRoommates.actualizarLista();
                 break;
 			default:
 				return super.onOptionsItemSelected(item);
