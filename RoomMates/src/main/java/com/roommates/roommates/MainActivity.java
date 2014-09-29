@@ -382,9 +382,6 @@ public class MainActivity extends ActionBarActivity {
             case R.id.action_add_bill:
                 if(!idViviendaActual.equals("-1")){
                     intent = new Intent(this,NewBillActivity.class);
-                    intent.putExtra("USERNAME", username);
-                    intent.putExtra("PASSWORD", password);
-                    intent.putExtra("ID_VIVIENDA", idViviendaActual);
                     startActivityForResult(intent, BILLS);
                     overridePendingTransition(R.anim.left_in, R.anim.left_out);
                 }

@@ -21,10 +21,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class NewBillActivity extends ActionBarActivity {
-
-	private String username;
-	private String password;
-	private String vivienda;
 	private String URL_connect = Constantes.NUEVA_FACTURA_URL;
 	private Httppostaux post;
 
@@ -32,23 +28,8 @@ public class NewBillActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_bill);
-		// Show the Up button in the action bar.
+
 		setupActionBar();
-		
-		Bundle extras = getIntent().getExtras();
-        //Obtenemos datos enviados en el intent.
-        if (extras != null) {
-        	username = extras.getString("USERNAME");
-        	password = extras.getString("PASSWORD");
-            vivienda = extras.getString("ID_VIVIENDA");
-        }
-        else {
-        	username = "error";
-        	password = "error";
-        	vivienda = "error";
-        }
-        
-		Log.v("vivienda :", vivienda);
         
         post = new Httppostaux();
         
@@ -91,7 +72,7 @@ public class NewBillActivity extends ActionBarActivity {
 	 * @param v <tt>View</tt> que genera el evento
 	 */
 	public void add_bill_button_onClick(View v) {
-		new asyncConsult().execute("");
+		new asyncCreateBill().execute("");
 	} 
 
 
@@ -99,7 +80,7 @@ public class NewBillActivity extends ActionBarActivity {
      * Clase que se encarga de la peticion asincrona para aniadir una tarea
      * 
      */
-	class asyncConsult extends AsyncTask< String, String, String > {
+	class asyncCreateBill extends AsyncTask< String, String, String > {
 		private ProgressDialog pDialog;
     	
     	protected void onPreExecute() {
@@ -113,7 +94,7 @@ public class NewBillActivity extends ActionBarActivity {
 
     	protected String doInBackground(String... params) {
     		//enviamos y recibimos y analizamos los datos en segundo plano.
-    		if (hacerCosas(username)){
+    		if (hacerCosas()){
     			return "ok"; // tarea aniadida
     		} else{    		
     			return "err"; // tarea no aniadida   	          	  
@@ -122,7 +103,7 @@ public class NewBillActivity extends ActionBarActivity {
     	
     	protected void onPostExecute(String result) {
     		pDialog.dismiss();//ocultamos progess dialog.
-    		Log.v("[asyncConsult] onPostExecute=",""+result);
+    		Log.v("[asyncCreateBill] onPostExecute=",""+result);
 
     		if (result.equals("ok")){
     			Toast.makeText(getApplicationContext(), "Bill added", Toast.LENGTH_LONG).show();
@@ -135,12 +116,11 @@ public class NewBillActivity extends ActionBarActivity {
 
     	}
 
-    	public boolean hacerCosas(String username) {
+    	public boolean hacerCosas() {
     		int estado = -1;
     		EditText etNombre = (EditText) findViewById(R.id.editTextNombreFactura);
     		EditText etDescripcion = (EditText) findViewById(R.id.editTextDescripcion);
     		EditText etTotal = (EditText) findViewById(R.id.editTextTotal);
-//    		EditText etTo = (EditText) findViewById(R.id.editTextFechaFin);
 
     		if( etNombre.getText().toString().length() == 0   ||
     				etTotal.getText().toString().length() == 0 ) {
@@ -155,10 +135,10 @@ public class NewBillActivity extends ActionBarActivity {
     	    int month = cal.get(Calendar.MONTH) + 1;
     	    int day = cal.get(Calendar.DAY_OF_MONTH);
 
-    		postparameters2send.add(new BasicNameValuePair("Correo",NewBillActivity.this.username));
-    		postparameters2send.add(new BasicNameValuePair("Contrasena",NewBillActivity.this.password));
+    		postparameters2send.add(new BasicNameValuePair("Correo",Session.email));
+    		postparameters2send.add(new BasicNameValuePair("Contrasena",Session.password));
+            postparameters2send.add(new BasicNameValuePair("idVivienda",Session.currentApartmentID));
     		postparameters2send.add(new BasicNameValuePair("nombreFactura",etNombre.getText().toString()));
-    		postparameters2send.add(new BasicNameValuePair("idVivienda",NewBillActivity.this.vivienda));
     		postparameters2send.add(new BasicNameValuePair("Descripcion",etDescripcion.getText().toString()));
     		postparameters2send.add(new BasicNameValuePair("Total",etTotal.getText().toString()));
     		postparameters2send.add(new BasicNameValuePair("Fecha",year+"-"+month+"-"+day));
@@ -168,7 +148,7 @@ public class NewBillActivity extends ActionBarActivity {
 
     		//si lo que obtuvimos no es null
     		if (jdata!=null && jdata.length() > 0){
-    			JSONObject json_data = null; //creamos un objeto JSON
+    			JSONObject json_data; //creamos un objeto JSON
     			
     			try {
     				json_data = jdata.getJSONObject(jdata.length()-1); //leemos el primer segmento en nuestro caso el unico
