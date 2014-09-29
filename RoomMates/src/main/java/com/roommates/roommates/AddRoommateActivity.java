@@ -20,10 +20,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class AddRoommateActivity extends ActionBarActivity {
-
-	private String username;
-	private String password;
-	private String idVivienda;
 	private String URL_connect = Constantes.NUEVO_COMPANERO;
 	private Httppostaux post;
 
@@ -31,21 +27,8 @@ public class AddRoommateActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_roommate);
-		// Show the Up button in the action bar.
+
 		setupActionBar();
-		
-		Bundle extras = getIntent().getExtras();
-        //Obtenemos datos enviados en el intent.
-        if (extras != null) {
-        	username = extras.getString("USERNAME");
-        	password = extras.getString("PASSWORD");
-        	idVivienda = extras.getString("ID_VIVIENDA");
-        }
-        else {
-        	username = "error";
-        	password = "error";
-        	idVivienda = "";
-        }
         
         post = new Httppostaux();
 	}
@@ -92,7 +75,7 @@ public class AddRoommateActivity extends ActionBarActivity {
 			etCorreoUsuario.setError(getResources().getString(R.string.error_field_required));
 		}
 		else {
-			new asyncConsult().execute("");
+			new asyncAddRoommate().execute("");
 			etCorreoUsuario.setError(null);
 		}
 		
@@ -103,7 +86,7 @@ public class AddRoommateActivity extends ActionBarActivity {
      * Clase que se encarga de la peticion asincrona para aniadir una tarea
      * 
      */
-	class asyncConsult extends AsyncTask< String, String, Integer > {
+	class asyncAddRoommate extends AsyncTask< String, String, Integer > {
 		private ProgressDialog pDialog;
         private int EXITO = 1;
         private int NO_EXISTE_USUARIO = 0;
@@ -120,12 +103,12 @@ public class AddRoommateActivity extends ActionBarActivity {
     	}
 
     	protected Integer doInBackground(String... params) {
-            return hacerCosas(username);
+            return hacerCosas();
     	}
     	
     	protected void onPostExecute(Integer result) {
     		pDialog.dismiss();//ocultamos progess dialog.
-    		Log.v("[asyncConsult] onPostExecute=",""+result);
+    		Log.v("[asyncAddRoommate] onPostExecute=",""+result);
 
     		if (result == EXITO){
     			Toast.makeText(getApplicationContext(), "Roommate added", Toast.LENGTH_LONG).show();
@@ -139,7 +122,7 @@ public class AddRoommateActivity extends ActionBarActivity {
 
     	}
 
-    	public int hacerCosas(String username) {
+    	public int hacerCosas() {
     		String estado = "-1";
     		EditText etCorreoUsuario = (EditText) findViewById(R.id.editTextCorreoUsuario);
 
@@ -150,10 +133,10 @@ public class AddRoommateActivity extends ActionBarActivity {
     	    		
     		ArrayList<NameValuePair> postparameters2send= new ArrayList<NameValuePair>();
     		
-    		postparameters2send.add(new BasicNameValuePair("Correo",AddRoommateActivity.this.username));
-    		postparameters2send.add(new BasicNameValuePair("Contrasena",AddRoommateActivity.this.password));
+    		postparameters2send.add(new BasicNameValuePair("Correo",Session.email));
+    		postparameters2send.add(new BasicNameValuePair("Contrasena",Session.password));
+            postparameters2send.add(new BasicNameValuePair("idVivienda",Session.currentApartmentID));
     		postparameters2send.add(new BasicNameValuePair("correoNuevoUsuario",etCorreoUsuario.getText().toString()));
-    		postparameters2send.add(new BasicNameValuePair("idVivienda",idVivienda));
 
     		//realizamos una peticion y como respuesta obtenes un array JSON
     		JSONArray jdata=post.getServerData(postparameters2send, URL_connect);

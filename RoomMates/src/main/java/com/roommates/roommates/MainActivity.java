@@ -389,9 +389,6 @@ public class MainActivity extends ActionBarActivity {
             case R.id.action_add_roommate:
                 if(!idViviendaActual.equals("-1")){
                     intent = new Intent(this,AddRoommateActivity.class);
-                    intent.putExtra("USERNAME", username);
-                    intent.putExtra("PASSWORD", password);
-                    intent.putExtra("ID_VIVIENDA", idViviendaActual);
                     startActivityForResult(intent, ROOMMATES);
                     overridePendingTransition(R.anim.left_in, R.anim.left_out);
                 }
