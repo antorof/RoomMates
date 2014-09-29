@@ -53,10 +53,8 @@ import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
-    private String URL_HOST = Constantes.HOST;
-//    private String URL_HOST="roommate.hol.es";
 
-	private static final int BILLS = 1;
+    private static final int BILLS = 1;
 	private static final int SHOPPING = 2;
 	private static final int TASKS = 3; 
 	private static final int ROOMMATES = 4;
@@ -336,7 +334,7 @@ public class MainActivity extends ActionBarActivity {
 		if (drawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
-		Intent intent = null;
+		Intent intent;
 		switch(item.getItemId())
 		{
 			case R.id.action_settings:
@@ -563,15 +561,15 @@ public class MainActivity extends ActionBarActivity {
     		
     		if( params[0].equals("BILLS") ) {
     			tipo_elemento = "Bill";
-    		    URL_CONNECT="http://"+URL_HOST+"/eliminar_bill_android.php";
+    		    URL_CONNECT=Constantes.ELIMINAR_FACTURA_URL;
     		}
     		else if( params[0].equals("TASKS") ) {
     			tipo_elemento = "Task";
-    		    URL_CONNECT="http://"+URL_HOST+"/eliminar_task_android.php";
+    		    URL_CONNECT=Constantes.ELIMINAR_TAREA_URL;
     		}
     		else if( params[0].equals("SHOPPING") ) {
     			tipo_elemento = "Product";
-    		    URL_CONNECT="http://"+URL_HOST+"/eliminar_product_android.php";
+    		    URL_CONNECT=Constantes.ELIMINAR_PRODUCTO_URL;
     		}
     		// enviamos y recibimos y analizamos los datos en segundo plano.
     		if (eliminarElemento()){
@@ -679,7 +677,7 @@ public class MainActivity extends ActionBarActivity {
     		
     		if( params[0].equals("BILLS") ) {
     			tipo_elemento = "Bill";
-                URL_CONNECT="http://"+URL_HOST+"/pagar_bill_android.php";
+                URL_CONNECT=Constantes.ACTUALIZAR_FACTURA_URL;
     		}
     		else if( params[0].equals("TASKS") ) {
     			tipo_elemento = "Task";
@@ -687,7 +685,7 @@ public class MainActivity extends ActionBarActivity {
     		}
     		else if( params[0].equals("SHOPPING") ) {
     			tipo_elemento = "Product";
-    		    URL_CONNECT="http://"+URL_HOST+"/actualizar_product_android.php";
+    		    URL_CONNECT=Constantes.ACTUALIZAR_PRODUCTO_URL;
     		}
     		
     		//enviamos y recibimos y analizamos los datos en segundo plano.

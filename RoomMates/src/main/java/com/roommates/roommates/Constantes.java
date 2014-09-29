@@ -27,6 +27,11 @@ public class Constantes {
     public static final String CONSULTA_COMPRAS_URL = HTTP_PROTOCOL+HOST+"/consultar_shopping_android.php";
     public static final String CONSULTA_TAREAS_URL = HTTP_PROTOCOL+HOST+"/consultar_tasks_android.php";
     public static final String CONSULTA_COMPANEROS_URL = HTTP_PROTOCOL+HOST+"/consultar_roomates_android.php";
+    public static final String ELIMINAR_FACTURA_URL = HTTP_PROTOCOL+HOST+"/eliminar_bill_android.php";
+    public static final String ELIMINAR_TAREA_URL = HTTP_PROTOCOL+HOST+"/eliminar_task_android.php";
+    public static final String ELIMINAR_PRODUCTO_URL = HTTP_PROTOCOL+HOST+"/eliminar_product_android.php";
+    public static final String ACTUALIZAR_FACTURA_URL = HTTP_PROTOCOL+HOST+"/pagar_bill_android.php";
+    public static final String ACTUALIZAR_PRODUCTO_URL = HTTP_PROTOCOL+HOST+"/actualizar_product_android.php";
     public static final String LOGIN_URL = HTTP_PROTOCOL+HOST+"/login_android.php";
     public static final String REGISTER_URL = HTTP_PROTOCOL+HOST+"/registro_android.php";
 
