@@ -44,6 +44,7 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Field;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -1184,10 +1185,11 @@ public class MainActivity extends ActionBarActivity {
 			precioFactura.setTextColor(Color.RED);	
 		
 			// Formateamos para que tenga menos decimales
-			DecimalFormat df = new DecimalFormat("0.00");
-			String result = df.format( Double.valueOf( elem.get(5) ) );
-			
-			precioFactura.setText( result + " \u20AC");
+//			DecimalFormat df = new DecimalFormat("0.00");
+            NumberFormat format = NumberFormat.getCurrencyInstance();
+			String result = format.format( Double.valueOf( elem.get(5) ) );
+
+			precioFactura.setText( result );
 			ll.addView(linearLayout);
 		}
 	}

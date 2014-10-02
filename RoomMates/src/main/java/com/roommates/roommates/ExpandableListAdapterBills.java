@@ -1,5 +1,6 @@
 package com.roommates.roommates;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -114,16 +115,18 @@ public class ExpandableListAdapterBills extends BaseExpandableListAdapter {
 
         textViewName.setText(value[2].toString());
         textViewFecha.setText(value[4].toString());
-        
-        if(value[5].toString().contains("\u20AC"))
-        	textViewParcial.setText(value[5].toString());
-        else
-      	  	textViewParcial.setText(value[5].toString()+"\u20AC");
-       
-        if(value[5].toString().contains("\u20AC"))
-      	  	textViewTotal.setText(value[6].toString());
-        else
-      	  	textViewTotal.setText(value[6].toString()+"\u20AC");
+
+        NumberFormat format = NumberFormat.getCurrencyInstance();
+//        if(value[5].toString().contains("\u20AC"))
+//        	textViewParcial.setText(value[5].toString());
+//        else
+            textViewParcial.setText(format.format(Double.parseDouble(value[5].toString())));
+
+//        if(value[5].toString().contains("\u20AC"))
+//      	  	textViewTotal.setText(value[6].toString());
+//        else
+            textViewTotal.setText(format.format(Double.parseDouble(value[6].toString())));
+//            textViewTotal.setText(value[6].toString() + "\u20AC");
 
         if(value[8].toString().equals("0"))
             llPaid.setBackgroundColor(Color.parseColor("#FF7373"));
