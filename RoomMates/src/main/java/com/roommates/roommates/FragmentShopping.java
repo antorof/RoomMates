@@ -45,9 +45,9 @@ public class FragmentShopping extends Fragment {
             }
         });
         swipeLayout.setColorScheme(R.color.naranja_android,
-                android.R.color.white,
+                R.color.gris_muy_claro,
                 R.color.naranja_claro_android,
-                android.R.color.white);
+                R.color.gris_muy_claro);
 
         actualizarLista();
 

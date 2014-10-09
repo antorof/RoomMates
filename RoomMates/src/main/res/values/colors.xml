@@ -15,4 +15,5 @@
     <color name="rojo_android">#CC0000</color>
     <color name="rojo_claro_android">#FF4444</color>
     <color name="gris_oscuro">#555</color>
+    <color name="gris_muy_claro">#F0F0F0</color>
 </resources>
