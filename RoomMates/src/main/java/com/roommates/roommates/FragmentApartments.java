@@ -2,6 +2,7 @@ package com.roommates.roommates;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,9 @@ public class FragmentApartments extends Fragment {
 	private View view;
 	private LayoutInflater inflater;
 	private MainActivity mainActivity;
-	
-	@Override
+    private SwipeRefreshLayout swipeLayout;
+
+    @Override
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		this.inflater = inflater;
 		this.view = this.inflater.inflate(R.layout.fragment_apartments, container, false);
@@ -29,13 +31,25 @@ public class FragmentApartments extends Fragment {
 		password = mainActivity.password;
 		casa = mainActivity.idViviendaActual;
 
+        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container_apartments);
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                actualizarLista();
+            }
+        });
+        swipeLayout.setColorScheme(R.color.naranja_android,
+                android.R.color.white,
+                R.color.naranja_claro_android,
+                android.R.color.white);
+
         actualizarLista();
 
 		return view;
 	}
 	
 	public void actualizarLista(){
-        view.findViewById(R.id.progressBarListaApartaments).setVisibility(View.VISIBLE);
+        swipeLayout.setRefreshing(true);
 		new WebDatabaseBackground().execute("recuperarApartamentos", mainActivity, username, password,
                 casa, "actualizarListaApartamentos");
 	}

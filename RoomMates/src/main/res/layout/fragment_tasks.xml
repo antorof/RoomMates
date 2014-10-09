@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe_container_tasks"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBarListaTareas"
-        android:layout_gravity="center_horizontal"
-        android:indeterminate="true"
-        android:visibility="gone"/>
+    android:layout_height="match_parent">
   
     <ExpandableListView
         android:id="@+id/listaTareas"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:groupIndicator="@null"/>
- 
 
-</LinearLayout>
+
+</android.support.v4.widget.SwipeRefreshLayout>

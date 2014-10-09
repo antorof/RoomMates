@@ -4,6 +4,7 @@ import com.roommates.roommates.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +20,9 @@ public class FragmentTasks extends Fragment {
 //	private LayoutInflater inflater;
 	private MainActivity mainActivity;
 	private ListView lista;
-	
-	@Override
+    private SwipeRefreshLayout swipeLayout;
+
+    @Override
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //		this.inflater = inflater;
 		this.view = inflater.inflate(R.layout.fragment_tasks, container, false);
@@ -31,13 +33,25 @@ public class FragmentTasks extends Fragment {
 		vivienda= mainActivity.idViviendaActual;
 		lista = (ListView) view.findViewById(R.id.listaTareas);
 
+        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container_tasks);
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                actualizarLista();
+            }
+        });
+        swipeLayout.setColorScheme(R.color.naranja_android,
+                android.R.color.white,
+                R.color.naranja_claro_android,
+                android.R.color.white);
+
         actualizarLista();
 
 		return view;
 	}
 	
 	public void actualizarLista(){
-        view.findViewById(R.id.progressBarListaTareas).setVisibility(View.VISIBLE);
+        swipeLayout.setRefreshing(true);
         new WebDatabaseBackground().execute("recuperarTareas", mainActivity, username, password,
                 vivienda, "actualizarListaExpTareas");
     }

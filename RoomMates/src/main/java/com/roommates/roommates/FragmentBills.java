@@ -4,6 +4,7 @@ import com.roommates.roommates.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,8 +21,9 @@ public class FragmentBills extends Fragment {
 	private LayoutInflater inflater;
 	private MainActivity mainActivity;
 	private ListView lista;
-	
-	@Override
+    private SwipeRefreshLayout swipeLayout;
+
+    @Override
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		this.inflater = inflater;
 		this.view = inflater.inflate(R.layout.fragment_bills, container, false);
@@ -35,13 +37,25 @@ public class FragmentBills extends Fragment {
 		
 		lista = (ListView) view.findViewById(R.id.listaFacturas);
 
+        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container_bills);
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                actualizarLista();
+            }
+        });
+        swipeLayout.setColorScheme(R.color.naranja_android,
+                android.R.color.white,
+                R.color.naranja_claro_android,
+                android.R.color.white);
+
         actualizarLista();
 		
 		return view;
 	}
 
     public void actualizarLista(){
-        view.findViewById(R.id.progressBarListaFacturas).setVisibility(View.VISIBLE);
+        swipeLayout.setRefreshing(true);
         new WebDatabaseBackground().execute("recuperarFacturas", mainActivity, username, password,
                 vivienda, "actualizarListaExpBills");
     }

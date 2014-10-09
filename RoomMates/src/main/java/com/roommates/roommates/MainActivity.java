@@ -15,6 +15,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -876,7 +877,7 @@ public class MainActivity extends ActionBarActivity {
 			    	}).show();
 			}
 		});
-        findViewById(R.id.progressBarListaApartaments).setVisibility(View.GONE);
+        ((SwipeRefreshLayout) findViewById(R.id.swipe_container_apartments)).setRefreshing(false);
 	}
 
 	/**
@@ -892,7 +893,7 @@ public class MainActivity extends ActionBarActivity {
 		ListView listaRoommates = (ListView) findViewById(R.id.listaRoommates);
 		listaRoommates.setAdapter(adapter);
 
-        findViewById(R.id.progressBarListaRoommates).setVisibility(View.GONE);
+        ((SwipeRefreshLayout) findViewById(R.id.swipe_container_roommates)).setRefreshing(false);
 	}
 	
 	/**
@@ -983,7 +984,7 @@ public class MainActivity extends ActionBarActivity {
                	return false;
             }
         });
-        findViewById(R.id.progressBarListaFacturas).setVisibility(View.GONE);
+        ((SwipeRefreshLayout) findViewById(R.id.swipe_container_bills)).setRefreshing(false);
 	}
     public void remove_bill(String idFactura){
         new AsyncRemove().execute("BILLS", idFactura);
@@ -1066,7 +1067,7 @@ public class MainActivity extends ActionBarActivity {
                	return false;
             }
         });
-        findViewById(R.id.progressBarListaTareas).setVisibility(View.GONE);
+        ((SwipeRefreshLayout) findViewById(R.id.swipe_container_tasks)).setRefreshing(false);
 	}
     public void remove_task(String header){
 		new AsyncRemove().execute("TASKS", idViviendaActual, header);
@@ -1147,7 +1148,7 @@ public class MainActivity extends ActionBarActivity {
                	return false;
             }
         });
-        findViewById(R.id.progressBarListaCompras).setVisibility(View.GONE);
+        ((SwipeRefreshLayout) findViewById(R.id.swipe_container_shopping)).setRefreshing(false);
 	}
     public void buy_product(String nombre){
     	new AsyncUpdate().execute("SHOPPING", idViviendaActual, nombre,"0");

@@ -2,6 +2,7 @@ package com.roommates.roommates;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +20,9 @@ public class FragmentShopping extends Fragment {
 	private LayoutInflater inflater;
 	private MainActivity mainActivity;
 	private ExpandableListView lista;
-	
-	@Override
+    private SwipeRefreshLayout swipeLayout;
+
+    @Override
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		this.inflater = inflater;
 		this.view = inflater.inflate(R.layout.fragment_shopping, container, false);
@@ -34,6 +36,18 @@ public class FragmentShopping extends Fragment {
 		// getListItem(int).
 		// TODO: revisar todo esto a ver si se puede hacer algo o dejarlo así.
 		lista = (ExpandableListView) view.findViewById(R.id.listaCompras);
+
+        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container_shopping);
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                actualizarLista();
+            }
+        });
+        swipeLayout.setColorScheme(R.color.naranja_android,
+                android.R.color.white,
+                R.color.naranja_claro_android,
+                android.R.color.white);
 
         actualizarLista();
 
@@ -49,7 +63,7 @@ public class FragmentShopping extends Fragment {
 
 
     public void actualizarLista(){
-        view.findViewById(R.id.progressBarListaCompras).setVisibility(View.VISIBLE);
+        swipeLayout.setRefreshing(true);
         new WebDatabaseBackground().execute("recuperarCompras", mainActivity, username, password,
                 vivienda, "actualizarListaExpCompras");
     }
