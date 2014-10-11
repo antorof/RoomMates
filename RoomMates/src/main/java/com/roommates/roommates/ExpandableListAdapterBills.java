@@ -129,7 +129,7 @@ public class ExpandableListAdapterBills extends BaseExpandableListAdapter {
 //            textViewTotal.setText(value[6].toString() + "\u20AC");
 
         if(value[8].toString().equals("0"))
-            llPaid.setBackgroundColor(Color.parseColor("#FF7373"));
+            llPaid.setBackgroundColor(_context.getResources().getColor(R.color.rojo_claro_android));
         else
             llPaid.setBackgroundColor(Color.TRANSPARENT);
 

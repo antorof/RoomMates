@@ -123,7 +123,7 @@ public class ExpandableListAdapterShopping extends BaseExpandableListAdapter {
       	
       	if( value[5].toString().equals("1") )
       	{
-      		llUrgent.setBackgroundColor(Color.parseColor("#FF7373"));
+      		llUrgent.setBackgroundColor(_context.getResources().getColor(R.color.rojo_claro_android));
       	}
       	else {
       		llUrgent.setBackgroundColor(Color.TRANSPARENT);
