@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,12 +25,14 @@ public class FragmentHome extends Fragment {
 	ArrayList<String> listaBills;
 	ArrayList<String> listaTasks;
 	ArrayList<String> listaShopping;
+    private SwipeRefreshLayout swipeLayout;
+    private MainActivity mainActivity;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		view = inflater.inflate(R.layout.fragment_newhome, container, false);
-        MainActivity mainActivity = (MainActivity) getActivity();
+        mainActivity = (MainActivity) getActivity();
 
 		// Buscamos en las preferencias la ultima vivienda:
 	    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(mainActivity);
@@ -40,23 +43,26 @@ public class FragmentHome extends Fragment {
 	    Session.currentApartmentID   = idViviendaActual;
         Session.currentApartmentName = nombreViviendaActual;
         Session.currentRole          = rolEnViviendaActual;
-	    
+
+        swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container_home);
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                actualizarLista();
+            }
+        });
+        swipeLayout.setColorScheme(R.color.naranja_android,
+                R.color.gris_muy_claro,
+                R.color.naranja_claro_android,
+                R.color.gris_muy_claro);
+
 	    if ( !idViviendaActual.equals("-1") &&
              !nombreViviendaActual.equals("") &&
              !rolEnViviendaActual.equals("-1") )
         {
-			// Se llama a las distintas consultas de la base de datos 
-			new WebDatabaseBackground().execute("recuperarFacturas", mainActivity, Session.email, Session.password,
-                    Session.currentApartmentID, "actualizarHomeFacturas");
-	
-			new WebDatabaseBackground().execute("recuperarCompras", mainActivity, Session.email, Session.password,
-                    Session.currentApartmentID, "actualizarHomeCompras");
-	
-			new WebDatabaseBackground().execute("recuperarTareas", mainActivity, Session.email, Session.password,
-                    Session.currentApartmentID, "actualizarHomeTareas");
-	
-			setNombreVivienda();
-	    }
+            actualizarLista();
+
+        }
 		setNombreEInicial();
 		
 		return view;
@@ -87,4 +93,39 @@ public class FragmentHome extends Fragment {
 		TextView tvNombreVivienda = (TextView) view.findViewById(R.id.cardHomeCurrentHome);
 		tvNombreVivienda.setText(Session.currentApartmentName);
 	}
+
+    private void actualizarLista() {
+        swipeLayout.setRefreshing(true);
+        mainActivity.actualizandoHomeFacturas = true;
+        mainActivity.actualizandoHomeCompras = true;
+        mainActivity.actualizandoHomeTareas = true;
+
+        // Se llama a las distintas consultas de la base de datos
+        new WebDatabaseBackground().execute("recuperarFacturas", mainActivity, Session.email, Session.password,
+                Session.currentApartmentID, "actualizarHomeFacturas");
+
+        new WebDatabaseBackground().execute("recuperarCompras", mainActivity, Session.email, Session.password,
+                Session.currentApartmentID, "actualizarHomeCompras");
+
+        new WebDatabaseBackground().execute("recuperarTareas", mainActivity, Session.email, Session.password,
+                Session.currentApartmentID, "actualizarHomeTareas");
+
+        setNombreVivienda();
+
+        new Thread(new Runnable() {
+            public void run() {
+                boolean parar = false;
+                while (!parar) {
+                    if (!mainActivity.actualizandoHomeTareas &&
+                            !mainActivity.actualizandoHomeFacturas &&
+                            !mainActivity.actualizandoHomeCompras)
+                        parar = true;
+                    try {
+                        Thread.sleep(250);
+                    } catch (InterruptedException e) {e.printStackTrace();}
+                }
+                swipeLayout.setRefreshing(false);
+            }
+        }).start();
+    }
 }

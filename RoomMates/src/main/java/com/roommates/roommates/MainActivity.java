@@ -91,6 +91,9 @@ public class MainActivity extends ActionBarActivity {
 	protected String idViviendaActual = null;
     protected String nombreViviendaActual = null;
     protected String rolEnViviendaActual = null;
+    protected boolean actualizandoHomeFacturas = false;
+    protected boolean actualizandoHomeCompras = false;
+    protected boolean actualizandoHomeTareas = false;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -1169,6 +1172,7 @@ public class MainActivity extends ActionBarActivity {
 	public void actualizarHomeFacturas(Object[] values, int numItems)
 	{
 		LinearLayout ll = (LinearLayout) findViewById(R.id.cardListBills);
+        ll.removeAllViews();
 		
 		ArrayList<ArrayList<String> > lista = convertObjectToArrayList(values, numItems, 8);
 		
@@ -1193,6 +1197,7 @@ public class MainActivity extends ActionBarActivity {
 			precioFactura.setText( result );
 			ll.addView(linearLayout);
 		}
+        actualizandoHomeFacturas = false;
 	}
 	
 	/**
@@ -1205,6 +1210,7 @@ public class MainActivity extends ActionBarActivity {
 	public void actualizarHomeCompras(Object[] values, int numItems)
 	{
 		LinearLayout ll = (LinearLayout) findViewById(R.id.cardListShopping);
+        ll.removeAllViews();
 		
 		ArrayList<ArrayList<String> > lista = convertObjectToArrayList(values, numItems, 7);
 		
@@ -1222,6 +1228,7 @@ public class MainActivity extends ActionBarActivity {
 			fechaCompra.setText(elem.get(2));
 			ll.addView(linearLayout);
 		}
+        actualizandoHomeCompras = false;
 	}
 
 	/**
@@ -1233,6 +1240,7 @@ public class MainActivity extends ActionBarActivity {
 	public void actualizarHomeTareas(Object[] values, int numItems)
 	{
 		LinearLayout ll = (LinearLayout) findViewById(R.id.cardListTasks);
+        ll.removeAllViews();
 
 		ArrayList<ArrayList<String> > lista = convertObjectToArrayList(values, numItems, 7);
 		
@@ -1250,6 +1258,7 @@ public class MainActivity extends ActionBarActivity {
 			fechaTarea.setText(elem.get(6));
 			ll.addView(linearLayout);
 		}
+        actualizandoHomeTareas = false;
 	}
 
 	/**
