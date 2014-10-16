@@ -6,7 +6,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -75,6 +78,8 @@ public class MainActivity extends ActionBarActivity {
 	private ActionBarDrawerToggle drawerToggle; // Boton que abre el menu
 	private ArrayAdapterNavigationDrawer adapter;
 	private String[] tituloOpcionesMenu;
+
+    public Drawable inicial;
 	
 	private FragmentBills fragmentBills;
 	private FragmentApartments fragmentApartments;
@@ -221,6 +226,7 @@ public class MainActivity extends ActionBarActivity {
 				tituloSeccion = tituloOpcionesMenu[position];
 				getSupportActionBar().setTitle(tituloSeccion);
                 getSupportActionBar().setSubtitle(null);
+                getSupportActionBar().setIcon(R.drawable.ic_launcher);
 				
 				onPrepareOptionsMenu(menu);
 
@@ -247,12 +253,14 @@ public class MainActivity extends ActionBarActivity {
 			public void onDrawerClosed(View view) {
 				getSupportActionBar().setTitle(tituloSeccion);
                 getSupportActionBar().setSubtitle(null);
+                getSupportActionBar().setIcon(R.drawable.ic_launcher);
 				ActivityCompat.invalidateOptionsMenu(MainActivity.this);
 			}
 			// Cuando el menu esta abierto pongo como titulo el titulo de la aplicacion:
 			public void onDrawerOpened(View drawerView) {
 				getSupportActionBar().setTitle(Session.name);
                 getSupportActionBar().setSubtitle(Session.currentApartmentName);
+                getSupportActionBar().setIcon(getDrawableInicial());
 				ActivityCompat.invalidateOptionsMenu(MainActivity.this);
 			}
 		};
@@ -263,6 +271,32 @@ public class MainActivity extends ActionBarActivity {
 		getSupportActionBar().setHomeButtonEnabled(true);
 		getOverflowMenu();
 	}
+
+    private Drawable getDrawableInicial() {
+        Bitmap snapshot;
+        if (inicial == null) {
+            View viewInicial = findViewById(R.id.homeCardNameBackground);
+            viewInicial.setDrawingCacheEnabled(true);
+            viewInicial.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_LOW); //Quality of the snpashot
+            try {
+                Bitmap img = viewInicial.getDrawingCache();
+                int width = img.getWidth(),
+                    height = img.getHeight();
+                float ratio = 1.0f*height/width;
+
+                int x = width/2 - height/2;
+
+                Log.w("ratio",ratio+"");
+                snapshot = Bitmap.createBitmap(img,x,0,(int)(width*ratio),height); // You can tell how to crop the snapshot and whatever in this method
+                inicial = new BitmapDrawable(getResources(),snapshot);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                viewInicial.setDrawingCacheEnabled(false);
+            }
+        }
+        return inicial;
+    }
 
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
