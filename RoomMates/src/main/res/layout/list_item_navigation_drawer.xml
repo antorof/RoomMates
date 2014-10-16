@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:layout_height="50dp"
     android:padding="6dip" 
 	android:background="@drawable/selector_item_lista"
     android:id="@+id/listItem1">
@@ -27,7 +27,6 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/listIcon"
         android:gravity="center_vertical"
-        android:text="Apartado de la app"
-        style="@android:style/TextAppearance.Medium"/>
+        android:text="Apartado de la app"/>
 
 </RelativeLayout> 

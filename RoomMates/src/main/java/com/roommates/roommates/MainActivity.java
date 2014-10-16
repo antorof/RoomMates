@@ -142,6 +142,7 @@ public class MainActivity extends ActionBarActivity {
 							    opcionesMenu);
 		
 		drawerList.setAdapter(adapter);
+        drawerLayout.setScrimColor(Color.TRANSPARENT);
 		   
 		// Aniadimos un listener para cuando clickemos en el menu
 		drawerList.setOnItemClickListener(new OnItemClickListener() {

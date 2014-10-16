@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,12 +33,18 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
     public View getView(int position, View convertView, ViewGroup parent) {
       LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
       View rowView = inflater.inflate(R.layout.list_item_navigation_drawer, parent, false);
-      
+
+//      if(position == selectedItem)
+//          rowView = inflater.inflate(R.layout.list_item_navigation_drawer_sel, parent, false);
+
       TextView textView = (TextView) rowView.findViewById(R.id.firstLine);
       ImageView imageView = (ImageView) rowView.findViewById(R.id.listIcon);
       
       textView.setText(values[position]);
-      
+
+      if(position == selectedItem) {
+          textView.setTypeface(null, Typeface.BOLD);
+      }
       // Apariencia:
       switch(position){
 	      case 0:
@@ -47,7 +54,9 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	    	      imageView.setImageResource(R.drawable.ic_home_light);
 	          }
 	          else {
-	        	  imageView.setImageResource(R.drawable.ic_home_dark);
+//	        	  imageView.setImageResource(R.drawable.ic_home_dark);
+                  textView.setTextColor(Color.parseColor("#FFFFFF"));
+                  imageView.setImageResource(R.drawable.ic_home_light);
 	          }
 	    	  break;
 	      case 1:
@@ -57,7 +66,9 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	    	      imageView.setImageResource(R.drawable.ic_bills_light);
 	          }
 	          else {
-	        	  imageView.setImageResource(R.drawable.ic_bills_dark);
+//	        	  imageView.setImageResource(R.drawable.ic_bills_dark);
+                  textView.setTextColor(Color.parseColor("#FFFFFF"));
+                  imageView.setImageResource(R.drawable.ic_bills_light);
 	          }
 	    	  break;
 	      case 2:
@@ -67,7 +78,9 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	    	      imageView.setImageResource(R.drawable.ic_shopping_light);
 	          }
 	          else {
-	        	  imageView.setImageResource(R.drawable.ic_shopping_dark);
+//	        	  imageView.setImageResource(R.drawable.ic_shopping_dark);
+                  textView.setTextColor(Color.parseColor("#FFFFFF"));
+                  imageView.setImageResource(R.drawable.ic_shopping_light);
 	          }
 	    	  break;
 	      case 3:
@@ -77,7 +90,9 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	    	      imageView.setImageResource(R.drawable.ic_tasks_light);
 	          }
 	          else {
-	        	  imageView.setImageResource(R.drawable.ic_tasks_dark);
+//	        	  imageView.setImageResource(R.drawable.ic_tasks_dark);
+                  textView.setTextColor(Color.parseColor("#FFFFFF"));
+                  imageView.setImageResource(R.drawable.ic_tasks_light);
 	          }
 	    	  break;
 	      case 4:
@@ -87,7 +102,9 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	    	      imageView.setImageResource(R.drawable.ic_roommates_light);
 	          }
 	          else {
-	        	  imageView.setImageResource(R.drawable.ic_roommates_dark);
+//	        	  imageView.setImageResource(R.drawable.ic_roommates_dark);
+                  imageView.setImageResource(R.drawable.ic_roommates_light);
+                  textView.setTextColor(Color.parseColor("#FFFFFF"));
 	          }
 	    	  break;
 	      case 5:
@@ -97,10 +114,19 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 	      	      imageView.setImageResource(R.drawable.ic_rooms_light);
 	            }
 	            else {
-	          	  imageView.setImageResource(R.drawable.ic_rooms_dark);
+//	          	  imageView.setImageResource(R.drawable.ic_rooms_dark);
+                  imageView.setImageResource(R.drawable.ic_rooms_light);
+                  textView.setTextColor(Color.parseColor("#FFFFFF"));
 	            }
 	      	  break;
       }
+
+        if(position == selectedItem) {
+//            textView.setTypeface(null, Typeface.BOLD);
+//            textView.setTextColor(Color.parseColor("#FF8800"));
+//            rowView.findViewById(R.id.listItem1).setBackgroundResource(0);
+            rowView.findViewById(R.id.listItem1).setBackgroundColor(Color.parseColor("#FFB129"));
+        }
       return rowView;
     }
     
