@@ -40,10 +40,6 @@ public class FragmentHome extends Fragment {
         String nombreViviendaActual = sharedPref.getString("nombre_vivienda", "");
         String rolEnViviendaActual = sharedPref.getString("rol_en_vivienda", "-1");
 
-	    Session.currentApartmentID   = idViviendaActual;
-        Session.currentApartmentName = nombreViviendaActual;
-        Session.currentRole          = rolEnViviendaActual;
-
         swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container_home);
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -60,6 +56,10 @@ public class FragmentHome extends Fragment {
              !nombreViviendaActual.equals("") &&
              !rolEnViviendaActual.equals("-1") )
         {
+
+            Session.currentApartmentID   = idViviendaActual;
+            Session.currentApartmentName = nombreViviendaActual;
+            Session.currentRole          = rolEnViviendaActual;
             actualizarLista();
 
         }

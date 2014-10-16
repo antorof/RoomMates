@@ -219,6 +219,7 @@ public class MainActivity extends ActionBarActivity {
 
 				tituloSeccion = tituloOpcionesMenu[position];
 				getSupportActionBar().setTitle(tituloSeccion);
+                getSupportActionBar().setSubtitle(null);
 				
 				onPrepareOptionsMenu(menu);
 
@@ -244,11 +245,13 @@ public class MainActivity extends ActionBarActivity {
 			// Cuando el menu esta cerrado pongo como titulo el titulo de la seccion:
 			public void onDrawerClosed(View view) {
 				getSupportActionBar().setTitle(tituloSeccion);
+                getSupportActionBar().setSubtitle(null);
 				ActivityCompat.invalidateOptionsMenu(MainActivity.this);
 			}
 			// Cuando el menu esta abierto pongo como titulo el titulo de la aplicacion:
 			public void onDrawerOpened(View drawerView) {
-				getSupportActionBar().setTitle(tituloApp);
+				getSupportActionBar().setTitle(Session.name);
+                getSupportActionBar().setSubtitle(Session.currentApartmentName);
 				ActivityCompat.invalidateOptionsMenu(MainActivity.this);
 			}
 		};
@@ -257,7 +260,7 @@ public class MainActivity extends ActionBarActivity {
 		
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
-//		getOverflowMenu();
+		getOverflowMenu();
 	}
 
 	@Override

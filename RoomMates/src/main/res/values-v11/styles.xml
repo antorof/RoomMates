@@ -47,11 +47,16 @@
 <!--         <item name="android:backgroundSplit">@drawable/ab_bottom_solid_myorange</item> -->
         <item name="android:progressBarStyle">@style/ProgressBar.Myorange</item>
         <item name="android:titleTextStyle">@style/Theme.MyOrange.ActionBar.TitleTextStyle</item>
+        <item name="android:subtitleTextStyle">@style/Theme.MyOrange.ActionBar.SubtitleTextStyle</item>
     </style>
 
     <style name="Theme.MyOrange.ActionBar.TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-	    <item name="android:textColor">#FFFFFF</item>
-	</style>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="Theme.MyOrange.ActionBar.SubtitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
 	
     <style name="ActionBar.Transparent.Myorange" parent="@style/Widget.AppCompat.Light.ActionBar">
         <item name="android:background">@drawable/ab_transparent_myorange</item>

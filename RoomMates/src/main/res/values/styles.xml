@@ -3,13 +3,15 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
     -->
 <!--     <style name="AppBaseTheme" parent="android:Theme.Light"> -->
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
+
         -->
 <!--     </style> -->
 
@@ -56,9 +58,14 @@
         <item name="backgroundSplit">@drawable/ab_bottom_solid_myorange</item>
         <item name="progressBarStyle">@style/ProgressBar.Myorange</item>
         <item name="titleTextStyle">@style/Theme.MyOrange.ActionBar.TitleTextStyle</item>
+        <item name="subtitleTextStyle">@style/Theme.MyOrange.ActionBar.SubtitleTextStyle</item>
     </style>
 
     <style name="Theme.MyOrange.ActionBar.TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="Theme.MyOrange.ActionBar.SubtitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
