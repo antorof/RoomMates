@@ -1,7 +1,9 @@
 package com.roommates.roommates;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -382,8 +384,16 @@ public class LoginActivity extends ActionBarActivity {
 		postparameters2send.add(new BasicNameValuePair("Correo",username)); // son los mismos nombres 
 		postparameters2send.add(new BasicNameValuePair("Contrasena",password));// que en el php
 
-		//realizamos una peticion y como respuesta obtenes un array JSON
-		JSONArray jdata=post.getServerData(postparameters2send, URL_connect);
+        JSONArray jdata = null;
+        try {
+            HttpResponse res = Http.post(URL_connect, postparameters2send);
+            String strRes = Http.responseToString(res,true);
+            jdata = new JSONArray(strRes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 		//si lo que obtuvimos no es null
 		if (jdata!=null && jdata.length() > 0){
