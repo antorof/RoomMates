@@ -24,87 +24,87 @@
 
 
     <!-- the theme applied to the application or activity -->
-    <style name="CustomActionBarTheme" parent="@style/Theme.AppCompat.Light">
+    <!--<style name="CustomActionBarTheme" parent="@style/Theme.AppCompat.Light">-->
 
-        <!-- Support library compatibility -->
-        <item name="actionBarStyle">@style/MyActionBar</item>
-        <item name="selectableItemBackground">@drawable/actionbar_selector</item>
-    </style>
+        <!--&lt;!&ndash; Support library compatibility &ndash;&gt;-->
+        <!--<item name="actionBarStyle">@style/MyActionBar</item>-->
+        <!--<item name="selectableItemBackground">@drawable/actionbar_selector</item>-->
+    <!--</style>-->
 
-    <!-- ActionBar styles -->
-    <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+    <!--&lt;!&ndash; ActionBar styles &ndash;&gt;-->
+    <!--<style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">-->
 
-        <!-- Support library compatibility -->
-        <item name="background">@drawable/actionbar_background</item>
-    </style>
+        <!--&lt;!&ndash; Support library compatibility &ndash;&gt;-->
+        <!--<item name="background">@drawable/actionbar_background</item>-->
+    <!--</style>-->
 
     <!-- 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 -->
 
-    <style name="Theme.Myorange" parent="@style/Theme.AppCompat.Light">
-        <item name="actionBarItemBackground">@drawable/selectable_background_myorange</item>
-        <item name="popupMenuStyle">@style/PopupMenu.Myorange</item>
-        <item name="dropDownListViewStyle">@style/DropDownListView.Myorange</item>
-        <item name="actionBarTabStyle">@style/ActionBarTabStyle.Myorange</item>
-        <item name="actionDropDownStyle">@style/DropDownNav.Myorange</item>
-        <item name="actionBarStyle">@style/ActionBar.Solid.Myorange</item>
-        <item name="actionModeBackground">@drawable/cab_background_top_myorange</item>
-        <item name="actionModeSplitBackground">@drawable/cab_background_bottom_myorange</item>
-        <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Myorange</item>
-    </style>
+    <!--<style name="Theme.Myorange" parent="@style/Theme.AppCompat.Light">-->
+        <!--<item name="actionBarItemBackground">@drawable/selectable_background_myorange</item>-->
+        <!--<item name="popupMenuStyle">@style/PopupMenu.Myorange</item>-->
+        <!--<item name="dropDownListViewStyle">@style/DropDownListView.Myorange</item>-->
+        <!--<item name="actionBarTabStyle">@style/ActionBarTabStyle.Myorange</item>-->
+        <!--<item name="actionDropDownStyle">@style/DropDownNav.Myorange</item>-->
+        <!--<item name="actionBarStyle">@style/ActionBar.Solid.Myorange</item>-->
+        <!--<item name="actionModeBackground">@drawable/cab_background_top_myorange</item>-->
+        <!--<item name="actionModeSplitBackground">@drawable/cab_background_bottom_myorange</item>-->
+        <!--<item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Myorange</item>-->
+    <!--</style>-->
 
-    <style name="ActionBar.Solid.Myorange" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
-        <item name="background">@drawable/ab_solid_myorange</item>
-        <item name="backgroundStacked">@drawable/ab_stacked_solid_myorange</item>
-        <item name="backgroundSplit">@drawable/ab_bottom_solid_myorange</item>
-        <item name="progressBarStyle">@style/ProgressBar.Myorange</item>
-        <item name="titleTextStyle">@style/Theme.MyOrange.ActionBar.TitleTextStyle</item>
-        <item name="subtitleTextStyle">@style/Theme.MyOrange.ActionBar.SubtitleTextStyle</item>
-    </style>
+    <!--<style name="ActionBar.Solid.Myorange" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">-->
+        <!--<item name="background">@drawable/ab_solid_myorange</item>-->
+        <!--<item name="backgroundStacked">@drawable/ab_stacked_solid_myorange</item>-->
+        <!--<item name="backgroundSplit">@drawable/ab_bottom_solid_myorange</item>-->
+        <!--<item name="progressBarStyle">@style/ProgressBar.Myorange</item>-->
+        <!--<item name="titleTextStyle">@style/Theme.MyOrange.ActionBar.TitleTextStyle</item>-->
+        <!--<item name="subtitleTextStyle">@style/Theme.MyOrange.ActionBar.SubtitleTextStyle</item>-->
+    <!--</style>-->
 
-    <style name="Theme.MyOrange.ActionBar.TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textColor">#FFFFFF</item>
-    </style>
+    <!--<style name="Theme.MyOrange.ActionBar.TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">-->
+        <!--<item name="android:textColor">#FFFFFF</item>-->
+    <!--</style>-->
 
-    <style name="Theme.MyOrange.ActionBar.SubtitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
-        <item name="android:textColor">#FFFFFF</item>
-    </style>
+    <!--<style name="Theme.MyOrange.ActionBar.SubtitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle">-->
+        <!--<item name="android:textColor">#FFFFFF</item>-->
+    <!--</style>-->
 
-    <style name="ActionBar.Transparent.Myorange" parent="@style/Widget.AppCompat.Light.ActionBar">
-        <item name="background">@drawable/ab_transparent_myorange</item>
-        <item name="progressBarStyle">@style/ProgressBar.Myorange</item>
-    </style>
+    <!--<style name="ActionBar.Transparent.Myorange" parent="@style/Widget.AppCompat.Light.ActionBar">-->
+        <!--<item name="background">@drawable/ab_transparent_myorange</item>-->
+        <!--<item name="progressBarStyle">@style/ProgressBar.Myorange</item>-->
+    <!--</style>-->
 
-    <style name="PopupMenu.Myorange" parent="@style/Widget.AppCompat.Light.PopupMenu">
-        <item name="android:popupBackground">@drawable/menu_dropdown_panel_myorange</item>
-    </style>
+    <!--<style name="PopupMenu.Myorange" parent="@style/Widget.AppCompat.Light.PopupMenu">-->
+        <!--<item name="android:popupBackground">@drawable/menu_dropdown_panel_myorange</item>-->
+    <!--</style>-->
 
-    <style name="DropDownListView.Myorange" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
-        <item name="android:listSelector">@drawable/selectable_background_myorange</item>
-    </style>
+    <!--<style name="DropDownListView.Myorange" parent="@style/Widget.AppCompat.Light.ListView.DropDown">-->
+        <!--<item name="android:listSelector">@drawable/selectable_background_myorange</item>-->
+    <!--</style>-->
 
-    <style name="ActionBarTabStyle.Myorange" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
-        <item name="android:background">@drawable/tab_indicator_ab_myorange</item>
-    </style>
+    <!--<style name="ActionBarTabStyle.Myorange" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">-->
+        <!--<item name="android:background">@drawable/tab_indicator_ab_myorange</item>-->
+    <!--</style>-->
 
-    <style name="DropDownNav.Myorange" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
-        <item name="android:background">@drawable/spinner_background_ab_myorange</item>
-        <item name="android:popupBackground">@drawable/menu_dropdown_panel_myorange</item>
-        <item name="android:dropDownSelector">@drawable/selectable_background_myorange</item>
-    </style>
+    <!--<style name="DropDownNav.Myorange" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar">-->
+        <!--<item name="android:background">@drawable/spinner_background_ab_myorange</item>-->
+        <!--<item name="android:popupBackground">@drawable/menu_dropdown_panel_myorange</item>-->
+        <!--<item name="android:dropDownSelector">@drawable/selectable_background_myorange</item>-->
+    <!--</style>-->
 
-    <style name="ProgressBar.Myorange" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
-        <item name="android:progressDrawable">@drawable/progress_horizontal_myorange</item>
-    </style>
+    <!--<style name="ProgressBar.Myorange" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">-->
+        <!--<item name="android:progressDrawable">@drawable/progress_horizontal_myorange</item>-->
+    <!--</style>-->
 
-    <style name="ActionButton.CloseMode.Myorange" parent="@style/Widget.AppCompat.Light.ActionButton.CloseMode">
-        <item name="android:background">@drawable/btn_cab_done_myorange</item>
-    </style>
+    <!--<style name="ActionButton.CloseMode.Myorange" parent="@style/Widget.AppCompat.Light.ActionButton.CloseMode">-->
+        <!--<item name="android:background">@drawable/btn_cab_done_myorange</item>-->
+    <!--</style>-->
 
-    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
-    <style name="Theme.Myorange.Widget" parent="@style/Theme.AppCompat">
-        <item name="popupMenuStyle">@style/PopupMenu.Myorange</item>
-        <item name="dropDownListViewStyle">@style/DropDownListView.Myorange</item>
-    </style>
+    <!--&lt;!&ndash; this style is only referenced in a Light.DarkActionBar based theme &ndash;&gt;-->
+    <!--<style name="Theme.Myorange.Widget" parent="@style/Theme.AppCompat">-->
+        <!--<item name="popupMenuStyle">@style/PopupMenu.Myorange</item>-->
+        <!--<item name="dropDownListViewStyle">@style/DropDownListView.Myorange</item>-->
+    <!--</style>-->
 
     <style name="LoginFormContainer">
         <item name="android:layout_width">match_parent</item>
@@ -112,4 +112,10 @@
         <item name="android:padding">16dp</item>
     </style>
 
+    <style name="Theme.MaterialTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- customize the color palette -->
+        <item name="colorPrimary">#ff9800</item>
+        <item name="colorPrimaryDark">#f57c00</item>
+        <item name="colorAccent">#40c4ff</item>
+    </style>
 </resources>

@@ -47,10 +47,6 @@ public class FragmentHome extends Fragment {
                 actualizarLista();
             }
         });
-        swipeLayout.setColorScheme(R.color.naranja_android,
-                R.color.gris_muy_claro,
-                R.color.naranja_claro_android,
-                R.color.gris_muy_claro);
 
 	    if ( !idViviendaActual.equals("-1") &&
              !nombreViviendaActual.equals("") &&
@@ -124,7 +120,13 @@ public class FragmentHome extends Fragment {
                         Thread.sleep(250);
                     } catch (InterruptedException e) {e.printStackTrace();}
                 }
-                swipeLayout.setRefreshing(false);
+                mainActivity.runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        swipeLayout.setRefreshing(false);
+                    }
+                });
             }
         }).start();
     }
