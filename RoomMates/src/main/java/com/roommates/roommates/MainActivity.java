@@ -253,14 +253,14 @@ public class MainActivity extends ActionBarActivity {
 			public void onDrawerClosed(View view) {
 				getSupportActionBar().setTitle(tituloSeccion);
                 getSupportActionBar().setSubtitle(null);
-                getSupportActionBar().setIcon(R.drawable.ic_launcher);
+//                getSupportActionBar().setIcon(R.drawable.ic_launcher);
 				ActivityCompat.invalidateOptionsMenu(MainActivity.this);
 			}
 			// Cuando el menu esta abierto pongo como titulo el titulo de la aplicacion:
 			public void onDrawerOpened(View drawerView) {
 				getSupportActionBar().setTitle(Session.name);
                 getSupportActionBar().setSubtitle(Session.currentApartmentName);
-                getSupportActionBar().setIcon(getDrawableInicial());
+//                getSupportActionBar().setIcon(getDrawableInicial());
 				ActivityCompat.invalidateOptionsMenu(MainActivity.this);
 			}
 		};
