@@ -41,6 +41,7 @@ public class FragmentHome extends Fragment {
         String rolEnViviendaActual = sharedPref.getString("rol_en_vivienda", "-1");
 
         swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container_home);
+        swipeLayout.setColorSchemeResources(R.color.naranja_android,R.color.azul_claro_android);
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -60,7 +61,7 @@ public class FragmentHome extends Fragment {
 
         }
 		setNombreEInicial();
-		
+
 		return view;
 	}
 	
