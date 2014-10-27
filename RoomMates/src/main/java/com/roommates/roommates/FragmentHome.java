@@ -57,8 +57,17 @@ public class FragmentHome extends Fragment {
             Session.currentApartmentID   = idViviendaActual;
             Session.currentApartmentName = nombreViviendaActual;
             Session.currentRole          = rolEnViviendaActual;
-            actualizarLista();
 
+            new Thread(new Runnable() {
+                public void run() {
+                    mainActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            actualizarLista();
+                        }
+                    });
+                }
+            }).start();
         }
 		setNombreEInicial();
 

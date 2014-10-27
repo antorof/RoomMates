@@ -53,7 +53,16 @@ public class FragmentRoommates extends Fragment {
         });
         swipeLayout.setColorSchemeResources(R.color.naranja_android,R.color.azul_claro_android);
 
-        actualizarLista();
+        new Thread(new Runnable() {
+            public void run() {
+                mainActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        actualizarLista();
+                    }
+                });
+            }
+        }).start();
 
 		return view;
 

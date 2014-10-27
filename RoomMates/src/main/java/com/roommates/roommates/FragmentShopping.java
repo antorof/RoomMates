@@ -3,12 +3,19 @@ package com.roommates.roommates;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 
 import com.roommates.roommates.R;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class FragmentShopping extends Fragment {
 
@@ -46,7 +53,16 @@ public class FragmentShopping extends Fragment {
         });
         swipeLayout.setColorSchemeResources(R.color.naranja_android,R.color.azul_claro_android);
 
-        actualizarLista();
+        new Thread(new Runnable() {
+            public void run() {
+                mainActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        actualizarLista();
+                    }
+                });
+            }
+        }).start();
 
 		return view;
 	}
