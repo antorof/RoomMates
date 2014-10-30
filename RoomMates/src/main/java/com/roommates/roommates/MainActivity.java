@@ -13,13 +13,14 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -78,6 +79,7 @@ public class MainActivity extends ActionBarActivity {
 	private ActionBarDrawerToggle drawerToggle; // Boton que abre el menu
 	private ArrayAdapterNavigationDrawer adapter;
 	private String[] tituloOpcionesMenu;
+    private Toolbar toolbar;
 
     public Drawable inicial;
 	
@@ -141,6 +143,8 @@ public class MainActivity extends ActionBarActivity {
 		
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		drawerList = (ListView) findViewById(R.id.left_drawer);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 		
 		adapter = new ArrayAdapterNavigationDrawer(getSupportActionBar().getThemedContext(),
 							    android.R.layout.simple_list_item_1,
@@ -226,7 +230,7 @@ public class MainActivity extends ActionBarActivity {
 				tituloSeccion = tituloOpcionesMenu[position];
 				getSupportActionBar().setTitle(tituloSeccion);
                 getSupportActionBar().setSubtitle(null);
-                getSupportActionBar().setIcon(R.drawable.ic_launcher);
+//                getSupportActionBar().setIcon(R.drawable.ic_launcher);
 				
 				onPrepareOptionsMenu(menu);
 
@@ -244,7 +248,7 @@ public class MainActivity extends ActionBarActivity {
 		drawerToggle = new ActionBarDrawerToggle(
 				this,
 				drawerLayout,
-				R.drawable.ic_navigation_drawer,
+				toolbar,
                 R.string.app_name, // Drawer open
                 R.string.app_name) // Drawer close
 		{

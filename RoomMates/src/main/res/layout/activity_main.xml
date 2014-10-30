@@ -6,11 +6,18 @@
     android:layout_height="match_parent" >
 
     <!-- Contenido Principal -->
-    <FrameLayout
-        android:id="@+id/content_frame"
-        android:layout_width="match_parent"
+    <LinearLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
-    	android:background="@color/gris_muy_claro" />
+        android:id="@+id/headerbar"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <FrameLayout
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
     <!-- Menú Lateral -->
     <ListView
@@ -20,7 +27,8 @@
         android:layout_gravity="start"
         android:background="#FF8800"
         android:divider="@android:color/transparent"
-        android:choiceMode="singleChoice" />
+        android:choiceMode="singleChoice"
+        android:layout_marginTop="56dp" />
 
 </android.support.v4.widget.DrawerLayout>
 
