@@ -153,7 +153,8 @@ public class MainActivity extends ActionBarActivity {
 							    opcionesMenu);
 		
 		drawerList.setAdapter(adapter);
-        drawerLayout.setScrimColor(Color.TRANSPARENT);
+//        drawerLayout.setScrimColor(Color.TRANSPARENT);
+        // Linea naranja de borde:
         drawerLayout.setDrawerShadow(R.drawable.orange_shadow, GravityCompat.START);
 
 		// Aniadimos un listener para cuando clickemos en el menu
