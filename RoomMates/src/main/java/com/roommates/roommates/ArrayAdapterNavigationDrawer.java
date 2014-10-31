@@ -49,83 +49,88 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
       switch(position){
 	      case 0:
 	    	  if(position == selectedItem) {
-	        	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
-	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
-	    	      imageView.setImageResource(R.drawable.ic_home_light);
+//	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
+//	    	      imageView.setImageResource(R.drawable.ic_home_light);
+                  imageView.setImageResource(R.drawable.ic_home_dark);
 	          }
 	          else {
-//	        	  imageView.setImageResource(R.drawable.ic_home_dark);
-                  textView.setTextColor(Color.parseColor("#FFFFFF"));
-                  imageView.setImageResource(R.drawable.ic_home_light);
+	        	  imageView.setImageResource(R.drawable.ic_home_dark);
+//                  textView.setTextColor(Color.parseColor("#FFFFFF"));
+//                  imageView.setImageResource(R.drawable.ic_home_light);
 	          }
 	    	  break;
 	      case 1:
 	    	  if(position == selectedItem) {
-	        	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
-	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
-	    	      imageView.setImageResource(R.drawable.ic_bills_light);
+//	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
+//	    	      imageView.setImageResource(R.drawable.ic_bills_light);
+                  imageView.setImageResource(R.drawable.ic_bills_dark);
 	          }
 	          else {
-//	        	  imageView.setImageResource(R.drawable.ic_bills_dark);
-                  textView.setTextColor(Color.parseColor("#FFFFFF"));
-                  imageView.setImageResource(R.drawable.ic_bills_light);
+	        	  imageView.setImageResource(R.drawable.ic_bills_dark);
+//                  textView.setTextColor(Color.parseColor("#FFFFFF"));
+//                  imageView.setImageResource(R.drawable.ic_bills_light);
 	          }
 	    	  break;
 	      case 2:
 	    	  if(position == selectedItem) {
-	        	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
-	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
-	    	      imageView.setImageResource(R.drawable.ic_shopping_light);
+//	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
+//	    	      imageView.setImageResource(R.drawable.ic_shopping_light);
+                  imageView.setImageResource(R.drawable.ic_shopping_dark);
 	          }
 	          else {
-//	        	  imageView.setImageResource(R.drawable.ic_shopping_dark);
-                  textView.setTextColor(Color.parseColor("#FFFFFF"));
-                  imageView.setImageResource(R.drawable.ic_shopping_light);
+	        	  imageView.setImageResource(R.drawable.ic_shopping_dark);
+//                  textView.setTextColor(Color.parseColor("#FFFFFF"));
+//                  imageView.setImageResource(R.drawable.ic_shopping_light);
 	          }
 	    	  break;
 	      case 3:
 	    	  if(position == selectedItem) {
-	        	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
-	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
-	    	      imageView.setImageResource(R.drawable.ic_tasks_light);
+//	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
+//	    	      imageView.setImageResource(R.drawable.ic_tasks_light);
+                  imageView.setImageResource(R.drawable.ic_tasks_dark);
 	          }
 	          else {
-//	        	  imageView.setImageResource(R.drawable.ic_tasks_dark);
-                  textView.setTextColor(Color.parseColor("#FFFFFF"));
-                  imageView.setImageResource(R.drawable.ic_tasks_light);
+	        	  imageView.setImageResource(R.drawable.ic_tasks_dark);
+//                  textView.setTextColor(Color.parseColor("#FFFFFF"));
+//                  imageView.setImageResource(R.drawable.ic_tasks_light);
 	          }
 	    	  break;
 	      case 4:
 	    	  if(position == selectedItem) {
-	        	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
-	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
-	    	      imageView.setImageResource(R.drawable.ic_roommates_light);
+//	    	      textView.setTextColor(Color.parseColor("#FFFFFF"));
+//	    	      imageView.setImageResource(R.drawable.ic_roommates_light);
+                  imageView.setImageResource(R.drawable.ic_roommates_dark);
 	          }
 	          else {
-//	        	  imageView.setImageResource(R.drawable.ic_roommates_dark);
-                  imageView.setImageResource(R.drawable.ic_roommates_light);
-                  textView.setTextColor(Color.parseColor("#FFFFFF"));
+	        	  imageView.setImageResource(R.drawable.ic_roommates_dark);
+//                  imageView.setImageResource(R.drawable.ic_roommates_light);
+//                  textView.setTextColor(Color.parseColor("#FFFFFF"));
 	          }
 	    	  break;
 	      case 5:
 	      	  if(position == selectedItem) {
-	          	  rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_selected);
-	      	      textView.setTextColor(Color.parseColor("#FFFFFF"));
-	      	      imageView.setImageResource(R.drawable.ic_rooms_light);
+//	      	      textView.setTextColor(Color.parseColor("#FFFFFF"));
+//	      	      imageView.setImageResource(R.drawable.ic_rooms_light);
+                  imageView.setImageResource(R.drawable.ic_rooms_dark);
 	            }
 	            else {
-//	          	  imageView.setImageResource(R.drawable.ic_rooms_dark);
-                  imageView.setImageResource(R.drawable.ic_rooms_light);
-                  textView.setTextColor(Color.parseColor("#FFFFFF"));
+	          	  imageView.setImageResource(R.drawable.ic_rooms_dark);
+//                  imageView.setImageResource(R.drawable.ic_rooms_light);
+//                  textView.setTextColor(Color.parseColor("#FFFFFF"));
 	            }
 	      	  break;
       }
 
+        imageView.setColorFilter(Color.parseColor("#555555"));
+        textView.setTextColor(Color.BLACK);
         if(position == selectedItem) {
 //            textView.setTypeface(null, Typeface.BOLD);
 //            textView.setTextColor(Color.parseColor("#FF8800"));
 //            rowView.findViewById(R.id.listItem1).setBackgroundResource(0);
-            rowView.findViewById(R.id.listItem1).setBackgroundColor(Color.parseColor("#FFB129"));
+//            rowView.findViewById(R.id.listItem1).setBackgroundColor(Color.parseColor("#FFB129"));
+            rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_pressed);
+            textView.setTextColor(Color.parseColor("#ff9800"));
+            imageView.setColorFilter(Color.parseColor("#ff9800"));
         }
       return rowView;
     }

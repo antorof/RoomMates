@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -153,7 +154,8 @@ public class MainActivity extends ActionBarActivity {
 		
 		drawerList.setAdapter(adapter);
         drawerLayout.setScrimColor(Color.TRANSPARENT);
-		   
+        drawerLayout.setDrawerShadow(R.drawable.orange_shadow, GravityCompat.START);
+
 		// Aniadimos un listener para cuando clickemos en el menu
 		drawerList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -255,6 +257,7 @@ public class MainActivity extends ActionBarActivity {
 		{
 
 			// Cuando el menu esta cerrado pongo como titulo el titulo de la seccion:
+            @Override
 			public void onDrawerClosed(View view) {
 				getSupportActionBar().setTitle(tituloSeccion);
                 getSupportActionBar().setSubtitle(null);
@@ -262,12 +265,18 @@ public class MainActivity extends ActionBarActivity {
 				ActivityCompat.invalidateOptionsMenu(MainActivity.this);
 			}
 			// Cuando el menu esta abierto pongo como titulo el titulo de la aplicacion:
+            @Override
 			public void onDrawerOpened(View drawerView) {
 				getSupportActionBar().setTitle(Session.name);
                 getSupportActionBar().setSubtitle(Session.currentApartmentName);
 //                getSupportActionBar().setIcon(getDrawableInicial());
 				ActivityCompat.invalidateOptionsMenu(MainActivity.this);
 			}
+
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                super.onDrawerSlide(drawerView,slideOffset);
+            }
 		};
 
 		drawerLayout.setDrawerListener(drawerToggle);

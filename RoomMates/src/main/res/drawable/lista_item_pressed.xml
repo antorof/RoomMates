@@ -6,6 +6,10 @@
 <!--     <solid android:color="#FF9D21"/>    -->
 
 <!--     Naranja claro: -->
-    <solid android:color="#FFB129"/>   
+    <!--<solid android:color="#FFB129"/>-->
+    <!--<item android:drawable="@android:color/transparent" />-->
+
+    <!-- Gris claro -->
+    <solid android:color="#EEEEEE"/>
     <item android:drawable="@android:color/transparent" />
 </shape>
