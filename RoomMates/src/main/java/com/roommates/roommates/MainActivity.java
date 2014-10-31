@@ -16,6 +16,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -252,7 +253,7 @@ public class MainActivity extends ActionBarActivity {
                 R.string.app_name, // Drawer open
                 R.string.app_name) // Drawer close
 		{
-			
+
 			// Cuando el menu esta cerrado pongo como titulo el titulo de la seccion:
 			public void onDrawerClosed(View view) {
 				getSupportActionBar().setTitle(tituloSeccion);
@@ -273,7 +274,7 @@ public class MainActivity extends ActionBarActivity {
 		
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
-		getOverflowMenu();
+//		getOverflowMenu();
 	}
 
     private Drawable getDrawableInicial() {
@@ -568,8 +569,11 @@ public class MainActivity extends ActionBarActivity {
 	 */
 	@Override
 	public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(drawerList);
+        }
 		// Si no estamos en el Home vuelve al Home
-		if(adapter.selectedItem != 0){
+		else if(adapter.selectedItem != 0){
 			getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new FragmentHome()).commit();
 			adapter.selectedItem = 0;
 			drawerList.setItemChecked(0, true);

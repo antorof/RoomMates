@@ -28,7 +28,7 @@
         android:background="#FF8800"
         android:divider="@android:color/transparent"
         android:choiceMode="singleChoice"
-        android:layout_marginTop="56dp" />
+        android:layout_marginTop="?attr/actionBarSize" />
 
 </android.support.v4.widget.DrawerLayout>
 
