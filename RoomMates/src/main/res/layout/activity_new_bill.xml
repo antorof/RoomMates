@@ -1,47 +1,55 @@
-<ScrollView
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar"/>
+
+    <ScrollView
         android:id="@+id/scrollViewBills"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent" 
-		android:padding="16dip">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="vertical" >
-		
-	    <EditText
-	        android:id="@+id/editTextNombreFactura"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:inputType="text"
-	        android:hint="@string/newbill_billname_hint" >
-	        <requestFocus />
-	    </EditText>
-	
-	    <EditText
-		android:layout_marginTop="16dip"
-	        android:id="@+id/editTextDescripcion"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:inputType="textMultiLine" 
-	        android:hint="@string/newbill_description_hint" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_vertical_margin">
 
-	    <EditText
-		android:layout_marginTop="16dip"
-	        android:id="@+id/editTextTotal"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:inputType="numberDecimal"  
-	        android:hint="@string/newbill_totalmoney_hint" />
+            <EditText
+                android:id="@+id/editTextNombreFactura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/newbill_billname_hint" >
+                <requestFocus />
+            </EditText>
 
-	    <Button
-		android:layout_marginTop="32dip"
-	        android:id="@+id/buttonAddBill"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:text="@string/newbill_button_text"
-		    android:onClick="add_bill_button_onClick"/>
-	        
-	</LinearLayout>
-</ScrollView>
+            <EditText
+            android:layout_marginTop="16dip"
+                android:id="@+id/editTextDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:hint="@string/newbill_description_hint" />
+
+            <EditText
+            android:layout_marginTop="16dip"
+                android:id="@+id/editTextTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:hint="@string/newbill_totalmoney_hint" />
+
+            <Button
+            android:layout_marginTop="32dip"
+                android:id="@+id/buttonAddBill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/newbill_button_text"
+                android:onClick="add_bill_button_onClick"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

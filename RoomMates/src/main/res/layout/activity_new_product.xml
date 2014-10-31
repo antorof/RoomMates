@@ -2,28 +2,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".NewProductActivity"
     android:orientation="vertical" >
-    
-    <EditText
-        android:id="@+id/editTextNombreProducto"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/newproduct_productname_hint"
-        android:inputType="text">
-        <requestFocus />
-    </EditText>
 
-    <Button
-        android:id="@+id/buttonAddProduct"
-        android:layout_marginTop="10dp"
+    <include layout="@layout/toolbar"/>
+
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/newproduct_button_text"
-		android:onClick="add_product_button_onClick" />
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_vertical_margin">
+
+        <EditText
+            android:id="@+id/editTextNombreProducto"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/newproduct_productname_hint"
+            android:inputType="text">
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/buttonAddProduct"
+            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/newproduct_button_text"
+            android:onClick="add_product_button_onClick" />
+
+    </LinearLayout>
 
 </LinearLayout>
