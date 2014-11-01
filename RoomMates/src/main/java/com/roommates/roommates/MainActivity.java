@@ -285,29 +285,13 @@ public class MainActivity extends ActionBarActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
 
-        initSessionFromSavedData();
+//        initSessionFromSavedData();
+        syncSessionState();
 
         ((TextView)findViewById(R.id.user_name)).setText(Session.name);
         ((TextView)findViewById(R.id.apartment_name)).setText(Session.currentApartmentName);
 //		getOverflowMenu();
 	}
-
-    private void initSessionFromSavedData() {
-        // Buscamos en las preferencias la ultima vivienda:
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        String idViviendaActual = sharedPref.getString("id_vivienda", "-1");
-        String nombreViviendaActual = sharedPref.getString("nombre_vivienda", "");
-        String rolEnViviendaActual = sharedPref.getString("rol_en_vivienda", "-1");
-
-        if ( !idViviendaActual.equals("-1") &&
-                !nombreViviendaActual.equals("") &&
-                !rolEnViviendaActual.equals("-1") )
-        {
-            Session.currentApartmentID   = idViviendaActual;
-            Session.currentApartmentName = nombreViviendaActual;
-            Session.currentRole          = rolEnViviendaActual;
-        }
-    }
 
     protected Drawable getDrawableInicial() {
         if (inicial == null) {
@@ -337,6 +321,24 @@ public class MainActivity extends ActionBarActivity {
         if (bitmap == null)
             getDrawableInicial();
         return bitmap;
+    }
+
+    protected void syncSessionState() {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String idViviendaActual = sharedPref.getString("id_vivienda", "-1");
+        String nombreViviendaActual = sharedPref.getString("nombre_vivienda", "");
+        String rolEnViviendaActual = sharedPref.getString("rol_en_vivienda", "-1");
+
+        if ( !idViviendaActual.equals("-1") &&
+                !nombreViviendaActual.equals("") &&
+                !rolEnViviendaActual.equals("-1") )
+        {
+            Session.currentApartmentID   = idViviendaActual;
+            Session.currentApartmentName = nombreViviendaActual;
+            Session.currentRole          = rolEnViviendaActual;
+
+            Session.valid = true;
+        }
     }
 
 	@Override
@@ -435,6 +437,7 @@ public class MainActivity extends ActionBarActivity {
                 Ed.putString("id_vivienda","-1");
                 Ed.putString("nombre_vivienda","-1");
                 Ed.commit();
+                Session.reset();
 
                 intent = new Intent(this, LoginActivity.class);
                 intent.putExtra("LOGOGUT",true);
@@ -953,6 +956,7 @@ public class MainActivity extends ActionBarActivity {
 
                             Log.i("rol_en_vivienda",MainActivity.this.rolEnViviendaActual);
 
+                            syncSessionState();
                             onBackPressed(); // Volvemos al HOME
 			    		}
 			    	})

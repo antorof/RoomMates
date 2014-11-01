@@ -14,4 +14,16 @@ public class Session {
     public static String name;
     public static String color;
 
+    public static boolean valid = false;
+
+    public static void reset() {
+        password = null;
+        currentApartmentName = null;
+        currentApartmentID = null;
+        currentRole = null;
+        name = null;
+        color = null;
+
+        valid = false;
+    }
 }

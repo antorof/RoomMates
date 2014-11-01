@@ -43,9 +43,7 @@ public class FragmentHome extends Fragment {
             }
         });
 
-	    if ( !Session.currentApartmentID.equals("-1") &&
-             !Session.currentApartmentName.equals("") &&
-             !Session.currentRole.equals("-1") )
+	    if ( Session.valid )
         {
             new Thread(new Runnable() {
                 public void run() {
