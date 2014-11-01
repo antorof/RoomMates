@@ -1,36 +1,57 @@
 
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/headerbar"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar"/>
-<android.support.v4.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/drawer_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
 
-    <!-- Contenido Principal -->
+    <android.support.v4.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
+        <!-- Fake toolbar -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary" />
+
+        <!-- Contenido Principal -->
         <FrameLayout
+            android:layout_marginTop="?attr/actionBarSize"
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@color/gris_muy_claro"/>
 
-    <!-- Menú Lateral -->
-    <ListView
-        android:id="@+id/left_drawer"
-        android:layout_width="240dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@android:color/white"
-        android:divider="@android:color/transparent"
-        android:choiceMode="singleChoice" />
+        <!-- Menú Lateral -->
+        <LinearLayout
+            android:id="@+id/left_drawermenu"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:background="@android:color/white"
+            android:orientation="vertical">
 
-</android.support.v4.widget.DrawerLayout>
+            <include layout="@layout/user_navdrawer"/>
 
+            <ListView
+                android:id="@+id/drawer_list"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:layout_marginTop="6dp"
+                android:background="@android:color/white"
+                android:divider="@android:color/transparent"
+                android:choiceMode="singleChoice" />
 
-</LinearLayout>
+        </LinearLayout>
+
+    </android.support.v4.widget.DrawerLayout>
+
+    <include layout="@layout/toolbar"/>
+</RelativeLayout>

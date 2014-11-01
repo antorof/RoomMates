@@ -34,12 +34,6 @@ public class FragmentHome extends Fragment {
 		view = inflater.inflate(R.layout.fragment_newhome, container, false);
         mainActivity = (MainActivity) getActivity();
 
-		// Buscamos en las preferencias la ultima vivienda:
-	    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(mainActivity);
-	    String idViviendaActual = sharedPref.getString("id_vivienda", "-1");
-        String nombreViviendaActual = sharedPref.getString("nombre_vivienda", "");
-        String rolEnViviendaActual = sharedPref.getString("rol_en_vivienda", "-1");
-
         swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container_home);
         swipeLayout.setColorSchemeResources(R.color.naranja_android,R.color.azul_claro_android);
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -49,15 +43,10 @@ public class FragmentHome extends Fragment {
             }
         });
 
-	    if ( !idViviendaActual.equals("-1") &&
-             !nombreViviendaActual.equals("") &&
-             !rolEnViviendaActual.equals("-1") )
+	    if ( !Session.currentApartmentID.equals("-1") &&
+             !Session.currentApartmentName.equals("") &&
+             !Session.currentRole.equals("-1") )
         {
-
-            Session.currentApartmentID   = idViviendaActual;
-            Session.currentApartmentName = nombreViviendaActual;
-            Session.currentRole          = rolEnViviendaActual;
-
             new Thread(new Runnable() {
                 public void run() {
                     mainActivity.runOnUiThread(new Runnable() {

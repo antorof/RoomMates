@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -50,7 +49,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Field;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -103,6 +101,7 @@ public class MainActivity extends ActionBarActivity {
     protected boolean actualizandoHomeFacturas = false;
     protected boolean actualizandoHomeCompras = false;
     protected boolean actualizandoHomeTareas = false;
+    private Bitmap bitmap;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +143,7 @@ public class MainActivity extends ActionBarActivity {
 		};
 		
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		drawerList = (ListView) findViewById(R.id.left_drawer);
+		drawerList = (ListView) findViewById(R.id.drawer_list);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 		
@@ -155,7 +154,7 @@ public class MainActivity extends ActionBarActivity {
 		drawerList.setAdapter(adapter);
 //        drawerLayout.setScrimColor(Color.TRANSPARENT);
         // Linea naranja de borde:
-        drawerLayout.setDrawerShadow(R.drawable.orange_shadow, GravityCompat.START);
+        drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
 		// Aniadimos un listener para cuando clickemos en el menu
 		drawerList.setOnItemClickListener(new OnItemClickListener() {
@@ -238,7 +237,7 @@ public class MainActivity extends ActionBarActivity {
 				
 				onPrepareOptionsMenu(menu);
 
-				drawerLayout.closeDrawer(drawerList);
+				drawerLayout.closeDrawer(GravityCompat.START);
 			}
 		});
 		
@@ -268,9 +267,10 @@ public class MainActivity extends ActionBarActivity {
 			// Cuando el menu esta abierto pongo como titulo el titulo de la aplicacion:
             @Override
 			public void onDrawerOpened(View drawerView) {
-				getSupportActionBar().setTitle(Session.name);
-                getSupportActionBar().setSubtitle(Session.currentApartmentName);
+				getSupportActionBar().setTitle(getTitle());
+//                getSupportActionBar().setSubtitle(Session.currentApartmentName);
 //                getSupportActionBar().setIcon(getDrawableInicial());
+                ((de.hdodenhof.circleimageview.CircleImageView)findViewById(R.id.inicial)).setImageBitmap(getBitmap());
 				ActivityCompat.invalidateOptionsMenu(MainActivity.this);
 			}
 
@@ -284,11 +284,32 @@ public class MainActivity extends ActionBarActivity {
 		
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
+
+        initSessionFromSavedData();
+
+        ((TextView)findViewById(R.id.user_name)).setText(Session.name);
+        ((TextView)findViewById(R.id.apartment_name)).setText(Session.currentApartmentName);
 //		getOverflowMenu();
 	}
 
-    private Drawable getDrawableInicial() {
-        Bitmap snapshot;
+    private void initSessionFromSavedData() {
+        // Buscamos en las preferencias la ultima vivienda:
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String idViviendaActual = sharedPref.getString("id_vivienda", "-1");
+        String nombreViviendaActual = sharedPref.getString("nombre_vivienda", "");
+        String rolEnViviendaActual = sharedPref.getString("rol_en_vivienda", "-1");
+
+        if ( !idViviendaActual.equals("-1") &&
+                !nombreViviendaActual.equals("") &&
+                !rolEnViviendaActual.equals("-1") )
+        {
+            Session.currentApartmentID   = idViviendaActual;
+            Session.currentApartmentName = nombreViviendaActual;
+            Session.currentRole          = rolEnViviendaActual;
+        }
+    }
+
+    protected Drawable getDrawableInicial() {
         if (inicial == null) {
             View viewInicial = findViewById(R.id.homeCardNameBackground);
             viewInicial.setDrawingCacheEnabled(true);
@@ -302,8 +323,8 @@ public class MainActivity extends ActionBarActivity {
                 int x = width/2 - height/2;
 
                 Log.w("ratio",ratio+"");
-                snapshot = Bitmap.createBitmap(img,x,0,(int)(width*ratio),height); // You can tell how to crop the snapshot and whatever in this method
-                inicial = new BitmapDrawable(getResources(),snapshot);
+                bitmap = Bitmap.createBitmap(img,x,0,(int)(width*ratio),height); // You can tell how to crop the snapshot and whatever in this method
+                inicial = new BitmapDrawable(getResources(), bitmap);
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -311,6 +332,11 @@ public class MainActivity extends ActionBarActivity {
             }
         }
         return inicial;
+    }
+    protected Bitmap getBitmap() {
+        if (bitmap == null)
+            getDrawableInicial();
+        return bitmap;
     }
 
 	@Override
@@ -580,7 +606,7 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(drawerList);
+            drawerLayout.closeDrawer(GravityCompat.START);
         }
 		// Si no estamos en el Home vuelve al Home
 		else if(adapter.selectedItem != 0){
