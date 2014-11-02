@@ -5,7 +5,7 @@
     tools:context=".NewProductActivity"
     android:orientation="vertical" >
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar_opaque"/>
 
     <LinearLayout
         android:layout_width="fill_parent"

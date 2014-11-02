@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar_opaque"/>
 
     <ScrollView
         android:id="@+id/scrollViewTasks"
