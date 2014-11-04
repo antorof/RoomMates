@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.roommates.roommates;
+package com.antorofdev.util;
 
 import android.util.Log;
 
