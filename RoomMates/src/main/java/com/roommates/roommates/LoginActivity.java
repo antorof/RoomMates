@@ -32,6 +32,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.antorofdev.util.Http;
+
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
