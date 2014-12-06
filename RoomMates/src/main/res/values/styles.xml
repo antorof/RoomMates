@@ -114,8 +114,8 @@
 
     <style name="Theme.MaterialTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- customize the color palette -->
-        <item name="colorPrimary">#ff9800</item>
-        <item name="colorPrimaryDark">#f57c00</item>
+        <item name="colorPrimary">#ffc107</item>
+        <item name="colorPrimaryDark">#ffa000</item>
         <item name="colorAccent">#40c4ff</item>
 
         <item name="windowActionModeOverlay">true</item>

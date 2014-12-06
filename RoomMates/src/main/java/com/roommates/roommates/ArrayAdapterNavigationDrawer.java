@@ -129,8 +129,8 @@ public class ArrayAdapterNavigationDrawer extends ArrayAdapter<String> {
 //            rowView.findViewById(R.id.listItem1).setBackgroundResource(0);
 //            rowView.findViewById(R.id.listItem1).setBackgroundColor(Color.parseColor("#FFB129"));
             rowView.findViewById(R.id.listItem1).setBackgroundResource(R.drawable.lista_item_pressed);
-            textView.setTextColor(Color.parseColor("#ff9800"));
-            imageView.setColorFilter(Color.parseColor("#ff9800"));
+            textView.setTextColor(Color.parseColor("#ffc107"));
+            imageView.setColorFilter(Color.parseColor("#ffc107"));
         }
       return rowView;
     }
