@@ -51,6 +51,7 @@ public class FragmentHome extends Fragment {
                         @Override
                         public void run() {
                             actualizarLista();
+                            mainActivity.getDrawableInicial();
                         }
                     });
                 }
